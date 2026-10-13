@@ -12,7 +12,7 @@
 2. 点 **Compare & pull request**。确认 **base: main**、compare 为改造分支，再点 **Create pull request**。
 3. 检查 **Files changed**，确认是浏览器版和 Pages 工作流。
 4. 等待 **Build and deploy GitHub Pages / build** 检查完成。Pull Request 不会发布网站。
-5. 检查通过后由您点击 **Merge pull request** → **Confirm merge**。main 有保护规则时，按仓库审批要求操作。
+5. 先完成下面第二步的 Pages 设置，再在检查通过后点击 **Merge pull request** → **Confirm merge**。main 有保护规则时，按仓库审批要求操作。
 
 如果尚未成功推送分支，还需 GitHub 写入授权。不要把 token 或密码发在聊天中；通过当前 GitHub 集成授权流程提供仓库写入权限，再重试推送。修改 .github/workflows 可能还需工作流写入权限，取决于凭据类型。Git 读取成功不能证明写入或 API 权限可用。
 
