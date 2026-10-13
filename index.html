@@ -28,6 +28,20 @@
       <label id="confidenceLabel" title="低于此模型置信度的字词替换为□。置信度不是正确率。">疑字阈值 <output id="thresholdValue">65</output><input id="threshold" type="range" min="0" max="100" value="65"></label>
       <label class="check-label"><input id="autoRun" type="checkbox" checked>上传后自动识别</label>
     </section>
+    <details class="processing-panel" id="processingPanel"><summary>识别方式与图像处理 · 分栏、模型、PSM、灰度和二值化</summary>
+      <div class="processing-controls">
+        <label>版面处理<select id="recognitionMode"><option value="whole">整区识别（原方式）</option><option value="columns">竖排先分栏再识别</option></select></label>
+        <label>语言模型<select id="languageModel"><option value="auto">按排版自动选择</option><option value="chi_tra_vert">chi_tra_vert 繁体竖排</option><option value="chi_tra">chi_tra 繁体对照</option></select></label>
+        <label>页面分割<select id="psm"><option value="auto">竖排 PSM5 / 横排 PSM6</option><option value="3">PSM3 自动版面（对照）</option><option value="4">PSM4 单列（实验）</option><option value="5">PSM5 竖排文字块 / 单列</option><option value="6">PSM6 单块（主要横排）</option><option value="7">PSM7 单行（主要横排）</option><option value="11">PSM11 稀疏文字（对照）</option></select></label>
+        <label>分栏列数<input id="columnCount" type="number" min="0" max="30" value="0"><span>0 为自动投影；其他值均分所选区域</span></label>
+        <label>识别用图放大<select id="ocrScale"><option value="1">1 倍</option><option value="1.5">1.5 倍</option><option value="2" selected>2 倍</option><option value="3">3 倍</option></select></label>
+        <label>内存预算<select id="memoryMode"><option value="auto">自动（手机节省）</option><option value="compact">节省：每次 150 万像素</option><option value="standard">标准：每次 500 万像素</option></select></label>
+        <label class="check-label"><input id="grayscale" type="checkbox">灰度</label>
+        <label>对比度 <output id="contrastValue">100%</output><input id="contrast" type="range" min="50" max="250" step="10" value="100"></label>
+        <label>二值化<select id="binaryMode"><option value="none">关闭（保留灰度/彩色）</option><option value="otsu">全局自动阈值 Otsu</option><option value="adaptive">局部自适应（旧纸背景）</option><option value="manual">手动阈值</option></select></label>
+        <label>手动阈值<input id="binaryThreshold" type="range" min="30" max="240" value="160"></label>
+      </div><p>先框正文再分栏通常更便于检查。分栏切线可能切错字，预处理也可能抹去淡字，请比较原图与处理预览；实际工作图尺寸和检测数量会保存到识别记录。结果很少时可固定同一框比较 PSM5 与 PSM3；字数增加不等于更准确。</p>
+    </details>
     <section id="dropZone" class="drop-zone" tabindex="0" role="button" aria-label="上传古籍图片">
       <svg width="42" height="42" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="4" y="6" width="24" height="22" rx="3" stroke="currentColor" stroke-width="1.4"/><path d="M8 21l5-5 4 4 4-7 4 8M16 2v9m-4-5l4-4 4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <h2>把古籍图片放在这里</h2><p>拖入图片，或点击选择文件</p><span class="upload-details">JPG / PNG · 每张最多 20 MB · 每批最多 20 张</span>
@@ -35,18 +49,22 @@
     </section>
     <input id="fileInput" type="file" accept="image/jpeg,image/png,.jpg,.jpeg,.png" multiple hidden>
     <section id="workspace" class="workspace" hidden>
-      <div class="workspace-heading"><div><span class="eyebrow">图文对照</span><h2 id="currentName"></h2></div><div class="toolbar"><span id="progress" aria-live="polite"></span><button id="runCurrent" class="primary-button">转录当前页</button><button id="runPending" class="secondary-button">转录待处理页</button></div></div>
+      <div class="workspace-heading"><div><span class="eyebrow">图文对照</span><h2 id="currentName"></h2></div><div class="toolbar"><span id="progress" aria-live="polite"></span><button id="stopOCR" class="secondary-button" disabled>停止识别</button><button id="runCurrent" class="primary-button">转录当前页</button><button id="runPending" class="secondary-button">转录待处理页</button></div></div>
       <div class="comparison">
         <section class="image-pane" aria-label="原图与分区">
           <div class="pane-heading"><h3>原始图像</h3><div><button id="zoomOut" class="icon-button" aria-label="缩小图片">−</button><span id="zoomValue">100%</span><button id="zoomIn" class="icon-button" aria-label="放大图片">＋</button></div></div>
           <div class="region-toolbar"><label>区域类型<select id="regionKind"><option value="body">正文</option><option value="title">标题</option><option value="page">页码</option><option value="center">版心</option><option value="other">其他版面信息</option></select></label><button id="drawRegion" class="secondary-button">框选区域</button></div>
-          <div class="image-scroller"><div id="imageStage" class="image-stage"><img id="sourceImage" alt="当前文献原图" draggable="false"><div id="regionOverlay" class="region-overlay"></div><div id="uncertainOverlay" class="uncertain-overlay"></div><div id="draftRegion" class="draft-region" hidden></div></div></div>
+          <div class="preview-toolbar"><label>查看<select id="imageView"><option value="original">原图</option><option value="processed">处理预览（缩略）</option></select></label><button id="previewProcessing" class="text-button">生成处理预览</button><button id="analyzeColumns" class="text-button">分析分栏</button></div>
+          <div class="image-scroller"><div id="imageStage" class="image-stage"><img id="sourceImage" alt="当前文献原图" draggable="false"><div id="regionOverlay" class="region-overlay"></div><div id="columnOverlay" class="region-overlay"></div><div id="detectedOverlay" class="region-overlay"></div><div id="uncertainOverlay" class="uncertain-overlay"></div><div id="draftRegion" class="draft-region" hidden></div></div></div>
           <div class="image-foot"><span id="regionHint">可放大查看；复杂版面建议先框选</span><label><input id="showUncertain" type="checkbox" checked> 显示疑字位置</label></div>
           <div id="regionsList" class="regions-list"></div>
+          <label class="detected-toggle"><input id="showDetected" type="checkbox">显示 OCR 实际检测字词框（不是完整原文字数）</label>
         </section>
         <section class="text-pane" aria-label="可编辑转录结果">
           <div class="pane-heading"><h3>转录底稿 <span id="resultStatus" class="small-badge">待处理</span></h3><button id="copyCurrent" class="text-button">复制本页</button></div>
           <div id="pageWarnings" class="page-warnings"></div>
+          <div id="diagnosticSummary" class="diagnostic-summary"></div>
+          <button id="showRecords" class="text-button records-button">原始 OCR 输出与识别记录</button>
           <div id="segmentEditors" class="segment-editors"></div>
           <div class="text-foot"><button id="addSegment" class="text-button">＋ 添加版面栏目</button><label><input id="reviewed" type="checkbox">已完成逐字校对</label></div>
         </section>
@@ -57,6 +75,7 @@
     <footer><span>古籍转录助手 · 浏览器本地版</span><span>识别与导出在浏览器完成 · 关闭前请保存</span></footer>
   </main>
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
-  <dialog id="helpDialog"><div class="dialog-heading"><h2>使用说明</h2><button id="closeHelp" class="icon-button" aria-label="关闭说明">×</button></div><ol><li>选择文字排版，在此网页选择 JPG / PNG。无需安装软件，图片不会发送到服务器。按加入目录的实际顺序处理，可用箭头调整。</li><li>默认选择图片后自动识别。第一次会从本站载入免费引擎与模型，可能需要等待；识别在浏览器运行，不调用远程 OCR。</li><li>需要框选时先取消“上传后自动识别”。选择区域类型，点击“框选区域”并拖出矩形。框选后<strong>只识别框内内容</strong>，请包含全部所需文字并避免重叠。</li><li>在右侧逐字编辑。可添加标题、页码、版心栏目，也可调整栏目顺序。竖排列序尽量按右至左、上至下；复杂版面仍需人工校序。</li><li>低于疑字阈值的检测字词逐字替换为□。置信度不是正确率，漏检和高置信度误识仍可能存在。保留检测出的标点，不另行断句或添加现代标点。</li><li>复制文字或导出 TXT / Word。Word 可附对应的显示用原图副本。结果仅保留在当前页面，刷新或关闭前务必导出，并另外备份源图片。</li></ol><p class="help-note">本网站使用通用繁体 OCR，未专门针对清代古籍训练，不能保证异体字、小字双行、印章和残损识别准确。演示图为现代生成的竖排繁体排版，不代表古籍准确率。模型可能缓存到浏览器，图片和转录不做自动持久保存。详情见仓库使用说明及测试报告。</p></dialog>
+  <dialog id="recordsDialog"><div class="dialog-heading"><h2>原始 OCR 与方法对比</h2><button id="closeRecords" class="icon-button" aria-label="关闭识别记录">×</button></div><p>这里保留引擎原始输出；其中仍可能含猜错的字，不作为确认原文。人工编辑不会修改这些记录，刷新前请下载保存。</p><label>识别批次<select id="recordRun"></select></label><label>区域 / 列<select id="recordPass"></select></label><p id="recordProfile"></p><label>引擎原始输出（未经重排或标疑）<textarea id="rawOutput" readonly rows="8"></textarea></label><label>按阅读顺序整理并标疑的底稿<textarea id="markedOutput" readonly rows="8"></textarea></label><div class="records-actions"><button id="copyRaw" class="secondary-button">复制选中原始输出</button><button id="exportRecords" class="primary-button">下载本页全部识别记录 JSON</button></div></dialog>
+  <dialog id="helpDialog"><div class="dialog-heading"><h2>使用说明</h2><button id="closeHelp" class="icon-button" aria-label="关闭说明">×</button></div><ol><li>选择文字排版，在此网页选择 JPG / PNG。无需安装软件，图片不会发送到服务器。按加入目录的实际顺序处理，可用箭头调整。</li><li>默认选择图片后自动识别。第一次会从本站载入免费引擎与模型，可能需要等待；识别在浏览器运行，不调用远程 OCR。</li><li>需要框选时先取消“上传后自动识别”。选择区域类型，点击“框选区域”并拖出矩形。框选后<strong>只识别框内内容</strong>，请包含全部所需文字并避免重叠。</li><li>区域旁“识别该区”只更新对应底稿，其他栏目文字保留。展开“识别方式与图像处理”，先分析分栏并检查切线；同一框可比较PSM、灰度及二值化，生成处理预览与原图对照，增强不一定更好。</li><li>在右侧逐字编辑。可添加标题、页码、版心栏目，也可调整栏目顺序。竖排列序尽量按右至左、上至下；复杂版面仍需人工校序。</li><li>低于疑字阈值的检测字词逐字替换为□。置信度不是正确率，漏检和高置信度误识仍可能存在。保留检测出的标点，不另行断句或添加现代标点。</li><li>“原始OCR输出与识别记录”保留每批次/列的引擎文本、TSV、参数与检测数量，人工修改不影响记录。刷新前下载本页JSON。手机默认使用较小工作图预算；可停止识别，初始化期间可能等待。</li><li>复制文字或导出 TXT / Word。Word 可附对应的显示用原图副本。结果仅保留在当前页面，刷新或关闭前务必导出，并另外备份源图片。</li></ol><p class="help-note">本网站使用通用繁体 OCR，未专门针对清代古籍训练，不能保证异体字、小字双行、印章和残损识别准确。演示图为现代生成的竖排繁体排版，不代表古籍准确率。模型可能缓存到浏览器，图片和转录不做自动持久保存。详情见仓库使用说明及测试报告。</p></dialog>
 </body>
 </html>

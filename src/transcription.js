@@ -43,8 +43,9 @@ export function parseTSV(tsv, threshold, orientation = 'vertical') {
     else groups.push({ center, extent, keys: [key] });
   }
   const ordered = groups.flatMap(g => g.keys.sort((a, b) => getBox(a)[isVertical ? 1 : 0] - getBox(b)[isVertical ? 1 : 0]));
-  const text = ordered.map(key => lines.get(key).sort((a, b) => a.order - b.order).map(word => word.text).join('')).join('\n');
-  return { text, uncertain, detectedCharacters };
+  const orderedLines=ordered.map(key=>({bbox:getBox(key),text:lines.get(key).sort((a,b)=>a.order-b.order).map(word=>word.text).join('')}));
+  const text = orderedLines.map(line=>line.text).join('\n');
+  return { text, uncertain, detectedCharacters,orderedLines };
 }
 
 export function sortRegions(regions, orientation) {
