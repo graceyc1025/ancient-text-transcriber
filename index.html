@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>古籍转录助手 · 个人研究工作台</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self'; connect-src 'self'; img-src 'self' blob: data:; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <script type="module" src="./src/app.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="./" aria-label="古籍转录助手首页"><span class="seal">卷</span><span>古籍转录<span class="brand-sub">个人研究工作台</span></span></a>
+    <div class="sidebar-label">本次文献</div>
+    <label class="project-label" for="projectTitle">文献名称</label>
+    <input id="projectTitle" class="project-input" value="未命名文献" maxlength="200">
+    <div class="list-heading"><span>图像目录</span><span id="pageCount">0 页</span></div>
+    <div id="pageList" class="page-list"><div class="list-empty">上传图片后<br>在这里逐页查看</div></div>
+    <button id="addFiles" class="side-add" type="button">＋ 添加图片</button>
+    <div class="sidebar-note"><span class="green-dot"></span> 免费 · 浏览器处理<p>图片不上传 · 无需安装<br>无需 API 密钥</p></div>
+  </aside>
+  <main>
+    <header class="topbar"><span>文献整理 <span class="slash">/</span> 图像转录</span><button id="helpButton" class="text-button">使用说明 ↗</button></header>
+    <section class="intro"><div><div class="eyebrow">从原图出发，保留每一个字</div><h1>古籍文献图片转录</h1><p>繁体保留 · 竖排列序 · 原图对照 · 人工校勘</p></div><span id="engineStatus" class="status-badge">正在检查识别环境</span></section>
+    <section class="settings" aria-label="识别设置">
+      <label>识别引擎<span class="engine-name">Tesseract.js · 免费本地 OCR</span></label>
+      <label>文字排版<select id="orientation"><option value="vertical">竖排 · 右至左</option><option value="horizontal">横排 · 左至右</option></select></label>
+      <label id="confidenceLabel" title="低于此模型置信度的字词替换为□。置信度不是正确率。">疑字阈值 <output id="thresholdValue">65</output><input id="threshold" type="range" min="0" max="100" value="65"></label>
+      <label class="check-label"><input id="autoRun" type="checkbox" checked>上传后自动识别</label>
+    </section>
+    <section id="dropZone" class="drop-zone" tabindex="0" role="button" aria-label="上传古籍图片">
+      <svg width="42" height="42" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="4" y="6" width="24" height="22" rx="3" stroke="currentColor" stroke-width="1.4"/><path d="M8 21l5-5 4 4 4-7 4 8M16 2v9m-4-5l4-4 4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h2>把古籍图片放在这里</h2><p>拖入图片，或点击选择文件</p><span class="upload-details">JPG / PNG · 每张最多 20 MB · 每批最多 20 张</span>
+      <button id="sampleButton" class="sample-button" type="button">先试一张竖排排版演示图 →</button>
+    </section>
+    <input id="fileInput" type="file" accept="image/jpeg,image/png,.jpg,.jpeg,.png" multiple hidden>
+    <section id="workspace" class="workspace" hidden>
+      <div class="workspace-heading"><div><span class="eyebrow">图文对照</span><h2 id="currentName"></h2></div><div class="toolbar"><span id="progress" aria-live="polite"></span><button id="runCurrent" class="primary-button">转录当前页</button><button id="runPending" class="secondary-button">转录待处理页</button></div></div>
+      <div class="comparison">
+        <section class="image-pane" aria-label="原图与分区">
+          <div class="pane-heading"><h3>原始图像</h3><div><button id="zoomOut" class="icon-button" aria-label="缩小图片">−</button><span id="zoomValue">100%</span><button id="zoomIn" class="icon-button" aria-label="放大图片">＋</button></div></div>
+          <div class="region-toolbar"><label>区域类型<select id="regionKind"><option value="body">正文</option><option value="title">标题</option><option value="page">页码</option><option value="center">版心</option><option value="other">其他版面信息</option></select></label><button id="drawRegion" class="secondary-button">框选区域</button></div>
+          <div class="image-scroller"><div id="imageStage" class="image-stage"><img id="sourceImage" alt="当前文献原图" draggable="false"><div id="regionOverlay" class="region-overlay"></div><div id="uncertainOverlay" class="uncertain-overlay"></div><div id="draftRegion" class="draft-region" hidden></div></div></div>
+          <div class="image-foot"><span id="regionHint">可放大查看；复杂版面建议先框选</span><label><input id="showUncertain" type="checkbox" checked> 显示疑字位置</label></div>
+          <div id="regionsList" class="regions-list"></div>
+        </section>
+        <section class="text-pane" aria-label="可编辑转录结果">
+          <div class="pane-heading"><h3>转录底稿 <span id="resultStatus" class="small-badge">待处理</span></h3><button id="copyCurrent" class="text-button">复制本页</button></div>
+          <div id="pageWarnings" class="page-warnings"></div>
+          <div id="segmentEditors" class="segment-editors"></div>
+          <div class="text-foot"><button id="addSegment" class="text-button">＋ 添加版面栏目</button><label><input id="reviewed" type="checkbox">已完成逐字校对</label></div>
+        </section>
+      </div>
+    </section>
+    <section id="exportBar" class="export-bar" hidden><div><h3>保存本次转录</h3><p id="exportSummary">按图像目录顺序导出，以编辑后的文字为准</p></div><div class="export-actions"><label class="check-label"><input id="includeImages" type="checkbox" checked>Word 附原图</label><button id="copyAll" class="secondary-button">复制全部</button><button id="exportTxt" class="secondary-button">导出 TXT ↓</button><button id="exportDocx" class="primary-button">导出 Word ↓</button></div></section>
+    <div class="principles"><span class="principle-mark">校</span><p><strong>通用 OCR 不能替代古籍校勘。</strong> 使用繁体竖排模型，不做简繁转换、断句或上下文补字。清代异体字、残损、小字双行仍可能误识或漏检，□也无法覆盖所有误识；引用前请逐字对照原图。</p></div>
+    <footer><span>古籍转录助手 · 浏览器本地版</span><span>识别与导出在浏览器完成 · 关闭前请保存</span></footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <dialog id="helpDialog"><div class="dialog-heading"><h2>使用说明</h2><button id="closeHelp" class="icon-button" aria-label="关闭说明">×</button></div><ol><li>选择文字排版，在此网页选择 JPG / PNG。无需安装软件，图片不会发送到服务器。按加入目录的实际顺序处理，可用箭头调整。</li><li>默认选择图片后自动识别。第一次会从本站载入免费引擎与模型，可能需要等待；识别在浏览器运行，不调用远程 OCR。</li><li>需要框选时先取消“上传后自动识别”。选择区域类型，点击“框选区域”并拖出矩形。框选后<strong>只识别框内内容</strong>，请包含全部所需文字并避免重叠。</li><li>在右侧逐字编辑。可添加标题、页码、版心栏目，也可调整栏目顺序。竖排列序尽量按右至左、上至下；复杂版面仍需人工校序。</li><li>低于疑字阈值的检测字词逐字替换为□。置信度不是正确率，漏检和高置信度误识仍可能存在。保留检测出的标点，不另行断句或添加现代标点。</li><li>复制文字或导出 TXT / Word。Word 可附对应的显示用原图副本。结果仅保留在当前页面，刷新或关闭前务必导出，并另外备份源图片。</li></ol><p class="help-note">本网站使用通用繁体 OCR，未专门针对清代古籍训练，不能保证异体字、小字双行、印章和残损识别准确。演示图为现代生成的竖排繁体排版，不代表古籍准确率。模型可能缓存到浏览器，图片和转录不做自动持久保存。详情见仓库使用说明及测试报告。</p></dialog>
+</body>
+</html>

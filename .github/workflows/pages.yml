@@ -1,0 +1,66 @@
+name: Build and deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Unit and document export tests
+        run: npm test
+      - name: Build static site and verify local models
+        run: npm run build
+      - name: Install test browser
+        run: npx playwright install --with-deps chromium
+      - name: Browser OCR, Pages subpath and downloads
+        run: npm run test:e2e
+      - name: Preserve browser test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-test-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7
+      - name: Upload static Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check Pages configuration
+        uses: actions/configure-pages@v5
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
