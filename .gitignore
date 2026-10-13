@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+models/*.traineddata
+tests/samples/local/
+test-results/
+dist/
+*.log
+.env
+node_modules/
+playwright-report/
+public/ocr/runtime/
