@@ -1,0 +1,599 @@
+{
+  "baselineCommit": "e323b56",
+  "records": [
+    {
+      "file": "example.png",
+      "sha256": "0b0a30736f513b0e66a8752ea00366b239162d6830fbda0cf34bc58cb8b1d4e3",
+      "method": "before-whole",
+      "model": "chi_tra_vert",
+      "psm": "5",
+      "passes": 1,
+      "workingSizes": [
+        [
+          1480,
+          1800
+        ]
+      ],
+      "wordBoxes": 29,
+      "outputCharacters": 30,
+      "squares": 6,
+      "elapsedMs": 1263,
+      "rawErrors": {
+        "substitutions": 6,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 6,
+        "referenceCharacters": 30,
+        "CER": 0.2
+      },
+      "markedErrors": {
+        "substitutions": 7,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 7,
+        "referenceCharacters": 30,
+        "CER": 0.23333333333333334
+      },
+      "columnOrderInversions": 0
+    },
+    {
+      "file": "example.png",
+      "sha256": "0b0a30736f513b0e66a8752ea00366b239162d6830fbda0cf34bc58cb8b1d4e3",
+      "method": "after-whole",
+      "model": "chi_tra_vert",
+      "psm": "5",
+      "passes": 1,
+      "workingSizes": [
+        [
+          1480,
+          1800
+        ]
+      ],
+      "wordBoxes": 29,
+      "outputCharacters": 30,
+      "squares": 6,
+      "elapsedMs": 1268,
+      "rawErrors": {
+        "substitutions": 6,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 6,
+        "referenceCharacters": 30,
+        "CER": 0.2
+      },
+      "markedErrors": {
+        "substitutions": 7,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 7,
+        "referenceCharacters": 30,
+        "CER": 0.23333333333333334
+      },
+      "columnOrderInversions": 0
+    },
+    {
+      "file": "example.png",
+      "sha256": "0b0a30736f513b0e66a8752ea00366b239162d6830fbda0cf34bc58cb8b1d4e3",
+      "method": "after-auto-columns",
+      "model": "chi_tra_vert",
+      "psm": "5",
+      "passes": 3,
+      "workingSizes": [
+        [
+          480,
+          1800
+        ],
+        [
+          398,
+          1800
+        ],
+        [
+          602,
+          1800
+        ]
+      ],
+      "wordBoxes": 29,
+      "outputCharacters": 30,
+      "squares": 6,
+      "elapsedMs": 1239,
+      "rawErrors": {
+        "substitutions": 6,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 6,
+        "referenceCharacters": 30,
+        "CER": 0.2
+      },
+      "markedErrors": {
+        "substitutions": 7,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 7,
+        "referenceCharacters": 30,
+        "CER": 0.23333333333333334
+      },
+      "columnOrderInversions": 0
+    },
+    {
+      "file": "example.png",
+      "sha256": "0b0a30736f513b0e66a8752ea00366b239162d6830fbda0cf34bc58cb8b1d4e3",
+      "method": "after-model-tra",
+      "model": "chi_tra",
+      "psm": "5",
+      "passes": 1,
+      "workingSizes": [
+        [
+          1480,
+          1800
+        ]
+      ],
+      "wordBoxes": 30,
+      "outputCharacters": 30,
+      "squares": 29,
+      "elapsedMs": 2245,
+      "rawErrors": {
+        "substitutions": 30,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 30,
+        "referenceCharacters": 30,
+        "CER": 1
+      },
+      "markedErrors": {
+        "substitutions": 30,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 30,
+        "referenceCharacters": 30,
+        "CER": 1
+      },
+      "columnOrderInversions": 0
+    },
+    {
+      "file": "example.png",
+      "sha256": "0b0a30736f513b0e66a8752ea00366b239162d6830fbda0cf34bc58cb8b1d4e3",
+      "method": "after-3-columns-gray",
+      "model": "chi_tra_vert",
+      "psm": "5",
+      "passes": 3,
+      "workingSizes": [
+        [
+          494,
+          1800
+        ],
+        [
+          492,
+          1800
+        ],
+        [
+          494,
+          1800
+        ]
+      ],
+      "wordBoxes": 28,
+      "outputCharacters": 30,
+      "squares": 8,
+      "elapsedMs": 1333,
+      "rawErrors": {
+        "substitutions": 8,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 8,
+        "referenceCharacters": 30,
+        "CER": 0.26666666666666666
+      },
+      "markedErrors": {
+        "substitutions": 10,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 10,
+        "referenceCharacters": 30,
+        "CER": 0.3333333333333333
+      },
+      "columnOrderInversions": 0
+    },
+    {
+      "file": "page_2.png",
+      "sha256": "25d71ccf89303934ace399d600d9380751108183af470fb897ebaac541b51401",
+      "method": "before-whole",
+      "model": "chi_tra_vert",
+      "psm": "5",
+      "passes": 1,
+      "workingSizes": [
+        [
+          2048,
+          1822
+        ]
+      ],
+      "wordBoxes": 76,
+      "outputCharacters": 82,
+      "squares": 70,
+      "elapsedMs": 5472,
+      "rawErrors": null,
+      "markedErrors": null,
+      "columnOrderInversions": null
+    },
+    {
+      "file": "page_2.png",
+      "sha256": "25d71ccf89303934ace399d600d9380751108183af470fb897ebaac541b51401",
+      "method": "after-whole",
+      "model": "chi_tra_vert",
+      "psm": "5",
+      "passes": 1,
+      "workingSizes": [
+        [
+          2048,
+          1822
+        ]
+      ],
+      "wordBoxes": 76,
+      "outputCharacters": 82,
+      "squares": 70,
+      "elapsedMs": 5428,
+      "rawErrors": null,
+      "markedErrors": null,
+      "columnOrderInversions": null
+    },
+    {
+      "file": "page_2.png",
+      "sha256": "25d71ccf89303934ace399d600d9380751108183af470fb897ebaac541b51401",
+      "method": "after-auto-columns",
+      "model": "chi_tra_vert",
+      "psm": "5",
+      "passes": 10,
+      "workingSizes": [
+        [
+          532,
+          1822
+        ],
+        [
+          524,
+          1822
+        ],
+        [
+          114,
+          1822
+        ],
+        [
+          120,
+          1822
+        ],
+        [
+          116,
+          1822
+        ],
+        [
+          66,
+          1822
+        ],
+        [
+          150,
+          1822
+        ],
+        [
+          180,
+          1822
+        ],
+        [
+          168,
+          1822
+        ],
+        [
+          78,
+          1822
+        ]
+      ],
+      "wordBoxes": 95,
+      "outputCharacters": 100,
+      "squares": 80,
+      "elapsedMs": 8293,
+      "rawErrors": null,
+      "markedErrors": null,
+      "columnOrderInversions": null
+    },
+    {
+      "file": "page_2.png",
+      "sha256": "25d71ccf89303934ace399d600d9380751108183af470fb897ebaac541b51401",
+      "method": "after-model-tra",
+      "model": "chi_tra",
+      "psm": "5",
+      "passes": 1,
+      "workingSizes": [
+        [
+          2048,
+          1822
+        ]
+      ],
+      "wordBoxes": 50,
+      "outputCharacters": 56,
+      "squares": 54,
+      "elapsedMs": 6617,
+      "rawErrors": null,
+      "markedErrors": null,
+      "columnOrderInversions": null
+    },
+    {
+      "file": "page_2.png",
+      "sha256": "25d71ccf89303934ace399d600d9380751108183af470fb897ebaac541b51401",
+      "method": "body-4-columns-gray",
+      "model": "chi_tra_vert",
+      "psm": "5",
+      "passes": 4,
+      "workingSizes": [
+        [
+          194,
+          1420
+        ],
+        [
+          196,
+          1420
+        ],
+        [
+          194,
+          1420
+        ],
+        [
+          194,
+          1420
+        ]
+      ],
+      "wordBoxes": 33,
+      "outputCharacters": 68,
+      "squares": 64,
+      "elapsedMs": 3226,
+      "rawErrors": null,
+      "markedErrors": null,
+      "columnOrderInversions": null
+    },
+    {
+      "file": "page_2.png",
+      "sha256": "25d71ccf89303934ace399d600d9380751108183af470fb897ebaac541b51401",
+      "method": "body-4-columns-adaptive",
+      "model": "chi_tra_vert",
+      "psm": "5",
+      "passes": 4,
+      "workingSizes": [
+        [
+          194,
+          1420
+        ],
+        [
+          196,
+          1420
+        ],
+        [
+          194,
+          1420
+        ],
+        [
+          194,
+          1420
+        ]
+      ],
+      "wordBoxes": 55,
+      "outputCharacters": 72,
+      "squares": 61,
+      "elapsedMs": 3383,
+      "rawErrors": null,
+      "markedErrors": null,
+      "columnOrderInversions": null
+    },
+    {
+      "file": "page_2.png",
+      "sha256": "25d71ccf89303934ace399d600d9380751108183af470fb897ebaac541b51401",
+      "method": "single-column-psm3",
+      "model": "chi_tra_vert",
+      "psm": "3",
+      "passes": 1,
+      "workingSizes": [
+        [
+          194,
+          1420
+        ]
+      ],
+      "wordBoxes": 13,
+      "outputCharacters": 12,
+      "squares": 7,
+      "elapsedMs": 1005,
+      "rawErrors": null,
+      "markedErrors": null,
+      "columnOrderInversions": null
+    },
+    {
+      "file": "page_2.png",
+      "sha256": "25d71ccf89303934ace399d600d9380751108183af470fb897ebaac541b51401",
+      "method": "single-column-psm5",
+      "model": "chi_tra_vert",
+      "psm": "5",
+      "passes": 1,
+      "workingSizes": [
+        [
+          194,
+          1420
+        ]
+      ],
+      "wordBoxes": 1,
+      "outputCharacters": 1,
+      "squares": 1,
+      "elapsedMs": 873,
+      "rawErrors": null,
+      "markedErrors": null,
+      "columnOrderInversions": null
+    },
+    {
+      "file": "page_2.png",
+      "sha256": "25d71ccf89303934ace399d600d9380751108183af470fb897ebaac541b51401",
+      "method": "single-column-psm6",
+      "model": "chi_tra_vert",
+      "psm": "6",
+      "passes": 1,
+      "workingSizes": [
+        [
+          194,
+          1420
+        ]
+      ],
+      "wordBoxes": 5,
+      "outputCharacters": 5,
+      "squares": 5,
+      "elapsedMs": 780,
+      "rawErrors": null,
+      "markedErrors": null,
+      "columnOrderInversions": null
+    },
+    {
+      "file": "page_2.png",
+      "sha256": "25d71ccf89303934ace399d600d9380751108183af470fb897ebaac541b51401",
+      "method": "single-column-psm7",
+      "model": "chi_tra_vert",
+      "psm": "7",
+      "passes": 1,
+      "workingSizes": [
+        [
+          194,
+          1420
+        ]
+      ],
+      "wordBoxes": 0,
+      "outputCharacters": 0,
+      "squares": 0,
+      "elapsedMs": 612,
+      "rawErrors": null,
+      "markedErrors": null,
+      "columnOrderInversions": null
+    },
+    {
+      "file": "maoshi.png",
+      "sha256": "c6907d556a85dea768180ff974c3bfd5066fe70fb5f5c019f4ea5ce0d383acfc",
+      "method": "before-whole",
+      "model": "chi_tra_vert",
+      "psm": "5",
+      "passes": 1,
+      "workingSizes": [
+        [
+          1120,
+          1722
+        ]
+      ],
+      "wordBoxes": 365,
+      "outputCharacters": 385,
+      "squares": 99,
+      "elapsedMs": 5834,
+      "rawErrors": null,
+      "markedErrors": null,
+      "columnOrderInversions": null
+    },
+    {
+      "file": "maoshi.png",
+      "sha256": "c6907d556a85dea768180ff974c3bfd5066fe70fb5f5c019f4ea5ce0d383acfc",
+      "method": "after-whole",
+      "model": "chi_tra_vert",
+      "psm": "5",
+      "passes": 1,
+      "workingSizes": [
+        [
+          1120,
+          1722
+        ]
+      ],
+      "wordBoxes": 365,
+      "outputCharacters": 385,
+      "squares": 99,
+      "elapsedMs": 6036,
+      "rawErrors": null,
+      "markedErrors": null,
+      "columnOrderInversions": null
+    },
+    {
+      "file": "maoshi.png",
+      "sha256": "c6907d556a85dea768180ff974c3bfd5066fe70fb5f5c019f4ea5ce0d383acfc",
+      "method": "after-auto-columns",
+      "model": "chi_tra_vert",
+      "psm": "5",
+      "passes": 13,
+      "workingSizes": [
+        [
+          304,
+          1722
+        ],
+        [
+          110,
+          1722
+        ],
+        [
+          54,
+          1722
+        ],
+        [
+          54,
+          1722
+        ],
+        [
+          54,
+          1722
+        ],
+        [
+          56,
+          1722
+        ],
+        [
+          54,
+          1722
+        ],
+        [
+          54,
+          1722
+        ],
+        [
+          54,
+          1722
+        ],
+        [
+          54,
+          1722
+        ],
+        [
+          54,
+          1722
+        ],
+        [
+          70,
+          1722
+        ],
+        [
+          148,
+          1722
+        ]
+      ],
+      "wordBoxes": 384,
+      "outputCharacters": 408,
+      "squares": 108,
+      "elapsedMs": 6220,
+      "rawErrors": null,
+      "markedErrors": null,
+      "columnOrderInversions": null
+    },
+    {
+      "file": "maoshi.png",
+      "sha256": "c6907d556a85dea768180ff974c3bfd5066fe70fb5f5c019f4ea5ce0d383acfc",
+      "method": "after-model-tra",
+      "model": "chi_tra",
+      "psm": "5",
+      "passes": 1,
+      "workingSizes": [
+        [
+          1120,
+          1722
+        ]
+      ],
+      "wordBoxes": 393,
+      "outputCharacters": 440,
+      "squares": 422,
+      "elapsedMs": 15306,
+      "rawErrors": null,
+      "markedErrors": null,
+      "columnOrderInversions": null
+    }
+  ],
+  "note": "真实 Chromium OCR；无完整人工真值的扫描不计算错识、漏识或古籍阅读顺序错误率。非清代准确率证明。"
+}

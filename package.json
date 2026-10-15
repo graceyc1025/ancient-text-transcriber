@@ -10,7 +10,8 @@
     "preview": "vite preview --host 127.0.0.1 --port 4173",
     "test": "node --test tests/*.test.mjs",
     "test:e2e": "playwright test",
-    "test:ocr-samples": "node scripts/evaluate-browser-ocr.mjs"
+    "test:ocr-samples": "node scripts/evaluate-browser-ocr.mjs",
+    "test:ocr-comparison": "node scripts/compare-methods.mjs"
   },
   "dependencies": {
     "docx": "9.10.0",

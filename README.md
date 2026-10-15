@@ -4,7 +4,7 @@
 
 网站由 GitHub Pages 托管静态文件，识别由 Tesseract.js Web Worker / WebAssembly 在使用者的浏览器运行；编辑及 DOCX 生成也在浏览器完成。引擎、WASM 和模型均来自本站，无第三方 CDN、OCR 服务器、数据库或 Python 后端。
 
-**当前引擎是通用繁体 OCR，未专门针对清代古籍训练。能运行繁体竖排识别，不代表能可靠识别异体字、复杂版式和残损文字。它只能生成需要逐字核对的校勘底稿。** 低置信度替换为□无法覆盖漏检或高置信度误识。真实浏览器测试结果见[测试报告](docs/测试报告.md)。
+**当前引擎是通用繁体 OCR，未专门针对清代古籍训练。能运行繁体竖排识别，不代表能可靠识别异体字、复杂版式和残损文字。它只能生成需要逐字核对的校勘底稿。** 低置信度替换为□无法覆盖漏检或高置信度误识。最新同图对照、检测问题及手机验证边界见[OCR排查与优化](docs/OCR排查与优化.md)，初版测量见[原测试报告](docs/测试报告.md)。
 
 ## 使用与部署
 
@@ -13,13 +13,16 @@
 - 技术支持范围：[技术方案](docs/技术方案.md)
 - 引擎与模型许可：[第三方说明](THIRD_PARTY_LICENSES/说明.md)
 
-预期项目网址为 `https://graceyc1025.github.io/ancient-text-transcriber/`，**这只是依据仓库名称推导的地址，不表示已上线**。请以 GitHub 的 Settings → Pages 显示的地址，以及实际浏览器验证为准。当前已配置 `.github/workflows/pages.yml`；在仓库启用 Pages 的 GitHub Actions 来源、并将代码合并到 `main` 后，工作流才会测试并部署。
+项目网址为 `https://graceyc1025.github.io/ancient-text-transcriber/`；拥有者反馈现有版本已部署，本次优化仍在独立分支，尚未发布。请以 GitHub 的 Settings → Pages 地址及实际浏览器验证为准。现有 `.github/workflows/pages.yml` 继续使用 GitHub Actions 来源；本次PR检查不部署，合并到 `main` 后工作流才发布新版本。
 
 ## 功能
 
 - 批量 JPG / PNG、本页及待处理页识别、逐页结果、目录重排。
 - 繁体竖排 `chi_tra_vert` / 横排 `chi_tra` 模型；尽量按几何列序从右至左、从上至下输出，不做简繁转换、断句、标点补全或上下文润色。
 - 低置信度检测字词标□及原图位置提示；原图缩放、人工框选正文/标题/页码/版心/其他区域。
+- 自动投影/指定列数的竖排分栏，右至左逐列识别；区域独立识别与排版/PSM设置。
+- 可选放大、灰度、对比度、全局/局部/手动二值化，原图与处理预览；实际检测框及工作图预算提示。
+- 原始OCR文本、TSV坐标与参数历史，复制原始输出、本页JSON记录下载；停止及超时提示。
 - 编辑、栏目重排、已校对标记；识别失败保留既有人工文字。
 - 本页/全部复制、UTF-8 BOM TXT、可附对应图片的 DOCX，导出当前编辑内容。
 - 图片不上传；关闭或刷新前需导出，没有自动恢复功能。
@@ -41,5 +44,7 @@ npm run test:e2e
 构建产物为 `dist/`，只含 HTML/CSS/JS、样例、OCR Worker/WASM 和繁体模型。Vite 使用 `base: './'`；浏览器模型/Worker 路径从页面 URL 相对解析，可用于 GitHub Pages 项目子路径和独立域名根路径。浏览器测试把产物实际挂在 `/ancient-text-transcriber/`，并检查所有网络请求仅为本站 GET/HEAD，不含识别/导出 API。
 
 `npm run dev` 提供代码开发；`npm run preview` 预览生产产物；`node scripts/serve-static.mjs` 为子路径验证提供只读静态测试服务，它不做 OCR。`npm run test:ocr-samples -- /path/to/scan.png` 可以通过真实浏览器记录扫描输出，未标注扫描不报告准确率。
+
+`npm run test:ocr-comparison -- /path/to/scan.png` 比较基线 `e323b56` 与当前源码（需本地保有该提交），输出到忽略的 `test-results/ocr-before-after.json`；`OCR_BASE_REF` 可指定基线。现代演示图有30字真值，未标注扫描仅统计输出，不推算古籍错识/漏识率。后续运行Playwright会清理test-results，请先备份比较记录。
 
 Pull Request 触发构建与测试，不发布；合并到 `main` 后自动重新发布，也可从 Actions 手动运行工作流。不要将私人文献图片、测试输出、密钥、`node_modules` 或 `dist` 提交到仓库。
