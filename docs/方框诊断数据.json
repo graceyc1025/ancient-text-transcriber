@@ -1,0 +1,1012 @@
+{
+  "baselineCommit": "5de06b1",
+  "testedAt": "2026-10-15T01:54:24.184Z",
+  "browser": "154.0.8037.57",
+  "note": "真实浏览器OCR；汉字数量不等于正确字数。手稿未经年代核定、无完整真值，其原文不公开。",
+  "model": {
+    "name": "chi_tra_vert",
+    "sha256": "bbe518f94b9e3852109113507357bfe7e257834d88d2d1ead44178046bcd2181",
+    "bytes": 12985521
+  },
+  "beforeFaultProbes": [
+    {
+      "kind": "missing-model",
+      "success": false,
+      "message": "模型加载超过两分钟，请检查本站资源下载后重试。",
+      "passes": 0
+    },
+    {
+      "kind": "invalid-cache",
+      "success": false,
+      "message": "模型加载超过两分钟，请检查本站资源下载后重试。",
+      "passes": 0
+    }
+  ],
+  "afterFaultProbes": [
+    {
+      "kind": "missing-model",
+      "elapsedMs": 119,
+      "success": false,
+      "message": "Uncaught Error: loadLanguage: Error: Network error while fetching http://127.0.0.1:5176/ancient-text-transcriber/ocr/tessdata/chi_tra_vert.traineddata.gz. Response code: 404",
+      "passes": 0
+    },
+    {
+      "kind": "invalid-cache",
+      "elapsedMs": 133,
+      "success": false,
+      "message": "Uncaught Error: initialize: initialization failed",
+      "passes": 0
+    }
+  ],
+  "all11RecognitionCasesIdenticalBeforeAfter": true,
+  "records": [
+    {
+      "file": "example.png",
+      "imageSHA256": "0b0a30736f513b0e66a8752ea00366b239162d6830fbda0cf34bc58cb8b1d4e3",
+      "method": "whole-cold",
+      "rawCounts": {
+        "characters": 30,
+        "han": 30,
+        "squares": 0,
+        "replacements": 0
+      },
+      "sortedRawCounts": {
+        "characters": 30,
+        "han": 30,
+        "squares": 0,
+        "replacements": 0
+      },
+      "markedCounts": {
+        "characters": 30,
+        "han": 24,
+        "squares": 6,
+        "replacements": 0
+      },
+      "modelRequests": [
+        {
+          "url": "http://127.0.0.1:5176/ancient-text-transcriber/ocr/tessdata/chi_tra_vert.traineddata.gz",
+          "status": 200
+        }
+      ],
+      "psm": [
+        "5"
+      ],
+      "wordBoxes": 29,
+      "lineBoxes": 3,
+      "rawErrors": {
+        "substitutions": 6,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 6,
+        "referenceCharacters": 30,
+        "CER": 0.2
+      },
+      "markedErrors": {
+        "substitutions": 7,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 7,
+        "referenceCharacters": 30,
+        "CER": 0.23333333333333334
+      },
+      "loadedModelSHA256": "bbe518f94b9e3852109113507357bfe7e257834d88d2d1ead44178046bcd2181",
+      "cachedModelSHA256": "bbe518f94b9e3852109113507357bfe7e257834d88d2d1ead44178046bcd2181",
+      "rawText": "學而時習之不誠診皓\n有朋自遠方來不方樂皇\n人不知而不惱不亦君子乎\n",
+      "sortedRaw": "學而時習之不誠診皓\n有朋自遠方來不方樂皇\n人不知而不惱不亦君子乎",
+      "markedText": "學而時習之不□□□\n有朋自遠方來不□樂□\n人不知而不惱不□君子乎",
+      "passes": [
+        {
+          "bbox": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "column": 1,
+          "columnCount": 1,
+          "workingSize": [
+            1480,
+            1800
+          ],
+          "model": "chi_tra_vert",
+          "psm": "5",
+          "wordBoxes": 29,
+          "lineBoxes": 3,
+          "squareCount": 6
+        }
+      ]
+    },
+    {
+      "file": "example.png",
+      "imageSHA256": "0b0a30736f513b0e66a8752ea00366b239162d6830fbda0cf34bc58cb8b1d4e3",
+      "method": "whole-new-worker-warm-cache",
+      "rawCounts": {
+        "characters": 30,
+        "han": 30,
+        "squares": 0,
+        "replacements": 0
+      },
+      "sortedRawCounts": {
+        "characters": 30,
+        "han": 30,
+        "squares": 0,
+        "replacements": 0
+      },
+      "markedCounts": {
+        "characters": 30,
+        "han": 24,
+        "squares": 6,
+        "replacements": 0
+      },
+      "modelRequests": [],
+      "psm": [
+        "5"
+      ],
+      "wordBoxes": 29,
+      "lineBoxes": 3,
+      "rawErrors": {
+        "substitutions": 6,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 6,
+        "referenceCharacters": 30,
+        "CER": 0.2
+      },
+      "markedErrors": {
+        "substitutions": 7,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 7,
+        "referenceCharacters": 30,
+        "CER": 0.23333333333333334
+      },
+      "loadedModelSHA256": "bbe518f94b9e3852109113507357bfe7e257834d88d2d1ead44178046bcd2181",
+      "cachedModelSHA256": "bbe518f94b9e3852109113507357bfe7e257834d88d2d1ead44178046bcd2181",
+      "rawText": "學而時習之不誠診皓\n有朋自遠方來不方樂皇\n人不知而不惱不亦君子乎\n",
+      "sortedRaw": "學而時習之不誠診皓\n有朋自遠方來不方樂皇\n人不知而不惱不亦君子乎",
+      "markedText": "學而時習之不□□□\n有朋自遠方來不□樂□\n人不知而不惱不□君子乎",
+      "passes": [
+        {
+          "bbox": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "column": 1,
+          "columnCount": 1,
+          "workingSize": [
+            1480,
+            1800
+          ],
+          "model": "chi_tra_vert",
+          "psm": "5",
+          "wordBoxes": 29,
+          "lineBoxes": 3,
+          "squareCount": 6
+        }
+      ]
+    },
+    {
+      "file": "example.png",
+      "imageSHA256": "0b0a30736f513b0e66a8752ea00366b239162d6830fbda0cf34bc58cb8b1d4e3",
+      "method": "auto-columns",
+      "rawCounts": {
+        "characters": 30,
+        "han": 30,
+        "squares": 0,
+        "replacements": 0
+      },
+      "sortedRawCounts": {
+        "characters": 30,
+        "han": 30,
+        "squares": 0,
+        "replacements": 0
+      },
+      "markedCounts": {
+        "characters": 30,
+        "han": 24,
+        "squares": 6,
+        "replacements": 0
+      },
+      "modelRequests": [],
+      "psm": [
+        "5",
+        "5",
+        "5"
+      ],
+      "wordBoxes": 29,
+      "lineBoxes": 3,
+      "rawErrors": {
+        "substitutions": 6,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 6,
+        "referenceCharacters": 30,
+        "CER": 0.2
+      },
+      "markedErrors": {
+        "substitutions": 7,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 7,
+        "referenceCharacters": 30,
+        "CER": 0.23333333333333334
+      },
+      "loadedModelSHA256": "bbe518f94b9e3852109113507357bfe7e257834d88d2d1ead44178046bcd2181",
+      "cachedModelSHA256": "bbe518f94b9e3852109113507357bfe7e257834d88d2d1ead44178046bcd2181",
+      "rawText": "  學而時習之不誠診皓\n\n  有朋自遠方來不方樂皇\n\n  人不知而不惱不亦君子乎\n",
+      "sortedRaw": "學而時習之不誠診皓\n有朋自遠方來不方樂皇\n人不知而不惱不亦君子乎",
+      "markedText": "學而時習之不□□□\n有朋自遠方來不□樂□\n人不知而不惱不□君子乎",
+      "passes": [
+        {
+          "bbox": [
+            0.675,
+            0,
+            0.32499999999999996,
+            1
+          ],
+          "column": 1,
+          "columnCount": 3,
+          "workingSize": [
+            480,
+            1800
+          ],
+          "model": "chi_tra_vert",
+          "psm": "5",
+          "wordBoxes": 9,
+          "lineBoxes": 1,
+          "squareCount": 3
+        },
+        {
+          "bbox": [
+            0.4060810810810811,
+            0,
+            0.26891891891891895,
+            1
+          ],
+          "column": 2,
+          "columnCount": 3,
+          "workingSize": [
+            398,
+            1800
+          ],
+          "model": "chi_tra_vert",
+          "psm": "5",
+          "wordBoxes": 9,
+          "lineBoxes": 1,
+          "squareCount": 2
+        },
+        {
+          "bbox": [
+            0,
+            0,
+            0.4060810810810811,
+            1
+          ],
+          "column": 3,
+          "columnCount": 3,
+          "workingSize": [
+            602,
+            1800
+          ],
+          "model": "chi_tra_vert",
+          "psm": "5",
+          "wordBoxes": 11,
+          "lineBoxes": 1,
+          "squareCount": 1
+        }
+      ]
+    },
+    {
+      "file": "example.png",
+      "imageSHA256": "0b0a30736f513b0e66a8752ea00366b239162d6830fbda0cf34bc58cb8b1d4e3",
+      "method": "single-column-1",
+      "rawCounts": {
+        "characters": 9,
+        "han": 9,
+        "squares": 0,
+        "replacements": 0
+      },
+      "sortedRawCounts": {
+        "characters": 9,
+        "han": 9,
+        "squares": 0,
+        "replacements": 0
+      },
+      "markedCounts": {
+        "characters": 9,
+        "han": 6,
+        "squares": 3,
+        "replacements": 0
+      },
+      "modelRequests": [],
+      "psm": [
+        "5"
+      ],
+      "wordBoxes": 9,
+      "lineBoxes": 1,
+      "rawErrors": {
+        "substitutions": 3,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 3,
+        "referenceCharacters": 9,
+        "CER": 0.3333333333333333
+      },
+      "markedErrors": {
+        "substitutions": 3,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 3,
+        "referenceCharacters": 9,
+        "CER": 0.3333333333333333
+      },
+      "loadedModelSHA256": "bbe518f94b9e3852109113507357bfe7e257834d88d2d1ead44178046bcd2181",
+      "cachedModelSHA256": "bbe518f94b9e3852109113507357bfe7e257834d88d2d1ead44178046bcd2181",
+      "rawText": "  學而時習之不誠診皓\n",
+      "sortedRaw": "學而時習之不誠診皓",
+      "markedText": "學而時習之不□□□",
+      "passes": [
+        {
+          "bbox": [
+            0.6666666666666666,
+            0,
+            0.3333333333333333,
+            1
+          ],
+          "column": 1,
+          "columnCount": 1,
+          "workingSize": [
+            494,
+            1800
+          ],
+          "model": "chi_tra_vert",
+          "psm": "5",
+          "wordBoxes": 9,
+          "lineBoxes": 1,
+          "squareCount": 3
+        }
+      ]
+    },
+    {
+      "file": "example.png",
+      "imageSHA256": "0b0a30736f513b0e66a8752ea00366b239162d6830fbda0cf34bc58cb8b1d4e3",
+      "method": "single-column-2",
+      "rawCounts": {
+        "characters": 10,
+        "han": 10,
+        "squares": 0,
+        "replacements": 0
+      },
+      "sortedRawCounts": {
+        "characters": 10,
+        "han": 10,
+        "squares": 0,
+        "replacements": 0
+      },
+      "markedCounts": {
+        "characters": 10,
+        "han": 8,
+        "squares": 2,
+        "replacements": 0
+      },
+      "modelRequests": [],
+      "psm": [
+        "5"
+      ],
+      "wordBoxes": 9,
+      "lineBoxes": 1,
+      "rawErrors": {
+        "substitutions": 2,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 2,
+        "referenceCharacters": 10,
+        "CER": 0.2
+      },
+      "markedErrors": {
+        "substitutions": 2,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 2,
+        "referenceCharacters": 10,
+        "CER": 0.2
+      },
+      "loadedModelSHA256": "bbe518f94b9e3852109113507357bfe7e257834d88d2d1ead44178046bcd2181",
+      "cachedModelSHA256": "bbe518f94b9e3852109113507357bfe7e257834d88d2d1ead44178046bcd2181",
+      "rawText": "  有朋自遠方來不方樂皇\n",
+      "sortedRaw": "有朋自遠方來不方樂皇",
+      "markedText": "有朋自遠方來不□樂□",
+      "passes": [
+        {
+          "bbox": [
+            0.3333333333333333,
+            0,
+            0.3333333333333333,
+            1
+          ],
+          "column": 1,
+          "columnCount": 1,
+          "workingSize": [
+            492,
+            1800
+          ],
+          "model": "chi_tra_vert",
+          "psm": "5",
+          "wordBoxes": 9,
+          "lineBoxes": 1,
+          "squareCount": 2
+        }
+      ]
+    },
+    {
+      "file": "example.png",
+      "imageSHA256": "0b0a30736f513b0e66a8752ea00366b239162d6830fbda0cf34bc58cb8b1d4e3",
+      "method": "single-column-3",
+      "rawCounts": {
+        "characters": 11,
+        "han": 11,
+        "squares": 0,
+        "replacements": 0
+      },
+      "sortedRawCounts": {
+        "characters": 11,
+        "han": 11,
+        "squares": 0,
+        "replacements": 0
+      },
+      "markedCounts": {
+        "characters": 11,
+        "han": 10,
+        "squares": 1,
+        "replacements": 0
+      },
+      "modelRequests": [],
+      "psm": [
+        "5"
+      ],
+      "wordBoxes": 11,
+      "lineBoxes": 1,
+      "rawErrors": {
+        "substitutions": 1,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 1,
+        "referenceCharacters": 11,
+        "CER": 0.09090909090909091
+      },
+      "markedErrors": {
+        "substitutions": 2,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 2,
+        "referenceCharacters": 11,
+        "CER": 0.18181818181818182
+      },
+      "loadedModelSHA256": "bbe518f94b9e3852109113507357bfe7e257834d88d2d1ead44178046bcd2181",
+      "cachedModelSHA256": "bbe518f94b9e3852109113507357bfe7e257834d88d2d1ead44178046bcd2181",
+      "rawText": "  人不知而不惱不亦君子乎\n",
+      "sortedRaw": "人不知而不惱不亦君子乎",
+      "markedText": "人不知而不惱不□君子乎",
+      "passes": [
+        {
+          "bbox": [
+            0,
+            0,
+            0.3333333333333333,
+            1
+          ],
+          "column": 1,
+          "columnCount": 1,
+          "workingSize": [
+            494,
+            1800
+          ],
+          "model": "chi_tra_vert",
+          "psm": "5",
+          "wordBoxes": 11,
+          "lineBoxes": 1,
+          "squareCount": 1
+        }
+      ]
+    },
+    {
+      "file": "example.png",
+      "imageSHA256": "0b0a30736f513b0e66a8752ea00366b239162d6830fbda0cf34bc58cb8b1d4e3",
+      "method": "single-right-psm3",
+      "rawCounts": {
+        "characters": 9,
+        "han": 9,
+        "squares": 0,
+        "replacements": 0
+      },
+      "sortedRawCounts": {
+        "characters": 9,
+        "han": 9,
+        "squares": 0,
+        "replacements": 0
+      },
+      "markedCounts": {
+        "characters": 9,
+        "han": 6,
+        "squares": 3,
+        "replacements": 0
+      },
+      "modelRequests": [],
+      "psm": [
+        "3"
+      ],
+      "wordBoxes": 9,
+      "lineBoxes": 2,
+      "rawErrors": {
+        "substitutions": 3,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 3,
+        "referenceCharacters": 9,
+        "CER": 0.3333333333333333
+      },
+      "markedErrors": {
+        "substitutions": 3,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 3,
+        "referenceCharacters": 9,
+        "CER": 0.3333333333333333
+      },
+      "loadedModelSHA256": "bbe518f94b9e3852109113507357bfe7e257834d88d2d1ead44178046bcd2181",
+      "cachedModelSHA256": "bbe518f94b9e3852109113507357bfe7e257834d88d2d1ead44178046bcd2181",
+      "rawText": "學而時習之不誠診皓\n",
+      "sortedRaw": "學而時習之不誠診皓",
+      "markedText": "學而時習之不□□□",
+      "passes": [
+        {
+          "bbox": [
+            0.6666666666666666,
+            0,
+            0.3333333333333333,
+            1
+          ],
+          "column": 1,
+          "columnCount": 1,
+          "workingSize": [
+            494,
+            1800
+          ],
+          "model": "chi_tra_vert",
+          "psm": "3",
+          "wordBoxes": 9,
+          "lineBoxes": 2,
+          "squareCount": 3
+        }
+      ]
+    },
+    {
+      "file": "example.png",
+      "imageSHA256": "0b0a30736f513b0e66a8752ea00366b239162d6830fbda0cf34bc58cb8b1d4e3",
+      "method": "single-right-psm6",
+      "rawCounts": {
+        "characters": 7,
+        "han": 7,
+        "squares": 0,
+        "replacements": 0
+      },
+      "sortedRawCounts": {
+        "characters": 7,
+        "han": 7,
+        "squares": 0,
+        "replacements": 0
+      },
+      "markedCounts": {
+        "characters": 7,
+        "han": 0,
+        "squares": 7,
+        "replacements": 0
+      },
+      "modelRequests": [],
+      "psm": [
+        "6"
+      ],
+      "wordBoxes": 7,
+      "lineBoxes": 7,
+      "rawErrors": {
+        "substitutions": 7,
+        "deletions": 2,
+        "insertions": 0,
+        "distance": 9,
+        "referenceCharacters": 9,
+        "CER": 1
+      },
+      "markedErrors": {
+        "substitutions": 7,
+        "deletions": 2,
+        "insertions": 0,
+        "distance": 9,
+        "referenceCharacters": 9,
+        "CER": 1
+      },
+      "loadedModelSHA256": "bbe518f94b9e3852109113507357bfe7e257834d88d2d1ead44178046bcd2181",
+      "cachedModelSHA256": "bbe518f94b9e3852109113507357bfe7e257834d88d2d1ead44178046bcd2181",
+      "rawText": "是\n宮\n攻\n人\n冰\n計\n肥\n",
+      "sortedRaw": "是\n宮\n攻\n人\n冰\n計\n肥",
+      "markedText": "□\n□\n□\n□\n□\n□\n□",
+      "passes": [
+        {
+          "bbox": [
+            0.6666666666666666,
+            0,
+            0.3333333333333333,
+            1
+          ],
+          "column": 1,
+          "columnCount": 1,
+          "workingSize": [
+            494,
+            1800
+          ],
+          "model": "chi_tra_vert",
+          "psm": "6",
+          "wordBoxes": 7,
+          "lineBoxes": 7,
+          "squareCount": 7
+        }
+      ]
+    },
+    {
+      "file": "example.png",
+      "imageSHA256": "0b0a30736f513b0e66a8752ea00366b239162d6830fbda0cf34bc58cb8b1d4e3",
+      "method": "whole-mobile-budget",
+      "rawCounts": {
+        "characters": 30,
+        "han": 30,
+        "squares": 0,
+        "replacements": 0
+      },
+      "sortedRawCounts": {
+        "characters": 30,
+        "han": 30,
+        "squares": 0,
+        "replacements": 0
+      },
+      "markedCounts": {
+        "characters": 30,
+        "han": 23,
+        "squares": 7,
+        "replacements": 0
+      },
+      "modelRequests": [],
+      "psm": [
+        "5"
+      ],
+      "wordBoxes": 29,
+      "lineBoxes": 3,
+      "rawErrors": {
+        "substitutions": 3,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 3,
+        "referenceCharacters": 30,
+        "CER": 0.1
+      },
+      "markedErrors": {
+        "substitutions": 7,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 7,
+        "referenceCharacters": 30,
+        "CER": 0.23333333333333334
+      },
+      "loadedModelSHA256": "bbe518f94b9e3852109113507357bfe7e257834d88d2d1ead44178046bcd2181",
+      "cachedModelSHA256": "bbe518f94b9e3852109113507357bfe7e257834d88d2d1ead44178046bcd2181",
+      "rawText": "學而時習之不詞說乎\n有朋自遠方來不文樂乎\n人不知而不惱不亦君子乎\n",
+      "sortedRaw": "學而時習之不詞說乎\n有朋自遠方來不文樂乎\n人不知而不惱不亦君子乎",
+      "markedText": "學而時習之不□□□\n有朋自遠方來不□樂□\n人不知而不□不□君子乎",
+      "passes": [
+        {
+          "bbox": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "column": 1,
+          "columnCount": 1,
+          "workingSize": [
+            1110,
+            1350
+          ],
+          "model": "chi_tra_vert",
+          "psm": "5",
+          "wordBoxes": 29,
+          "lineBoxes": 3,
+          "squareCount": 7
+        }
+      ]
+    },
+    {
+      "file": "page_2.png",
+      "imageSHA256": "25d71ccf89303934ace399d600d9380751108183af470fb897ebaac541b51401",
+      "method": "whole",
+      "rawCounts": {
+        "characters": 82,
+        "han": 72,
+        "squares": 0,
+        "replacements": 0
+      },
+      "sortedRawCounts": {
+        "characters": 82,
+        "han": 72,
+        "squares": 0,
+        "replacements": 0
+      },
+      "markedCounts": {
+        "characters": 82,
+        "han": 11,
+        "squares": 70,
+        "replacements": 0
+      },
+      "modelRequests": [],
+      "psm": [
+        "5"
+      ],
+      "wordBoxes": 76,
+      "lineBoxes": 10,
+      "loadedModelSHA256": "bbe518f94b9e3852109113507357bfe7e257834d88d2d1ead44178046bcd2181",
+      "cachedModelSHA256": "bbe518f94b9e3852109113507357bfe7e257834d88d2d1ead44178046bcd2181",
+      "passes": [
+        {
+          "bbox": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "column": 1,
+          "columnCount": 1,
+          "workingSize": [
+            2048,
+            1822
+          ],
+          "model": "chi_tra_vert",
+          "psm": "5",
+          "wordBoxes": 76,
+          "lineBoxes": 10,
+          "squareCount": 70
+        }
+      ]
+    },
+    {
+      "file": "page_2.png",
+      "imageSHA256": "25d71ccf89303934ace399d600d9380751108183af470fb897ebaac541b51401",
+      "method": "auto-columns",
+      "rawCounts": {
+        "characters": 100,
+        "han": 69,
+        "squares": 0,
+        "replacements": 0
+      },
+      "sortedRawCounts": {
+        "characters": 100,
+        "han": 69,
+        "squares": 0,
+        "replacements": 0
+      },
+      "markedCounts": {
+        "characters": 100,
+        "han": 15,
+        "squares": 80,
+        "replacements": 0
+      },
+      "modelRequests": [],
+      "psm": [
+        "5",
+        "5",
+        "5",
+        "5",
+        "5",
+        "5",
+        "5",
+        "5",
+        "5",
+        "5"
+      ],
+      "wordBoxes": 95,
+      "lineBoxes": 14,
+      "loadedModelSHA256": "bbe518f94b9e3852109113507357bfe7e257834d88d2d1ead44178046bcd2181",
+      "cachedModelSHA256": "bbe518f94b9e3852109113507357bfe7e257834d88d2d1ead44178046bcd2181",
+      "passes": [
+        {
+          "bbox": [
+            0.7405,
+            0,
+            0.25949999999999995,
+            1
+          ],
+          "column": 1,
+          "columnCount": 10,
+          "workingSize": [
+            532,
+            1822
+          ],
+          "model": "chi_tra_vert",
+          "psm": "5",
+          "wordBoxes": 1,
+          "lineBoxes": 1,
+          "squareCount": 1
+        },
+        {
+          "bbox": [
+            0.484,
+            0,
+            0.25650000000000006,
+            1
+          ],
+          "column": 2,
+          "columnCount": 10,
+          "workingSize": [
+            524,
+            1822
+          ],
+          "model": "chi_tra_vert",
+          "psm": "5",
+          "wordBoxes": 1,
+          "lineBoxes": 1,
+          "squareCount": 1
+        },
+        {
+          "bbox": [
+            0.4285,
+            0,
+            0.055499999999999994,
+            1
+          ],
+          "column": 3,
+          "columnCount": 10,
+          "workingSize": [
+            114,
+            1822
+          ],
+          "model": "chi_tra_vert",
+          "psm": "5",
+          "wordBoxes": 8,
+          "lineBoxes": 1,
+          "squareCount": 7
+        },
+        {
+          "bbox": [
+            0.37,
+            0,
+            0.058499999999999996,
+            1
+          ],
+          "column": 4,
+          "columnCount": 10,
+          "workingSize": [
+            120,
+            1822
+          ],
+          "model": "chi_tra_vert",
+          "psm": "5",
+          "wordBoxes": 11,
+          "lineBoxes": 2,
+          "squareCount": 12
+        },
+        {
+          "bbox": [
+            0.3135,
+            0,
+            0.056499999999999995,
+            1
+          ],
+          "column": 5,
+          "columnCount": 10,
+          "workingSize": [
+            116,
+            1822
+          ],
+          "model": "chi_tra_vert",
+          "psm": "5",
+          "wordBoxes": 16,
+          "lineBoxes": 1,
+          "squareCount": 12
+        },
+        {
+          "bbox": [
+            0.281,
+            0,
+            0.03249999999999997,
+            1
+          ],
+          "column": 6,
+          "columnCount": 10,
+          "workingSize": [
+            66,
+            1822
+          ],
+          "model": "chi_tra_vert",
+          "psm": "5",
+          "wordBoxes": 2,
+          "lineBoxes": 1,
+          "squareCount": 2
+        },
+        {
+          "bbox": [
+            0.208,
+            0,
+            0.07300000000000004,
+            1
+          ],
+          "column": 7,
+          "columnCount": 10,
+          "workingSize": [
+            150,
+            1822
+          ],
+          "model": "chi_tra_vert",
+          "psm": "5",
+          "wordBoxes": 12,
+          "lineBoxes": 2,
+          "squareCount": 9
+        },
+        {
+          "bbox": [
+            0.1205,
+            0,
+            0.0875,
+            1
+          ],
+          "column": 8,
+          "columnCount": 10,
+          "workingSize": [
+            180,
+            1822
+          ],
+          "model": "chi_tra_vert",
+          "psm": "5",
+          "wordBoxes": 18,
+          "lineBoxes": 2,
+          "squareCount": 15
+        },
+        {
+          "bbox": [
+            0.0385,
+            0,
+            0.08199999999999999,
+            1
+          ],
+          "column": 9,
+          "columnCount": 10,
+          "workingSize": [
+            168,
+            1822
+          ],
+          "model": "chi_tra_vert",
+          "psm": "5",
+          "wordBoxes": 13,
+          "lineBoxes": 1,
+          "squareCount": 10
+        },
+        {
+          "bbox": [
+            0,
+            0,
+            0.0385,
+            1
+          ],
+          "column": 10,
+          "columnCount": 10,
+          "workingSize": [
+            78,
+            1822
+          ],
+          "model": "chi_tra_vert",
+          "psm": "5",
+          "wordBoxes": 13,
+          "lineBoxes": 2,
+          "squareCount": 11
+        }
+      ]
+    }
+  ]
+}

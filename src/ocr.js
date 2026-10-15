@@ -37,7 +37,7 @@ export class BrowserOCR {
     if(!('WebAssembly' in window)||!('Worker' in window))throw new Error('浏览器不支持本地 OCR，请使用较新的浏览器。');
     const epoch=this.epoch;
     const pending=createWorker(language,OEM.LSTM_ONLY,{
-      workerPath:assetURL('ocr/runtime/worker.min.js'),corePath:assetURL('ocr/runtime/core/tesseract-core-lstm.wasm.js'),langPath:assetURL('ocr/tessdata'),
+      workerPath:assetURL('ocr/bootstrap-worker.js'),corePath:assetURL('ocr/runtime/core/tesseract-core-lstm.wasm.js'),langPath:assetURL('ocr/tessdata'),
       workerBlobURL:false,gzip:true,cacheMethod:'write',cachePath:'ancient-transcriber-tessdata-best-e12c65a9',errorHandler:()=>{},
       logger:event=>{if(epoch===this.epoch)this.logger?.(messages[event.status]??'准备识别',Math.round((event.progress??0)*100));},
     });
