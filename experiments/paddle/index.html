@@ -1,0 +1,11 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'unsafe-eval'; worker-src 'self'; connect-src 'self' data:; img-src 'self' blob: data:; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'"><title>OCR引擎可行性实验</title><script type="module" src="./main.js"></script></head><body>
+<main><h1>Tesseract / PaddleOCR 对照实验</h1><p>独立研究原型，未替换正式网站。所有推理在浏览器运行，不调用付费API。Paddle使用官方SDK与社区导出的PP-OCRv5模型，尚未证明清代古籍精度。汉字数量不代表正确字数；准确率需要人工真值。</p>
+<label>引擎 <select id="engine"><option value="tesseract">Tesseract chi_tra_vert</option><option value="paddle">PaddleOCR.js PP-OCRv5 mobile</option></select></label>
+<label>排版 <select id="orientation"><option value="vertical">竖排右至左</option><option value="horizontal">横排</option></select></label>
+<label>识别 <select id="mode"><option value="whole">整页</option><option value="columns">均分3栏（仅适合已知3栏图）</option></select></label>
+<input id="image" type="file" accept="image/png,image/jpeg"><button id="run">运行真实OCR</button><button id="sample">选择现代竖排演示图</button>
+<p id="status" role="status">请选择图片。Paddle模型未就绪时会明确报错。</p>
+<label>人工校对标准文本（只用于评分，不传给引擎）<textarea id="truth" rows="4"></textarea></label>
+<div class="comparison"><img id="preview" alt="原图"><label>原始候选按几何顺序输出<textarea id="output" rows="15" readonly></textarea></label></div>
+<pre id="details"></pre><button id="download">保存本次原始结果JSON</button>
+</main></body></html>

@@ -1,0 +1,28 @@
+{
+  "variant": "community-export",
+  "source": "pdfmarkdown-ppocrv5-models@1.0.0; upstream PT-Perkasa-Pilar-Utama/ppu-paddle-ocr-models",
+  "upstreamCommit": "384182c7187c12d4ea181ae3b97c8b7e12089d9d",
+  "packageIntegrity": "sha512-BDxXJ0k2Sk5eozXHUVMdYCR3WEurOBmHV4tkk4a/Zzds4Nk6q1UzQ6SuGLETUbFkL8ATm1925AoedBCanysdyg==",
+  "dictionarySHA256": "d1979e9f794c464c0d2e0b70a7fe14dd978e9dc644c0e71f14158cdf8342af1b",
+  "note": "Official SDK, community-exported weights. Custom SDK inference config uses official character dictionary. ORT data is in the SDK-required inference.onnx tar entry; ONNX Runtime autodetects its format.",
+  "models": [
+    {
+      "name": "PP-OCRv5_mobile_det",
+      "file": "PP-OCRv5_mobile_det.tar",
+      "sha256": "20a24ea052a918e9b8fd5a6173e2522e9e48fd446efd1522ade6ecfc9ce2ce26",
+      "bytes": 4899840,
+      "weightSHA256": "30acfc4e21f2a23669d01a75aaeb92190f96874613108a0f7086bed264420abc",
+      "weightBytes": 4896928,
+      "weightFormat": "ORT"
+    },
+    {
+      "name": "PP-OCRv5_mobile_rec",
+      "file": "PP-OCRv5_mobile_rec.tar",
+      "sha256": "6ba41cca773becaa1a90185da165d642ee970f78dc2b70bd3644276717b07840",
+      "bytes": 16672768,
+      "weightSHA256": "d253c3cbee6e507828a5271a30ab0ec8ae7c2a99d0cc8e6f844fe380809d22b3",
+      "weightBytes": 16559278,
+      "weightFormat": "ONNX"
+    }
+  ]
+}

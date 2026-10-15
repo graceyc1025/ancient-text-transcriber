@@ -1,0 +1,3394 @@
+{
+  "testedAt": "2026-10-15T02:17:41.749Z",
+  "host": {
+    "cpus": 5,
+    "cpuModel": "AMD EPYC 9V74 80-Core Processor",
+    "totalMemoryMiB": 34087.9296875
+  },
+  "models": {
+    "variant": "community-export",
+    "source": "pdfmarkdown-ppocrv5-models@1.0.0; upstream PT-Perkasa-Pilar-Utama/ppu-paddle-ocr-models",
+    "upstreamCommit": "384182c7187c12d4ea181ae3b97c8b7e12089d9d",
+    "packageIntegrity": "sha512-BDxXJ0k2Sk5eozXHUVMdYCR3WEurOBmHV4tkk4a/Zzds4Nk6q1UzQ6SuGLETUbFkL8ATm1925AoedBCanysdyg==",
+    "dictionarySHA256": "d1979e9f794c464c0d2e0b70a7fe14dd978e9dc644c0e71f14158cdf8342af1b",
+    "note": "Official SDK, community-exported weights. Custom SDK inference config uses official character dictionary. ORT data is in the SDK-required inference.onnx tar entry; ONNX Runtime autodetects its format.",
+    "models": [
+      {
+        "name": "PP-OCRv5_mobile_det",
+        "file": "PP-OCRv5_mobile_det.tar",
+        "sha256": "20a24ea052a918e9b8fd5a6173e2522e9e48fd446efd1522ade6ecfc9ce2ce26",
+        "bytes": 4899840,
+        "weightSHA256": "30acfc4e21f2a23669d01a75aaeb92190f96874613108a0f7086bed264420abc",
+        "weightBytes": 4896928,
+        "weightFormat": "ORT"
+      },
+      {
+        "name": "PP-OCRv5_mobile_rec",
+        "file": "PP-OCRv5_mobile_rec.tar",
+        "sha256": "6ba41cca773becaa1a90185da165d642ee970f78dc2b70bd3644276717b07840",
+        "bytes": 16672768,
+        "weightSHA256": "d253c3cbee6e507828a5271a30ab0ec8ae7c2a99d0cc8e6f844fe380809d22b3",
+        "weightBytes": 16559278,
+        "weightFormat": "ONNX"
+      }
+    ]
+  },
+  "supplementalMatchedInputColumnsAt": "2026-10-15T02:19:11.221Z",
+  "note": "Actual browser WASM inference. Modern fixtures only have verified ground truth; unannotated scans have null accuracy. No paid API, server OCR or model substitution.",
+  "baseCommit": "4a6c87d",
+  "profiles": 15,
+  "inferences": 45,
+  "finalArtifactBytes": 129728234,
+  "records": [
+    {
+      "file": "example.png",
+      "imageSHA256": "0b0a30736f513b0e66a8752ea00366b239162d6830fbda0cf34bc58cb8b1d4e3",
+      "sampleKind": "modern-synthetic",
+      "reference": "學而時習之不亦說乎有朋自遠方來不亦樂乎人不知而不慍不亦君子乎",
+      "profile": {
+        "kind": "tesseract",
+        "mode": "whole",
+        "tesseractScale": 2,
+        "orientation": "vertical"
+      },
+      "browser": "154.0.8037.57",
+      "crossOriginIsolated": false,
+      "baselineMemory": {
+        "pssMiB": 235.8603515625,
+        "rssMiB": 425.61328125,
+        "privateMiB": 161.6953125,
+        "processes": 7
+      },
+      "loadedMemory": {
+        "pssMiB": 385.9658203125,
+        "rssMiB": 583.796875,
+        "privateMiB": 305.44140625,
+        "processes": 7
+      },
+      "peakMemory": {
+        "pssMiB": 437.6943359375,
+        "rssMiB": 635.92578125,
+        "privateMiB": 356.8828125,
+        "processes": 7
+      },
+      "finalMemory": {
+        "pssMiB": 421.0146484375,
+        "rssMiB": 619.27734375,
+        "privateMiB": 340.171875,
+        "processes": 7
+      },
+      "memorySampling": "Linux Chromium process-tree PSS, 100ms interval; includes native/WASM/renderer/worker memory; observed peak, not hardware maximum",
+      "initialization": {
+        "elapsedMs": 492.09999999962747,
+        "kind": "tesseract",
+        "summary": null
+      },
+      "success": true,
+      "staticUniqueResponseBytes": 15995423,
+      "resourceSizes": [
+        [
+          "ocr/bootstrap-worker.js",
+          1013
+        ],
+        [
+          "ocr/runtime/worker.min.js",
+          111307
+        ],
+        [
+          "ocr/tessdata/chi_tra_vert.traineddata.gz",
+          11945998
+        ],
+        [
+          "ocr/runtime/core/tesseract-core-lstm.wasm.js",
+          3896484
+        ],
+        [
+          "assets/index-ax5NzkK_.css",
+          484
+        ],
+        [
+          "index.html",
+          1938
+        ],
+        [
+          "assets/index-xRvqBUJT.js",
+          38199
+        ]
+      ],
+      "medianInferenceMs": 784.8000000002794,
+      "stableAcrossThreeRuns": true,
+      "failedResponses": [],
+      "pageErrors": [],
+      "runs": [
+        {
+          "inferenceMs": 918.5,
+          "evaluation": {
+            "substitutions": 6,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 6,
+            "referenceCharacters": 30,
+            "CER": 0.2,
+            "correctAlignedCharacters": 24,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 6,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 6,
+            "referenceCharacters": 30,
+            "CER": 0.2,
+            "correctAlignedCharacters": 24,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "學而時習之不誠診皓\n有朋自遠方來不方樂皇\n人不知而不惱不亦君子乎\n",
+          "geometryOrderedText": "學而時習之不誠診皓\n有朋自遠方來不方樂皇\n人不知而不惱不亦君子乎",
+          "passes": [
+            {
+              "bbox": [
+                0,
+                0,
+                1,
+                1
+              ],
+              "workingSize": [
+                1480,
+                1800
+              ],
+              "rawItems": null
+            }
+          ]
+        },
+        {
+          "inferenceMs": 784.8000000002794,
+          "evaluation": {
+            "substitutions": 6,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 6,
+            "referenceCharacters": 30,
+            "CER": 0.2,
+            "correctAlignedCharacters": 24,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 6,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 6,
+            "referenceCharacters": 30,
+            "CER": 0.2,
+            "correctAlignedCharacters": 24,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "學而時習之不誠診皓\n有朋自遠方來不方樂皇\n人不知而不惱不亦君子乎\n",
+          "geometryOrderedText": "學而時習之不誠診皓\n有朋自遠方來不方樂皇\n人不知而不惱不亦君子乎",
+          "passes": [
+            {
+              "bbox": [
+                0,
+                0,
+                1,
+                1
+              ],
+              "workingSize": [
+                1480,
+                1800
+              ],
+              "rawItems": null
+            }
+          ]
+        },
+        {
+          "inferenceMs": 769.8999999999069,
+          "evaluation": {
+            "substitutions": 6,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 6,
+            "referenceCharacters": 30,
+            "CER": 0.2,
+            "correctAlignedCharacters": 24,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 6,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 6,
+            "referenceCharacters": 30,
+            "CER": 0.2,
+            "correctAlignedCharacters": 24,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "學而時習之不誠診皓\n有朋自遠方來不方樂皇\n人不知而不惱不亦君子乎\n",
+          "geometryOrderedText": "學而時習之不誠診皓\n有朋自遠方來不方樂皇\n人不知而不惱不亦君子乎",
+          "passes": [
+            {
+              "bbox": [
+                0,
+                0,
+                1,
+                1
+              ],
+              "workingSize": [
+                1480,
+                1800
+              ],
+              "rawItems": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "example.png",
+      "imageSHA256": "0b0a30736f513b0e66a8752ea00366b239162d6830fbda0cf34bc58cb8b1d4e3",
+      "sampleKind": "modern-synthetic",
+      "reference": "學而時習之不亦說乎有朋自遠方來不亦樂乎人不知而不慍不亦君子乎",
+      "profile": {
+        "kind": "tesseract",
+        "mode": "whole",
+        "tesseractScale": 1,
+        "orientation": "vertical"
+      },
+      "browser": "154.0.8037.57",
+      "crossOriginIsolated": false,
+      "baselineMemory": {
+        "pssMiB": 234.099609375,
+        "rssMiB": 424.1171875,
+        "privateMiB": 159.8359375,
+        "processes": 7
+      },
+      "loadedMemory": {
+        "pssMiB": 384.298828125,
+        "rssMiB": 582.12109375,
+        "privateMiB": 303.9453125,
+        "processes": 7
+      },
+      "peakMemory": {
+        "pssMiB": 409.4365234375,
+        "rssMiB": 607.73046875,
+        "privateMiB": 328.7265625,
+        "processes": 7
+      },
+      "finalMemory": {
+        "pssMiB": 400.6826171875,
+        "rssMiB": 599.01171875,
+        "privateMiB": 319.9375,
+        "processes": 7
+      },
+      "memorySampling": "Linux Chromium process-tree PSS, 100ms interval; includes native/WASM/renderer/worker memory; observed peak, not hardware maximum",
+      "initialization": {
+        "elapsedMs": 462.1999999997206,
+        "kind": "tesseract",
+        "summary": null
+      },
+      "success": true,
+      "staticUniqueResponseBytes": 15995423,
+      "resourceSizes": [
+        [
+          "ocr/bootstrap-worker.js",
+          1013
+        ],
+        [
+          "ocr/runtime/worker.min.js",
+          111307
+        ],
+        [
+          "ocr/tessdata/chi_tra_vert.traineddata.gz",
+          11945998
+        ],
+        [
+          "ocr/runtime/core/tesseract-core-lstm.wasm.js",
+          3896484
+        ],
+        [
+          "assets/index-ax5NzkK_.css",
+          484
+        ],
+        [
+          "index.html",
+          1938
+        ],
+        [
+          "assets/index-xRvqBUJT.js",
+          38199
+        ]
+      ],
+      "medianInferenceMs": 679.2999999998137,
+      "stableAcrossThreeRuns": true,
+      "failedResponses": [],
+      "pageErrors": [],
+      "runs": [
+        {
+          "inferenceMs": 711.1000000000931,
+          "evaluation": {
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 1,
+            "referenceCharacters": 30,
+            "CER": 0.03333333333333333,
+            "correctAlignedCharacters": 29,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 1,
+            "referenceCharacters": 30,
+            "CER": 0.03333333333333333,
+            "correctAlignedCharacters": 29,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎\n人不知而不骨不亦君子乎\n",
+          "geometryOrderedText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎\n人不知而不骨不亦君子乎",
+          "passes": [
+            {
+              "bbox": [
+                0,
+                0,
+                1,
+                1
+              ],
+              "workingSize": [
+                740,
+                900
+              ],
+              "rawItems": null
+            }
+          ]
+        },
+        {
+          "inferenceMs": 679.2999999998137,
+          "evaluation": {
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 1,
+            "referenceCharacters": 30,
+            "CER": 0.03333333333333333,
+            "correctAlignedCharacters": 29,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 1,
+            "referenceCharacters": 30,
+            "CER": 0.03333333333333333,
+            "correctAlignedCharacters": 29,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎\n人不知而不骨不亦君子乎\n",
+          "geometryOrderedText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎\n人不知而不骨不亦君子乎",
+          "passes": [
+            {
+              "bbox": [
+                0,
+                0,
+                1,
+                1
+              ],
+              "workingSize": [
+                740,
+                900
+              ],
+              "rawItems": null
+            }
+          ]
+        },
+        {
+          "inferenceMs": 623.8999999999069,
+          "evaluation": {
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 1,
+            "referenceCharacters": 30,
+            "CER": 0.03333333333333333,
+            "correctAlignedCharacters": 29,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 1,
+            "referenceCharacters": 30,
+            "CER": 0.03333333333333333,
+            "correctAlignedCharacters": 29,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎\n人不知而不骨不亦君子乎\n",
+          "geometryOrderedText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎\n人不知而不骨不亦君子乎",
+          "passes": [
+            {
+              "bbox": [
+                0,
+                0,
+                1,
+                1
+              ],
+              "workingSize": [
+                740,
+                900
+              ],
+              "rawItems": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "example.png",
+      "imageSHA256": "0b0a30736f513b0e66a8752ea00366b239162d6830fbda0cf34bc58cb8b1d4e3",
+      "sampleKind": "modern-synthetic",
+      "reference": "學而時習之不亦說乎有朋自遠方來不亦樂乎人不知而不慍不亦君子乎",
+      "profile": {
+        "kind": "paddle",
+        "mode": "whole",
+        "orientation": "vertical"
+      },
+      "browser": "154.0.8037.57",
+      "crossOriginIsolated": false,
+      "baselineMemory": {
+        "pssMiB": 235.421875,
+        "rssMiB": 425.51953125,
+        "privateMiB": 160.953125,
+        "processes": 7
+      },
+      "loadedMemory": {
+        "pssMiB": 637.1337890625,
+        "rssMiB": 835.7421875,
+        "privateMiB": 556.13671875,
+        "processes": 7
+      },
+      "peakMemory": {
+        "pssMiB": 795.546875,
+        "rssMiB": 994.41015625,
+        "privateMiB": 714.36328125,
+        "processes": 7
+      },
+      "finalMemory": {
+        "pssMiB": 608.505859375,
+        "rssMiB": 806.1875,
+        "privateMiB": 528.515625,
+        "processes": 7
+      },
+      "memorySampling": "Linux Chromium process-tree PSS, 100ms interval; includes native/WASM/renderer/worker memory; observed peak, not hardware maximum",
+      "initialization": {
+        "elapsedMs": 1644.6999999997206,
+        "kind": "paddle",
+        "summary": {
+          "backend": "wasm",
+          "webgpuAvailable": false,
+          "detProvider": "wasm",
+          "recProvider": "wasm",
+          "assets": [
+            {
+              "url": "http://127.0.0.1:4181/ancient-text-transcriber/experiments/paddle/models/PP-OCRv5_mobile_det.tar",
+              "bytes": 4899840
+            },
+            {
+              "url": "http://127.0.0.1:4181/ancient-text-transcriber/experiments/paddle/models/PP-OCRv5_mobile_rec.tar",
+              "bytes": 16672768
+            }
+          ],
+          "elapsedMs": 1005,
+          "pipelineConfigWarnings": [
+            "DocPreprocessor is not yet supported in PaddleOCR.js: config will be ignored for now.",
+            "TextLineOrientation is not yet supported in PaddleOCR.js: config will be ignored for now."
+          ]
+        }
+      },
+      "success": true,
+      "staticUniqueResponseBytes": 54398014,
+      "resourceSizes": [
+        [
+          "assets/ort.bundle.min-C4VuFU5w.js",
+          390762
+        ],
+        [
+          "models/PP-OCRv5_mobile_rec.tar",
+          16672768
+        ],
+        [
+          "assets/dist-h7lN3tmu.js",
+          10476242
+        ],
+        [
+          "model-status.json",
+          888
+        ],
+        [
+          "ort/ort-wasm-simd-threaded.jsep.mjs",
+          44677
+        ],
+        [
+          "assets/index-ax5NzkK_.css",
+          484
+        ],
+        [
+          "index.html",
+          1938
+        ],
+        [
+          "models/PP-OCRv5_mobile_det.tar",
+          4899840
+        ],
+        [
+          "assets/index-xRvqBUJT.js",
+          38199
+        ],
+        [
+          "ort/ort-wasm-simd-threaded.jsep.wasm",
+          21872216
+        ]
+      ],
+      "medianInferenceMs": 894.8999999999069,
+      "stableAcrossThreeRuns": true,
+      "failedResponses": [],
+      "pageErrors": [],
+      "runs": [
+        {
+          "inferenceMs": 1426.1000000000931,
+          "evaluation": {
+            "substitutions": 0,
+            "deletions": 1,
+            "insertions": 0,
+            "distance": 1,
+            "referenceCharacters": 30,
+            "CER": 0.03333333333333333,
+            "correctAlignedCharacters": 29,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 12,
+            "deletions": 3,
+            "insertions": 2,
+            "distance": 17,
+            "referenceCharacters": 30,
+            "CER": 0.5666666666666667,
+            "correctAlignedCharacters": 15,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "人不知而不慍不亦君子乎\n有朋自方來不亦樂乎\n學而時習之不亦說乎",
+          "geometryOrderedText": "學而時習之不亦說乎\n有朋自方來不亦樂乎\n人不知而不慍不亦君子乎",
+          "passes": [
+            {
+              "bbox": [
+                0,
+                0,
+                1,
+                1
+              ],
+              "workingSize": [
+                740,
+                900
+              ],
+              "rawItems": [
+                {
+                  "poly": [
+                    [
+                      175,
+                      110
+                    ],
+                    [
+                      223,
+                      110
+                    ],
+                    [
+                      223,
+                      704
+                    ],
+                    [
+                      175,
+                      704
+                    ]
+                  ],
+                  "text": "人不知而不慍不亦君子乎",
+                  "score": 0.9826701283454895
+                },
+                {
+                  "poly": [
+                    [
+                      376,
+                      106
+                    ],
+                    [
+                      423,
+                      106
+                    ],
+                    [
+                      423,
+                      649
+                    ],
+                    [
+                      376,
+                      649
+                    ]
+                  ],
+                  "text": "有朋自方來不亦樂乎",
+                  "score": 0.9990481932957967
+                },
+                {
+                  "poly": [
+                    [
+                      575,
+                      104
+                    ],
+                    [
+                      626,
+                      105
+                    ],
+                    [
+                      624,
+                      595
+                    ],
+                    [
+                      573,
+                      594
+                    ]
+                  ],
+                  "text": "學而時習之不亦說乎",
+                  "score": 0.9880710244178772
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "inferenceMs": 894.8999999999069,
+          "evaluation": {
+            "substitutions": 0,
+            "deletions": 1,
+            "insertions": 0,
+            "distance": 1,
+            "referenceCharacters": 30,
+            "CER": 0.03333333333333333,
+            "correctAlignedCharacters": 29,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 12,
+            "deletions": 3,
+            "insertions": 2,
+            "distance": 17,
+            "referenceCharacters": 30,
+            "CER": 0.5666666666666667,
+            "correctAlignedCharacters": 15,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "人不知而不慍不亦君子乎\n有朋自方來不亦樂乎\n學而時習之不亦說乎",
+          "geometryOrderedText": "學而時習之不亦說乎\n有朋自方來不亦樂乎\n人不知而不慍不亦君子乎",
+          "passes": [
+            {
+              "bbox": [
+                0,
+                0,
+                1,
+                1
+              ],
+              "workingSize": [
+                740,
+                900
+              ],
+              "rawItems": [
+                {
+                  "poly": [
+                    [
+                      175,
+                      110
+                    ],
+                    [
+                      223,
+                      110
+                    ],
+                    [
+                      223,
+                      704
+                    ],
+                    [
+                      175,
+                      704
+                    ]
+                  ],
+                  "text": "人不知而不慍不亦君子乎",
+                  "score": 0.9826701283454895
+                },
+                {
+                  "poly": [
+                    [
+                      376,
+                      106
+                    ],
+                    [
+                      423,
+                      106
+                    ],
+                    [
+                      423,
+                      649
+                    ],
+                    [
+                      376,
+                      649
+                    ]
+                  ],
+                  "text": "有朋自方來不亦樂乎",
+                  "score": 0.9990481932957967
+                },
+                {
+                  "poly": [
+                    [
+                      575,
+                      104
+                    ],
+                    [
+                      626,
+                      105
+                    ],
+                    [
+                      624,
+                      595
+                    ],
+                    [
+                      573,
+                      594
+                    ]
+                  ],
+                  "text": "學而時習之不亦說乎",
+                  "score": 0.9880710244178772
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "inferenceMs": 843.3000000002794,
+          "evaluation": {
+            "substitutions": 0,
+            "deletions": 1,
+            "insertions": 0,
+            "distance": 1,
+            "referenceCharacters": 30,
+            "CER": 0.03333333333333333,
+            "correctAlignedCharacters": 29,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 12,
+            "deletions": 3,
+            "insertions": 2,
+            "distance": 17,
+            "referenceCharacters": 30,
+            "CER": 0.5666666666666667,
+            "correctAlignedCharacters": 15,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "人不知而不慍不亦君子乎\n有朋自方來不亦樂乎\n學而時習之不亦說乎",
+          "geometryOrderedText": "學而時習之不亦說乎\n有朋自方來不亦樂乎\n人不知而不慍不亦君子乎",
+          "passes": [
+            {
+              "bbox": [
+                0,
+                0,
+                1,
+                1
+              ],
+              "workingSize": [
+                740,
+                900
+              ],
+              "rawItems": [
+                {
+                  "poly": [
+                    [
+                      175,
+                      110
+                    ],
+                    [
+                      223,
+                      110
+                    ],
+                    [
+                      223,
+                      704
+                    ],
+                    [
+                      175,
+                      704
+                    ]
+                  ],
+                  "text": "人不知而不慍不亦君子乎",
+                  "score": 0.9826701283454895
+                },
+                {
+                  "poly": [
+                    [
+                      376,
+                      106
+                    ],
+                    [
+                      423,
+                      106
+                    ],
+                    [
+                      423,
+                      649
+                    ],
+                    [
+                      376,
+                      649
+                    ]
+                  ],
+                  "text": "有朋自方來不亦樂乎",
+                  "score": 0.9990481932957967
+                },
+                {
+                  "poly": [
+                    [
+                      575,
+                      104
+                    ],
+                    [
+                      626,
+                      105
+                    ],
+                    [
+                      624,
+                      595
+                    ],
+                    [
+                      573,
+                      594
+                    ]
+                  ],
+                  "text": "學而時習之不亦說乎",
+                  "score": 0.9880710244178772
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "example.png",
+      "imageSHA256": "0b0a30736f513b0e66a8752ea00366b239162d6830fbda0cf34bc58cb8b1d4e3",
+      "sampleKind": "modern-synthetic",
+      "reference": "學而時習之不亦說乎有朋自遠方來不亦樂乎人不知而不慍不亦君子乎",
+      "profile": {
+        "kind": "tesseract",
+        "mode": "columns",
+        "tesseractScale": 2,
+        "orientation": "vertical"
+      },
+      "browser": "154.0.8037.57",
+      "crossOriginIsolated": false,
+      "baselineMemory": {
+        "pssMiB": 233.984375,
+        "rssMiB": 423.74609375,
+        "privateMiB": 159.93359375,
+        "processes": 7
+      },
+      "loadedMemory": {
+        "pssMiB": 387.0322265625,
+        "rssMiB": 584.703125,
+        "privateMiB": 306.8671875,
+        "processes": 7
+      },
+      "peakMemory": {
+        "pssMiB": 416.591796875,
+        "rssMiB": 614.75390625,
+        "privateMiB": 336.05859375,
+        "processes": 7
+      },
+      "finalMemory": {
+        "pssMiB": 413.326171875,
+        "rssMiB": 611.50390625,
+        "privateMiB": 332.77734375,
+        "processes": 7
+      },
+      "memorySampling": "Linux Chromium process-tree PSS, 100ms interval; includes native/WASM/renderer/worker memory; observed peak, not hardware maximum",
+      "initialization": {
+        "elapsedMs": 453.60000000009313,
+        "kind": "tesseract",
+        "summary": null
+      },
+      "success": true,
+      "staticUniqueResponseBytes": 15995423,
+      "resourceSizes": [
+        [
+          "ocr/bootstrap-worker.js",
+          1013
+        ],
+        [
+          "ocr/runtime/worker.min.js",
+          111307
+        ],
+        [
+          "ocr/tessdata/chi_tra_vert.traineddata.gz",
+          11945998
+        ],
+        [
+          "ocr/runtime/core/tesseract-core-lstm.wasm.js",
+          3896484
+        ],
+        [
+          "assets/index-ax5NzkK_.css",
+          484
+        ],
+        [
+          "index.html",
+          1938
+        ],
+        [
+          "assets/index-xRvqBUJT.js",
+          38199
+        ]
+      ],
+      "medianInferenceMs": 805.3000000002794,
+      "stableAcrossThreeRuns": true,
+      "failedResponses": [],
+      "pageErrors": [],
+      "runs": [
+        {
+          "inferenceMs": 868.6000000000931,
+          "evaluation": {
+            "substitutions": 6,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 6,
+            "referenceCharacters": 30,
+            "CER": 0.2,
+            "correctAlignedCharacters": 24,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 6,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 6,
+            "referenceCharacters": 30,
+            "CER": 0.2,
+            "correctAlignedCharacters": 24,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "  學而時習之不誠診皓\n\n  有朋自遠方來不方樂皇\n\n  人不知而不惱不亦君子乎\n",
+          "geometryOrderedText": "學而時習之不誠診皓\n有朋自遠方來不方樂皇\n人不知而不惱不亦君子乎",
+          "passes": [
+            {
+              "bbox": [
+                0.6666666666666666,
+                0,
+                0.33333333333333337,
+                1
+              ],
+              "workingSize": [
+                494,
+                1800
+              ],
+              "rawItems": null
+            },
+            {
+              "bbox": [
+                0.3333333333333333,
+                0,
+                0.3333333333333333,
+                1
+              ],
+              "workingSize": [
+                492,
+                1800
+              ],
+              "rawItems": null
+            },
+            {
+              "bbox": [
+                0,
+                0,
+                0.3333333333333333,
+                1
+              ],
+              "workingSize": [
+                494,
+                1800
+              ],
+              "rawItems": null
+            }
+          ]
+        },
+        {
+          "inferenceMs": 777,
+          "evaluation": {
+            "substitutions": 6,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 6,
+            "referenceCharacters": 30,
+            "CER": 0.2,
+            "correctAlignedCharacters": 24,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 6,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 6,
+            "referenceCharacters": 30,
+            "CER": 0.2,
+            "correctAlignedCharacters": 24,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "  學而時習之不誠診皓\n\n  有朋自遠方來不方樂皇\n\n  人不知而不惱不亦君子乎\n",
+          "geometryOrderedText": "學而時習之不誠診皓\n有朋自遠方來不方樂皇\n人不知而不惱不亦君子乎",
+          "passes": [
+            {
+              "bbox": [
+                0.6666666666666666,
+                0,
+                0.33333333333333337,
+                1
+              ],
+              "workingSize": [
+                494,
+                1800
+              ],
+              "rawItems": null
+            },
+            {
+              "bbox": [
+                0.3333333333333333,
+                0,
+                0.3333333333333333,
+                1
+              ],
+              "workingSize": [
+                492,
+                1800
+              ],
+              "rawItems": null
+            },
+            {
+              "bbox": [
+                0,
+                0,
+                0.3333333333333333,
+                1
+              ],
+              "workingSize": [
+                494,
+                1800
+              ],
+              "rawItems": null
+            }
+          ]
+        },
+        {
+          "inferenceMs": 805.3000000002794,
+          "evaluation": {
+            "substitutions": 6,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 6,
+            "referenceCharacters": 30,
+            "CER": 0.2,
+            "correctAlignedCharacters": 24,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 6,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 6,
+            "referenceCharacters": 30,
+            "CER": 0.2,
+            "correctAlignedCharacters": 24,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "  學而時習之不誠診皓\n\n  有朋自遠方來不方樂皇\n\n  人不知而不惱不亦君子乎\n",
+          "geometryOrderedText": "學而時習之不誠診皓\n有朋自遠方來不方樂皇\n人不知而不惱不亦君子乎",
+          "passes": [
+            {
+              "bbox": [
+                0.6666666666666666,
+                0,
+                0.33333333333333337,
+                1
+              ],
+              "workingSize": [
+                494,
+                1800
+              ],
+              "rawItems": null
+            },
+            {
+              "bbox": [
+                0.3333333333333333,
+                0,
+                0.3333333333333333,
+                1
+              ],
+              "workingSize": [
+                492,
+                1800
+              ],
+              "rawItems": null
+            },
+            {
+              "bbox": [
+                0,
+                0,
+                0.3333333333333333,
+                1
+              ],
+              "workingSize": [
+                494,
+                1800
+              ],
+              "rawItems": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "example.png",
+      "imageSHA256": "0b0a30736f513b0e66a8752ea00366b239162d6830fbda0cf34bc58cb8b1d4e3",
+      "sampleKind": "modern-synthetic",
+      "reference": "學而時習之不亦說乎有朋自遠方來不亦樂乎人不知而不慍不亦君子乎",
+      "profile": {
+        "kind": "paddle",
+        "mode": "columns",
+        "orientation": "vertical"
+      },
+      "browser": "154.0.8037.57",
+      "crossOriginIsolated": false,
+      "baselineMemory": {
+        "pssMiB": 234.6953125,
+        "rssMiB": 424.6953125,
+        "privateMiB": 160.30078125,
+        "processes": 7
+      },
+      "loadedMemory": {
+        "pssMiB": 560.951171875,
+        "rssMiB": 759.3125,
+        "privateMiB": 480.14453125,
+        "processes": 7
+      },
+      "peakMemory": {
+        "pssMiB": 689.2216796875,
+        "rssMiB": 887.84765625,
+        "privateMiB": 608.25390625,
+        "processes": 7
+      },
+      "finalMemory": {
+        "pssMiB": 554.39453125,
+        "rssMiB": 752.69921875,
+        "privateMiB": 473.765625,
+        "processes": 7
+      },
+      "memorySampling": "Linux Chromium process-tree PSS, 100ms interval; includes native/WASM/renderer/worker memory; observed peak, not hardware maximum",
+      "initialization": {
+        "elapsedMs": 1757,
+        "kind": "paddle",
+        "summary": {
+          "backend": "wasm",
+          "webgpuAvailable": false,
+          "detProvider": "wasm",
+          "recProvider": "wasm",
+          "assets": [
+            {
+              "url": "http://127.0.0.1:4181/ancient-text-transcriber/experiments/paddle/models/PP-OCRv5_mobile_det.tar",
+              "bytes": 4899840
+            },
+            {
+              "url": "http://127.0.0.1:4181/ancient-text-transcriber/experiments/paddle/models/PP-OCRv5_mobile_rec.tar",
+              "bytes": 16672768
+            }
+          ],
+          "elapsedMs": 1055,
+          "pipelineConfigWarnings": [
+            "DocPreprocessor is not yet supported in PaddleOCR.js: config will be ignored for now.",
+            "TextLineOrientation is not yet supported in PaddleOCR.js: config will be ignored for now."
+          ]
+        }
+      },
+      "success": true,
+      "staticUniqueResponseBytes": 54398014,
+      "resourceSizes": [
+        [
+          "assets/ort.bundle.min-C4VuFU5w.js",
+          390762
+        ],
+        [
+          "models/PP-OCRv5_mobile_rec.tar",
+          16672768
+        ],
+        [
+          "assets/dist-h7lN3tmu.js",
+          10476242
+        ],
+        [
+          "model-status.json",
+          888
+        ],
+        [
+          "ort/ort-wasm-simd-threaded.jsep.mjs",
+          44677
+        ],
+        [
+          "assets/index-ax5NzkK_.css",
+          484
+        ],
+        [
+          "index.html",
+          1938
+        ],
+        [
+          "models/PP-OCRv5_mobile_det.tar",
+          4899840
+        ],
+        [
+          "assets/index-xRvqBUJT.js",
+          38199
+        ],
+        [
+          "ort/ort-wasm-simd-threaded.jsep.wasm",
+          21872216
+        ]
+      ],
+      "medianInferenceMs": 822,
+      "stableAcrossThreeRuns": true,
+      "failedResponses": [],
+      "pageErrors": [],
+      "runs": [
+        {
+          "inferenceMs": 1390,
+          "evaluation": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 0,
+            "referenceCharacters": 30,
+            "CER": 0,
+            "correctAlignedCharacters": 30,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 0,
+            "referenceCharacters": 30,
+            "CER": 0,
+            "correctAlignedCharacters": 30,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎\n人不知而不慍不亦君子乎",
+          "geometryOrderedText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎\n人不知而不慍不亦君子乎",
+          "passes": [
+            {
+              "bbox": [
+                0.6666666666666666,
+                0,
+                0.3333333333333333,
+                1
+              ],
+              "workingSize": [
+                247,
+                900
+              ],
+              "rawItems": [
+                {
+                  "poly": [
+                    [
+                      82,
+                      107
+                    ],
+                    [
+                      131,
+                      107
+                    ],
+                    [
+                      131,
+                      594
+                    ],
+                    [
+                      82,
+                      594
+                    ]
+                  ],
+                  "text": "學而時習之不亦說乎",
+                  "score": 0.9956689278284708
+                }
+              ]
+            },
+            {
+              "bbox": [
+                0.3333333333333333,
+                0,
+                0.3333333333333333,
+                1
+              ],
+              "workingSize": [
+                246,
+                900
+              ],
+              "rawItems": [
+                {
+                  "poly": [
+                    [
+                      128,
+                      105
+                    ],
+                    [
+                      177,
+                      105
+                    ],
+                    [
+                      177,
+                      649
+                    ],
+                    [
+                      128,
+                      649
+                    ]
+                  ],
+                  "text": "有朋自遠方來不亦樂乎",
+                  "score": 0.9496759057044983
+                }
+              ]
+            },
+            {
+              "bbox": [
+                0,
+                0,
+                0.3333333333333333,
+                1
+              ],
+              "workingSize": [
+                247,
+                900
+              ],
+              "rawItems": [
+                {
+                  "poly": [
+                    [
+                      174,
+                      108
+                    ],
+                    [
+                      226,
+                      109
+                    ],
+                    [
+                      224,
+                      705
+                    ],
+                    [
+                      172,
+                      705
+                    ]
+                  ],
+                  "text": "人不知而不慍不亦君子乎",
+                  "score": 0.9754968773234974
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "inferenceMs": 822,
+          "evaluation": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 0,
+            "referenceCharacters": 30,
+            "CER": 0,
+            "correctAlignedCharacters": 30,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 0,
+            "referenceCharacters": 30,
+            "CER": 0,
+            "correctAlignedCharacters": 30,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎\n人不知而不慍不亦君子乎",
+          "geometryOrderedText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎\n人不知而不慍不亦君子乎",
+          "passes": [
+            {
+              "bbox": [
+                0.6666666666666666,
+                0,
+                0.3333333333333333,
+                1
+              ],
+              "workingSize": [
+                247,
+                900
+              ],
+              "rawItems": [
+                {
+                  "poly": [
+                    [
+                      82,
+                      107
+                    ],
+                    [
+                      131,
+                      107
+                    ],
+                    [
+                      131,
+                      594
+                    ],
+                    [
+                      82,
+                      594
+                    ]
+                  ],
+                  "text": "學而時習之不亦說乎",
+                  "score": 0.9956689278284708
+                }
+              ]
+            },
+            {
+              "bbox": [
+                0.3333333333333333,
+                0,
+                0.3333333333333333,
+                1
+              ],
+              "workingSize": [
+                246,
+                900
+              ],
+              "rawItems": [
+                {
+                  "poly": [
+                    [
+                      128,
+                      105
+                    ],
+                    [
+                      177,
+                      105
+                    ],
+                    [
+                      177,
+                      649
+                    ],
+                    [
+                      128,
+                      649
+                    ]
+                  ],
+                  "text": "有朋自遠方來不亦樂乎",
+                  "score": 0.9496759057044983
+                }
+              ]
+            },
+            {
+              "bbox": [
+                0,
+                0,
+                0.3333333333333333,
+                1
+              ],
+              "workingSize": [
+                247,
+                900
+              ],
+              "rawItems": [
+                {
+                  "poly": [
+                    [
+                      174,
+                      108
+                    ],
+                    [
+                      226,
+                      109
+                    ],
+                    [
+                      224,
+                      705
+                    ],
+                    [
+                      172,
+                      705
+                    ]
+                  ],
+                  "text": "人不知而不慍不亦君子乎",
+                  "score": 0.9754968773234974
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "inferenceMs": 770,
+          "evaluation": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 0,
+            "referenceCharacters": 30,
+            "CER": 0,
+            "correctAlignedCharacters": 30,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 0,
+            "referenceCharacters": 30,
+            "CER": 0,
+            "correctAlignedCharacters": 30,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎\n人不知而不慍不亦君子乎",
+          "geometryOrderedText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎\n人不知而不慍不亦君子乎",
+          "passes": [
+            {
+              "bbox": [
+                0.6666666666666666,
+                0,
+                0.3333333333333333,
+                1
+              ],
+              "workingSize": [
+                247,
+                900
+              ],
+              "rawItems": [
+                {
+                  "poly": [
+                    [
+                      82,
+                      107
+                    ],
+                    [
+                      131,
+                      107
+                    ],
+                    [
+                      131,
+                      594
+                    ],
+                    [
+                      82,
+                      594
+                    ]
+                  ],
+                  "text": "學而時習之不亦說乎",
+                  "score": 0.9956689278284708
+                }
+              ]
+            },
+            {
+              "bbox": [
+                0.3333333333333333,
+                0,
+                0.3333333333333333,
+                1
+              ],
+              "workingSize": [
+                246,
+                900
+              ],
+              "rawItems": [
+                {
+                  "poly": [
+                    [
+                      128,
+                      105
+                    ],
+                    [
+                      177,
+                      105
+                    ],
+                    [
+                      177,
+                      649
+                    ],
+                    [
+                      128,
+                      649
+                    ]
+                  ],
+                  "text": "有朋自遠方來不亦樂乎",
+                  "score": 0.9496759057044983
+                }
+              ]
+            },
+            {
+              "bbox": [
+                0,
+                0,
+                0.3333333333333333,
+                1
+              ],
+              "workingSize": [
+                247,
+                900
+              ],
+              "rawItems": [
+                {
+                  "poly": [
+                    [
+                      174,
+                      108
+                    ],
+                    [
+                      226,
+                      109
+                    ],
+                    [
+                      224,
+                      705
+                    ],
+                    [
+                      172,
+                      705
+                    ]
+                  ],
+                  "text": "人不知而不慍不亦君子乎",
+                  "score": 0.9754968773234974
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "horizontal-example.png",
+      "imageSHA256": "26022f73129183b224f0dc1c7617732645ec053c024fe4561d87c22fd5e34d84",
+      "sampleKind": "modern-synthetic",
+      "reference": "學而時習之不亦說乎有朋自遠方來不亦樂乎",
+      "profile": {
+        "kind": "tesseract",
+        "mode": "whole",
+        "tesseractScale": 2,
+        "orientation": "horizontal"
+      },
+      "browser": "154.0.8037.57",
+      "crossOriginIsolated": false,
+      "baselineMemory": {
+        "pssMiB": 235.6220703125,
+        "rssMiB": 426.22265625,
+        "privateMiB": 160.7578125,
+        "processes": 7
+      },
+      "loadedMemory": {
+        "pssMiB": 386.5849609375,
+        "rssMiB": 584.8125,
+        "privateMiB": 305.80859375,
+        "processes": 7
+      },
+      "peakMemory": {
+        "pssMiB": 398.755859375,
+        "rssMiB": 597.4140625,
+        "privateMiB": 317.640625,
+        "processes": 7
+      },
+      "finalMemory": {
+        "pssMiB": 396.771484375,
+        "rssMiB": 595.4609375,
+        "privateMiB": 315.64453125,
+        "processes": 7
+      },
+      "memorySampling": "Linux Chromium process-tree PSS, 100ms interval; includes native/WASM/renderer/worker memory; observed peak, not hardware maximum",
+      "initialization": {
+        "elapsedMs": 506.5,
+        "kind": "tesseract",
+        "summary": null
+      },
+      "success": true,
+      "staticUniqueResponseBytes": 15987097,
+      "resourceSizes": [
+        [
+          "ocr/tessdata/chi_tra.traineddata.gz",
+          11937672
+        ],
+        [
+          "ocr/bootstrap-worker.js",
+          1013
+        ],
+        [
+          "ocr/runtime/worker.min.js",
+          111307
+        ],
+        [
+          "ocr/runtime/core/tesseract-core-lstm.wasm.js",
+          3896484
+        ],
+        [
+          "assets/index-ax5NzkK_.css",
+          484
+        ],
+        [
+          "index.html",
+          1938
+        ],
+        [
+          "assets/index-xRvqBUJT.js",
+          38199
+        ]
+      ],
+      "medianInferenceMs": 423.39999999990687,
+      "stableAcrossThreeRuns": true,
+      "failedResponses": [],
+      "pageErrors": [],
+      "runs": [
+        {
+          "inferenceMs": 523.7000000001863,
+          "evaluation": {
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 1,
+            "referenceCharacters": 19,
+            "CER": 0.05263157894736842,
+            "correctAlignedCharacters": 18,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 1,
+            "referenceCharacters": 19,
+            "CER": 0.05263157894736842,
+            "correctAlignedCharacters": 18,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "學 而 時 習 之 不 亦 說 乎\n有 朋 自 還 方 來 不 亦 樂 乎\n",
+          "geometryOrderedText": "學而時習之不亦說乎\n有朋自還方來不亦樂乎",
+          "passes": [
+            {
+              "bbox": [
+                0,
+                0,
+                1,
+                1
+              ],
+              "workingSize": [
+                1600,
+                460
+              ],
+              "rawItems": null
+            }
+          ]
+        },
+        {
+          "inferenceMs": 417.39999999990687,
+          "evaluation": {
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 1,
+            "referenceCharacters": 19,
+            "CER": 0.05263157894736842,
+            "correctAlignedCharacters": 18,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 1,
+            "referenceCharacters": 19,
+            "CER": 0.05263157894736842,
+            "correctAlignedCharacters": 18,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "學 而 時 習 之 不 亦 說 乎\n有 朋 自 還 方 來 不 亦 樂 乎\n",
+          "geometryOrderedText": "學而時習之不亦說乎\n有朋自還方來不亦樂乎",
+          "passes": [
+            {
+              "bbox": [
+                0,
+                0,
+                1,
+                1
+              ],
+              "workingSize": [
+                1600,
+                460
+              ],
+              "rawItems": null
+            }
+          ]
+        },
+        {
+          "inferenceMs": 423.39999999990687,
+          "evaluation": {
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 1,
+            "referenceCharacters": 19,
+            "CER": 0.05263157894736842,
+            "correctAlignedCharacters": 18,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 1,
+            "referenceCharacters": 19,
+            "CER": 0.05263157894736842,
+            "correctAlignedCharacters": 18,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "學 而 時 習 之 不 亦 說 乎\n有 朋 自 還 方 來 不 亦 樂 乎\n",
+          "geometryOrderedText": "學而時習之不亦說乎\n有朋自還方來不亦樂乎",
+          "passes": [
+            {
+              "bbox": [
+                0,
+                0,
+                1,
+                1
+              ],
+              "workingSize": [
+                1600,
+                460
+              ],
+              "rawItems": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "horizontal-example.png",
+      "imageSHA256": "26022f73129183b224f0dc1c7617732645ec053c024fe4561d87c22fd5e34d84",
+      "sampleKind": "modern-synthetic",
+      "reference": "學而時習之不亦說乎有朋自遠方來不亦樂乎",
+      "profile": {
+        "kind": "tesseract",
+        "mode": "whole",
+        "tesseractScale": 1,
+        "orientation": "horizontal"
+      },
+      "browser": "154.0.8037.57",
+      "crossOriginIsolated": false,
+      "baselineMemory": {
+        "pssMiB": 234.9501953125,
+        "rssMiB": 425.4140625,
+        "privateMiB": 160.1015625,
+        "processes": 7
+      },
+      "loadedMemory": {
+        "pssMiB": 385.166015625,
+        "rssMiB": 583.43359375,
+        "privateMiB": 304.265625,
+        "processes": 7
+      },
+      "peakMemory": {
+        "pssMiB": 396.4482421875,
+        "rssMiB": 595.140625,
+        "privateMiB": 315.21484375,
+        "processes": 7
+      },
+      "finalMemory": {
+        "pssMiB": 395.859375,
+        "rssMiB": 594.55859375,
+        "privateMiB": 314.62109375,
+        "processes": 7
+      },
+      "memorySampling": "Linux Chromium process-tree PSS, 100ms interval; includes native/WASM/renderer/worker memory; observed peak, not hardware maximum",
+      "initialization": {
+        "elapsedMs": 490.39999999990687,
+        "kind": "tesseract",
+        "summary": null
+      },
+      "success": true,
+      "staticUniqueResponseBytes": 15987097,
+      "resourceSizes": [
+        [
+          "ocr/tessdata/chi_tra.traineddata.gz",
+          11937672
+        ],
+        [
+          "ocr/bootstrap-worker.js",
+          1013
+        ],
+        [
+          "ocr/runtime/worker.min.js",
+          111307
+        ],
+        [
+          "ocr/runtime/core/tesseract-core-lstm.wasm.js",
+          3896484
+        ],
+        [
+          "assets/index-ax5NzkK_.css",
+          484
+        ],
+        [
+          "index.html",
+          1938
+        ],
+        [
+          "assets/index-xRvqBUJT.js",
+          38199
+        ]
+      ],
+      "medianInferenceMs": 406.29999999981374,
+      "stableAcrossThreeRuns": true,
+      "failedResponses": [],
+      "pageErrors": [],
+      "runs": [
+        {
+          "inferenceMs": 446.3000000002794,
+          "evaluation": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 0,
+            "referenceCharacters": 19,
+            "CER": 0,
+            "correctAlignedCharacters": 19,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 0,
+            "referenceCharacters": 19,
+            "CER": 0,
+            "correctAlignedCharacters": 19,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "學 而 時 習 之 不 亦 說 乎\n有 朋 自 遠方 來 不 亦 樂 乎\n",
+          "geometryOrderedText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎",
+          "passes": [
+            {
+              "bbox": [
+                0,
+                0,
+                1,
+                1
+              ],
+              "workingSize": [
+                800,
+                230
+              ],
+              "rawItems": null
+            }
+          ]
+        },
+        {
+          "inferenceMs": 393.5,
+          "evaluation": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 0,
+            "referenceCharacters": 19,
+            "CER": 0,
+            "correctAlignedCharacters": 19,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 0,
+            "referenceCharacters": 19,
+            "CER": 0,
+            "correctAlignedCharacters": 19,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "學 而 時 習 之 不 亦 說 乎\n有 朋 自 遠方 來 不 亦 樂 乎\n",
+          "geometryOrderedText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎",
+          "passes": [
+            {
+              "bbox": [
+                0,
+                0,
+                1,
+                1
+              ],
+              "workingSize": [
+                800,
+                230
+              ],
+              "rawItems": null
+            }
+          ]
+        },
+        {
+          "inferenceMs": 406.29999999981374,
+          "evaluation": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 0,
+            "referenceCharacters": 19,
+            "CER": 0,
+            "correctAlignedCharacters": 19,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 0,
+            "referenceCharacters": 19,
+            "CER": 0,
+            "correctAlignedCharacters": 19,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "學 而 時 習 之 不 亦 說 乎\n有 朋 自 遠方 來 不 亦 樂 乎\n",
+          "geometryOrderedText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎",
+          "passes": [
+            {
+              "bbox": [
+                0,
+                0,
+                1,
+                1
+              ],
+              "workingSize": [
+                800,
+                230
+              ],
+              "rawItems": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "horizontal-example.png",
+      "imageSHA256": "26022f73129183b224f0dc1c7617732645ec053c024fe4561d87c22fd5e34d84",
+      "sampleKind": "modern-synthetic",
+      "reference": "學而時習之不亦說乎有朋自遠方來不亦樂乎",
+      "profile": {
+        "kind": "paddle",
+        "mode": "whole",
+        "orientation": "horizontal"
+      },
+      "browser": "154.0.8037.57",
+      "crossOriginIsolated": false,
+      "baselineMemory": {
+        "pssMiB": 236.064453125,
+        "rssMiB": 425.78125,
+        "privateMiB": 161.9609375,
+        "processes": 7
+      },
+      "loadedMemory": {
+        "pssMiB": 653.6923828125,
+        "rssMiB": 851.7890625,
+        "privateMiB": 573.14453125,
+        "processes": 7
+      },
+      "peakMemory": {
+        "pssMiB": 710.8115234375,
+        "rssMiB": 909.2109375,
+        "privateMiB": 630.06640625,
+        "processes": 7
+      },
+      "finalMemory": {
+        "pssMiB": 539.1435546875,
+        "rssMiB": 737.5859375,
+        "privateMiB": 458.359375,
+        "processes": 7
+      },
+      "memorySampling": "Linux Chromium process-tree PSS, 100ms interval; includes native/WASM/renderer/worker memory; observed peak, not hardware maximum",
+      "initialization": {
+        "elapsedMs": 1574.6000000000931,
+        "kind": "paddle",
+        "summary": {
+          "backend": "wasm",
+          "webgpuAvailable": false,
+          "detProvider": "wasm",
+          "recProvider": "wasm",
+          "assets": [
+            {
+              "url": "http://127.0.0.1:4181/ancient-text-transcriber/experiments/paddle/models/PP-OCRv5_mobile_det.tar",
+              "bytes": 4899840
+            },
+            {
+              "url": "http://127.0.0.1:4181/ancient-text-transcriber/experiments/paddle/models/PP-OCRv5_mobile_rec.tar",
+              "bytes": 16672768
+            }
+          ],
+          "elapsedMs": 975.2000000001863,
+          "pipelineConfigWarnings": [
+            "DocPreprocessor is not yet supported in PaddleOCR.js: config will be ignored for now.",
+            "TextLineOrientation is not yet supported in PaddleOCR.js: config will be ignored for now."
+          ]
+        }
+      },
+      "success": true,
+      "staticUniqueResponseBytes": 54398014,
+      "resourceSizes": [
+        [
+          "assets/ort.bundle.min-C4VuFU5w.js",
+          390762
+        ],
+        [
+          "models/PP-OCRv5_mobile_rec.tar",
+          16672768
+        ],
+        [
+          "assets/dist-h7lN3tmu.js",
+          10476242
+        ],
+        [
+          "model-status.json",
+          888
+        ],
+        [
+          "ort/ort-wasm-simd-threaded.jsep.mjs",
+          44677
+        ],
+        [
+          "assets/index-ax5NzkK_.css",
+          484
+        ],
+        [
+          "index.html",
+          1938
+        ],
+        [
+          "models/PP-OCRv5_mobile_det.tar",
+          4899840
+        ],
+        [
+          "assets/index-xRvqBUJT.js",
+          38199
+        ],
+        [
+          "ort/ort-wasm-simd-threaded.jsep.wasm",
+          21872216
+        ]
+      ],
+      "medianInferenceMs": 332.20000000018626,
+      "stableAcrossThreeRuns": true,
+      "failedResponses": [],
+      "pageErrors": [],
+      "runs": [
+        {
+          "inferenceMs": 802.0999999996275,
+          "evaluation": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 0,
+            "referenceCharacters": 19,
+            "CER": 0,
+            "correctAlignedCharacters": 19,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 0,
+            "referenceCharacters": 19,
+            "CER": 0,
+            "correctAlignedCharacters": 19,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎",
+          "geometryOrderedText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎",
+          "passes": [
+            {
+              "bbox": [
+                0,
+                0,
+                1,
+                1
+              ],
+              "workingSize": [
+                800,
+                230
+              ],
+              "rawItems": [
+                {
+                  "poly": [
+                    [
+                      39,
+                      40
+                    ],
+                    [
+                      416,
+                      38
+                    ],
+                    [
+                      416,
+                      83
+                    ],
+                    [
+                      39,
+                      85
+                    ]
+                  ],
+                  "text": "學而時習之不亦說乎",
+                  "score": 0.9998645451333787
+                },
+                {
+                  "poly": [
+                    [
+                      40,
+                      130
+                    ],
+                    [
+                      457,
+                      130
+                    ],
+                    [
+                      457,
+                      176
+                    ],
+                    [
+                      40,
+                      176
+                    ]
+                  ],
+                  "text": "有朋自遠方來不亦樂乎",
+                  "score": 0.9961853206157685
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "inferenceMs": 332.20000000018626,
+          "evaluation": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 0,
+            "referenceCharacters": 19,
+            "CER": 0,
+            "correctAlignedCharacters": 19,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 0,
+            "referenceCharacters": 19,
+            "CER": 0,
+            "correctAlignedCharacters": 19,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎",
+          "geometryOrderedText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎",
+          "passes": [
+            {
+              "bbox": [
+                0,
+                0,
+                1,
+                1
+              ],
+              "workingSize": [
+                800,
+                230
+              ],
+              "rawItems": [
+                {
+                  "poly": [
+                    [
+                      39,
+                      40
+                    ],
+                    [
+                      416,
+                      38
+                    ],
+                    [
+                      416,
+                      83
+                    ],
+                    [
+                      39,
+                      85
+                    ]
+                  ],
+                  "text": "學而時習之不亦說乎",
+                  "score": 0.9998645451333787
+                },
+                {
+                  "poly": [
+                    [
+                      40,
+                      130
+                    ],
+                    [
+                      457,
+                      130
+                    ],
+                    [
+                      457,
+                      176
+                    ],
+                    [
+                      40,
+                      176
+                    ]
+                  ],
+                  "text": "有朋自遠方來不亦樂乎",
+                  "score": 0.9961853206157685
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "inferenceMs": 309.70000000018626,
+          "evaluation": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 0,
+            "referenceCharacters": 19,
+            "CER": 0,
+            "correctAlignedCharacters": 19,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 0,
+            "referenceCharacters": 19,
+            "CER": 0,
+            "correctAlignedCharacters": 19,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎",
+          "geometryOrderedText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎",
+          "passes": [
+            {
+              "bbox": [
+                0,
+                0,
+                1,
+                1
+              ],
+              "workingSize": [
+                800,
+                230
+              ],
+              "rawItems": [
+                {
+                  "poly": [
+                    [
+                      39,
+                      40
+                    ],
+                    [
+                      416,
+                      38
+                    ],
+                    [
+                      416,
+                      83
+                    ],
+                    [
+                      39,
+                      85
+                    ]
+                  ],
+                  "text": "學而時習之不亦說乎",
+                  "score": 0.9998645451333787
+                },
+                {
+                  "poly": [
+                    [
+                      40,
+                      130
+                    ],
+                    [
+                      457,
+                      130
+                    ],
+                    [
+                      457,
+                      176
+                    ],
+                    [
+                      40,
+                      176
+                    ]
+                  ],
+                  "text": "有朋自遠方來不亦樂乎",
+                  "score": 0.9961853206157685
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "page_2.png",
+      "imageSHA256": "25d71ccf89303934ace399d600d9380751108183af470fb897ebaac541b51401",
+      "sampleKind": "unannotated-scan",
+      "reference": null,
+      "profile": {
+        "kind": "tesseract",
+        "mode": "whole",
+        "tesseractScale": 2,
+        "orientation": "vertical"
+      },
+      "browser": "154.0.8037.57",
+      "crossOriginIsolated": false,
+      "baselineMemory": {
+        "pssMiB": 234.80078125,
+        "rssMiB": 424.7578125,
+        "privateMiB": 160.55859375,
+        "processes": 7
+      },
+      "loadedMemory": {
+        "pssMiB": 385.486328125,
+        "rssMiB": 583.078125,
+        "privateMiB": 305.34765625,
+        "processes": 7
+      },
+      "peakMemory": {
+        "pssMiB": 531.78125,
+        "rssMiB": 728.24609375,
+        "privateMiB": 452.95703125,
+        "processes": 7
+      },
+      "finalMemory": {
+        "pssMiB": 489.9609375,
+        "rssMiB": 686.4296875,
+        "privateMiB": 411.1328125,
+        "processes": 7
+      },
+      "memorySampling": "Linux Chromium process-tree PSS, 100ms interval; includes native/WASM/renderer/worker memory; observed peak, not hardware maximum",
+      "initialization": {
+        "elapsedMs": 485.09999999962747,
+        "kind": "tesseract",
+        "summary": null
+      },
+      "success": true,
+      "staticUniqueResponseBytes": 15995423,
+      "resourceSizes": [
+        [
+          "ocr/bootstrap-worker.js",
+          1013
+        ],
+        [
+          "ocr/runtime/worker.min.js",
+          111307
+        ],
+        [
+          "ocr/tessdata/chi_tra_vert.traineddata.gz",
+          11945998
+        ],
+        [
+          "ocr/runtime/core/tesseract-core-lstm.wasm.js",
+          3896484
+        ],
+        [
+          "assets/index-ax5NzkK_.css",
+          484
+        ],
+        [
+          "index.html",
+          1938
+        ],
+        [
+          "assets/index-xRvqBUJT.js",
+          38199
+        ]
+      ],
+      "medianInferenceMs": 4753.100000000093,
+      "stableAcrossThreeRuns": true,
+      "failedResponses": [],
+      "pageErrors": [],
+      "runs": [
+        {
+          "inferenceMs": 4983.399999999907,
+          "evaluation": null,
+          "nativeOrderEvaluation": null,
+          "rawOutputLocation": "Ignored local results/comparison-private.json; no ground truth, accuracy not measured."
+        },
+        {
+          "inferenceMs": 4753.100000000093,
+          "evaluation": null,
+          "nativeOrderEvaluation": null,
+          "rawOutputLocation": "Ignored local results/comparison-private.json; no ground truth, accuracy not measured."
+        },
+        {
+          "inferenceMs": 4677.899999999907,
+          "evaluation": null,
+          "nativeOrderEvaluation": null,
+          "rawOutputLocation": "Ignored local results/comparison-private.json; no ground truth, accuracy not measured."
+        }
+      ]
+    },
+    {
+      "file": "page_2.png",
+      "imageSHA256": "25d71ccf89303934ace399d600d9380751108183af470fb897ebaac541b51401",
+      "sampleKind": "unannotated-scan",
+      "reference": null,
+      "profile": {
+        "kind": "tesseract",
+        "mode": "whole",
+        "tesseractScale": 1,
+        "orientation": "vertical"
+      },
+      "browser": "154.0.8037.57",
+      "crossOriginIsolated": false,
+      "baselineMemory": {
+        "pssMiB": 234.720703125,
+        "rssMiB": 424.5625,
+        "privateMiB": 160.40234375,
+        "processes": 7
+      },
+      "loadedMemory": {
+        "pssMiB": 386.34765625,
+        "rssMiB": 583.921875,
+        "privateMiB": 306.1015625,
+        "processes": 7
+      },
+      "peakMemory": {
+        "pssMiB": 469.783203125,
+        "rssMiB": 666.984375,
+        "privateMiB": 390.90234375,
+        "processes": 7
+      },
+      "finalMemory": {
+        "pssMiB": 462.080078125,
+        "rssMiB": 659.3828125,
+        "privateMiB": 383.1796875,
+        "processes": 7
+      },
+      "memorySampling": "Linux Chromium process-tree PSS, 100ms interval; includes native/WASM/renderer/worker memory; observed peak, not hardware maximum",
+      "initialization": {
+        "elapsedMs": 462.8000000002794,
+        "kind": "tesseract",
+        "summary": null
+      },
+      "success": true,
+      "staticUniqueResponseBytes": 15995423,
+      "resourceSizes": [
+        [
+          "ocr/bootstrap-worker.js",
+          1013
+        ],
+        [
+          "ocr/runtime/worker.min.js",
+          111307
+        ],
+        [
+          "ocr/tessdata/chi_tra_vert.traineddata.gz",
+          11945998
+        ],
+        [
+          "ocr/runtime/core/tesseract-core-lstm.wasm.js",
+          3896484
+        ],
+        [
+          "assets/index-ax5NzkK_.css",
+          484
+        ],
+        [
+          "index.html",
+          1938
+        ],
+        [
+          "assets/index-xRvqBUJT.js",
+          38199
+        ]
+      ],
+      "medianInferenceMs": 3509.0999999996275,
+      "stableAcrossThreeRuns": true,
+      "failedResponses": [],
+      "pageErrors": [],
+      "runs": [
+        {
+          "inferenceMs": 3726.399999999907,
+          "evaluation": null,
+          "nativeOrderEvaluation": null,
+          "rawOutputLocation": "Ignored local results/comparison-private.json; no ground truth, accuracy not measured."
+        },
+        {
+          "inferenceMs": 3498.899999999907,
+          "evaluation": null,
+          "nativeOrderEvaluation": null,
+          "rawOutputLocation": "Ignored local results/comparison-private.json; no ground truth, accuracy not measured."
+        },
+        {
+          "inferenceMs": 3509.0999999996275,
+          "evaluation": null,
+          "nativeOrderEvaluation": null,
+          "rawOutputLocation": "Ignored local results/comparison-private.json; no ground truth, accuracy not measured."
+        }
+      ]
+    },
+    {
+      "file": "page_2.png",
+      "imageSHA256": "25d71ccf89303934ace399d600d9380751108183af470fb897ebaac541b51401",
+      "sampleKind": "unannotated-scan",
+      "reference": null,
+      "profile": {
+        "kind": "paddle",
+        "mode": "whole",
+        "orientation": "vertical"
+      },
+      "browser": "154.0.8037.57",
+      "crossOriginIsolated": false,
+      "baselineMemory": {
+        "pssMiB": 235.6376953125,
+        "rssMiB": 426.22265625,
+        "privateMiB": 160.66015625,
+        "processes": 7
+      },
+      "loadedMemory": {
+        "pssMiB": 643.3173828125,
+        "rssMiB": 842.2421875,
+        "privateMiB": 561.9375,
+        "processes": 7
+      },
+      "peakMemory": {
+        "pssMiB": 823.1220703125,
+        "rssMiB": 1022.3359375,
+        "privateMiB": 741.55859375,
+        "processes": 7
+      },
+      "finalMemory": {
+        "pssMiB": 639.9521484375,
+        "rssMiB": 836.58984375,
+        "privateMiB": 560.99609375,
+        "processes": 7
+      },
+      "memorySampling": "Linux Chromium process-tree PSS, 100ms interval; includes native/WASM/renderer/worker memory; observed peak, not hardware maximum",
+      "initialization": {
+        "elapsedMs": 1632.3999999999069,
+        "kind": "paddle",
+        "summary": {
+          "backend": "wasm",
+          "webgpuAvailable": false,
+          "detProvider": "wasm",
+          "recProvider": "wasm",
+          "assets": [
+            {
+              "url": "http://127.0.0.1:4181/ancient-text-transcriber/experiments/paddle/models/PP-OCRv5_mobile_det.tar",
+              "bytes": 4899840
+            },
+            {
+              "url": "http://127.0.0.1:4181/ancient-text-transcriber/experiments/paddle/models/PP-OCRv5_mobile_rec.tar",
+              "bytes": 16672768
+            }
+          ],
+          "elapsedMs": 1014.7999999998137,
+          "pipelineConfigWarnings": [
+            "DocPreprocessor is not yet supported in PaddleOCR.js: config will be ignored for now.",
+            "TextLineOrientation is not yet supported in PaddleOCR.js: config will be ignored for now."
+          ]
+        }
+      },
+      "success": true,
+      "staticUniqueResponseBytes": 54398014,
+      "resourceSizes": [
+        [
+          "assets/ort.bundle.min-C4VuFU5w.js",
+          390762
+        ],
+        [
+          "models/PP-OCRv5_mobile_rec.tar",
+          16672768
+        ],
+        [
+          "assets/dist-h7lN3tmu.js",
+          10476242
+        ],
+        [
+          "model-status.json",
+          888
+        ],
+        [
+          "ort/ort-wasm-simd-threaded.jsep.mjs",
+          44677
+        ],
+        [
+          "assets/index-ax5NzkK_.css",
+          484
+        ],
+        [
+          "index.html",
+          1938
+        ],
+        [
+          "models/PP-OCRv5_mobile_det.tar",
+          4899840
+        ],
+        [
+          "assets/index-xRvqBUJT.js",
+          38199
+        ],
+        [
+          "ort/ort-wasm-simd-threaded.jsep.wasm",
+          21872216
+        ]
+      ],
+      "medianInferenceMs": 1219.2999999998137,
+      "stableAcrossThreeRuns": true,
+      "failedResponses": [],
+      "pageErrors": [],
+      "runs": [
+        {
+          "inferenceMs": 1740.5,
+          "evaluation": null,
+          "nativeOrderEvaluation": null,
+          "rawOutputLocation": "Ignored local results/comparison-private.json; no ground truth, accuracy not measured."
+        },
+        {
+          "inferenceMs": 1173.1000000000931,
+          "evaluation": null,
+          "nativeOrderEvaluation": null,
+          "rawOutputLocation": "Ignored local results/comparison-private.json; no ground truth, accuracy not measured."
+        },
+        {
+          "inferenceMs": 1219.2999999998137,
+          "evaluation": null,
+          "nativeOrderEvaluation": null,
+          "rawOutputLocation": "Ignored local results/comparison-private.json; no ground truth, accuracy not measured."
+        }
+      ]
+    },
+    {
+      "file": "maoshi.png",
+      "imageSHA256": "c6907d556a85dea768180ff974c3bfd5066fe70fb5f5c019f4ea5ce0d383acfc",
+      "sampleKind": "unannotated-scan",
+      "reference": null,
+      "profile": {
+        "kind": "tesseract",
+        "mode": "whole",
+        "tesseractScale": 2,
+        "orientation": "vertical"
+      },
+      "browser": "154.0.8037.57",
+      "crossOriginIsolated": false,
+      "baselineMemory": {
+        "pssMiB": 233.7783203125,
+        "rssMiB": 422.43359375,
+        "privateMiB": 160.72265625,
+        "processes": 7
+      },
+      "loadedMemory": {
+        "pssMiB": 385.595703125,
+        "rssMiB": 582.6328125,
+        "privateMiB": 305.890625,
+        "processes": 7
+      },
+      "peakMemory": {
+        "pssMiB": 447.341796875,
+        "rssMiB": 643.23828125,
+        "privateMiB": 368.96875,
+        "processes": 7
+      },
+      "finalMemory": {
+        "pssMiB": 442.818359375,
+        "rssMiB": 638.71484375,
+        "privateMiB": 364.4453125,
+        "processes": 7
+      },
+      "memorySampling": "Linux Chromium process-tree PSS, 100ms interval; includes native/WASM/renderer/worker memory; observed peak, not hardware maximum",
+      "initialization": {
+        "elapsedMs": 485.5,
+        "kind": "tesseract",
+        "summary": null
+      },
+      "success": true,
+      "staticUniqueResponseBytes": 15995423,
+      "resourceSizes": [
+        [
+          "ocr/bootstrap-worker.js",
+          1013
+        ],
+        [
+          "ocr/runtime/worker.min.js",
+          111307
+        ],
+        [
+          "ocr/tessdata/chi_tra_vert.traineddata.gz",
+          11945998
+        ],
+        [
+          "ocr/runtime/core/tesseract-core-lstm.wasm.js",
+          3896484
+        ],
+        [
+          "assets/index-ax5NzkK_.css",
+          484
+        ],
+        [
+          "index.html",
+          1938
+        ],
+        [
+          "assets/index-xRvqBUJT.js",
+          38199
+        ]
+      ],
+      "medianInferenceMs": 5488.600000000093,
+      "stableAcrossThreeRuns": true,
+      "failedResponses": [],
+      "pageErrors": [],
+      "runs": [
+        {
+          "inferenceMs": 5666,
+          "evaluation": null,
+          "nativeOrderEvaluation": null,
+          "rawOutputLocation": "Ignored local results/comparison-private.json; no ground truth, accuracy not measured."
+        },
+        {
+          "inferenceMs": 5466.399999999907,
+          "evaluation": null,
+          "nativeOrderEvaluation": null,
+          "rawOutputLocation": "Ignored local results/comparison-private.json; no ground truth, accuracy not measured."
+        },
+        {
+          "inferenceMs": 5488.600000000093,
+          "evaluation": null,
+          "nativeOrderEvaluation": null,
+          "rawOutputLocation": "Ignored local results/comparison-private.json; no ground truth, accuracy not measured."
+        }
+      ]
+    },
+    {
+      "file": "maoshi.png",
+      "imageSHA256": "c6907d556a85dea768180ff974c3bfd5066fe70fb5f5c019f4ea5ce0d383acfc",
+      "sampleKind": "unannotated-scan",
+      "reference": null,
+      "profile": {
+        "kind": "tesseract",
+        "mode": "whole",
+        "tesseractScale": 1,
+        "orientation": "vertical"
+      },
+      "browser": "154.0.8037.57",
+      "crossOriginIsolated": false,
+      "baselineMemory": {
+        "pssMiB": 235.7412109375,
+        "rssMiB": 425.7265625,
+        "privateMiB": 161.47265625,
+        "processes": 7
+      },
+      "loadedMemory": {
+        "pssMiB": 386.2021484375,
+        "rssMiB": 583.81640625,
+        "privateMiB": 306.046875,
+        "processes": 7
+      },
+      "peakMemory": {
+        "pssMiB": 426.232421875,
+        "rssMiB": 624.21875,
+        "privateMiB": 345.796875,
+        "processes": 7
+      },
+      "finalMemory": {
+        "pssMiB": 411.1787109375,
+        "rssMiB": 607.4609375,
+        "privateMiB": 332.55078125,
+        "processes": 7
+      },
+      "memorySampling": "Linux Chromium process-tree PSS, 100ms interval; includes native/WASM/renderer/worker memory; observed peak, not hardware maximum",
+      "initialization": {
+        "elapsedMs": 463.79999999981374,
+        "kind": "tesseract",
+        "summary": null
+      },
+      "success": true,
+      "staticUniqueResponseBytes": 15995423,
+      "resourceSizes": [
+        [
+          "ocr/bootstrap-worker.js",
+          1013
+        ],
+        [
+          "ocr/runtime/worker.min.js",
+          111307
+        ],
+        [
+          "ocr/tessdata/chi_tra_vert.traineddata.gz",
+          11945998
+        ],
+        [
+          "ocr/runtime/core/tesseract-core-lstm.wasm.js",
+          3896484
+        ],
+        [
+          "assets/index-ax5NzkK_.css",
+          484
+        ],
+        [
+          "index.html",
+          1938
+        ],
+        [
+          "assets/index-xRvqBUJT.js",
+          38199
+        ]
+      ],
+      "medianInferenceMs": 4637.899999999907,
+      "stableAcrossThreeRuns": true,
+      "failedResponses": [],
+      "pageErrors": [],
+      "runs": [
+        {
+          "inferenceMs": 4637.899999999907,
+          "evaluation": null,
+          "nativeOrderEvaluation": null,
+          "rawOutputLocation": "Ignored local results/comparison-private.json; no ground truth, accuracy not measured."
+        },
+        {
+          "inferenceMs": 4656.5,
+          "evaluation": null,
+          "nativeOrderEvaluation": null,
+          "rawOutputLocation": "Ignored local results/comparison-private.json; no ground truth, accuracy not measured."
+        },
+        {
+          "inferenceMs": 4587.5,
+          "evaluation": null,
+          "nativeOrderEvaluation": null,
+          "rawOutputLocation": "Ignored local results/comparison-private.json; no ground truth, accuracy not measured."
+        }
+      ]
+    },
+    {
+      "file": "maoshi.png",
+      "imageSHA256": "c6907d556a85dea768180ff974c3bfd5066fe70fb5f5c019f4ea5ce0d383acfc",
+      "sampleKind": "unannotated-scan",
+      "reference": null,
+      "profile": {
+        "kind": "paddle",
+        "mode": "whole",
+        "orientation": "vertical"
+      },
+      "browser": "154.0.8037.57",
+      "crossOriginIsolated": false,
+      "baselineMemory": {
+        "pssMiB": 234.7705078125,
+        "rssMiB": 424.046875,
+        "privateMiB": 161.10546875,
+        "processes": 7
+      },
+      "loadedMemory": {
+        "pssMiB": 669.390625,
+        "rssMiB": 867.15234375,
+        "privateMiB": 589.1875,
+        "processes": 7
+      },
+      "peakMemory": {
+        "pssMiB": 809.4658203125,
+        "rssMiB": 1007.5078125,
+        "privateMiB": 729.0859375,
+        "processes": 7
+      },
+      "finalMemory": {
+        "pssMiB": 583.4716796875,
+        "rssMiB": 780.12890625,
+        "privateMiB": 504.5625,
+        "processes": 7
+      },
+      "memorySampling": "Linux Chromium process-tree PSS, 100ms interval; includes native/WASM/renderer/worker memory; observed peak, not hardware maximum",
+      "initialization": {
+        "elapsedMs": 1619,
+        "kind": "paddle",
+        "summary": {
+          "backend": "wasm",
+          "webgpuAvailable": false,
+          "detProvider": "wasm",
+          "recProvider": "wasm",
+          "assets": [
+            {
+              "url": "http://127.0.0.1:4181/ancient-text-transcriber/experiments/paddle/models/PP-OCRv5_mobile_det.tar",
+              "bytes": 4899840
+            },
+            {
+              "url": "http://127.0.0.1:4181/ancient-text-transcriber/experiments/paddle/models/PP-OCRv5_mobile_rec.tar",
+              "bytes": 16672768
+            }
+          ],
+          "elapsedMs": 987.6000000000931,
+          "pipelineConfigWarnings": [
+            "DocPreprocessor is not yet supported in PaddleOCR.js: config will be ignored for now.",
+            "TextLineOrientation is not yet supported in PaddleOCR.js: config will be ignored for now."
+          ]
+        }
+      },
+      "success": true,
+      "staticUniqueResponseBytes": 54398014,
+      "resourceSizes": [
+        [
+          "assets/ort.bundle.min-C4VuFU5w.js",
+          390762
+        ],
+        [
+          "models/PP-OCRv5_mobile_rec.tar",
+          16672768
+        ],
+        [
+          "assets/dist-h7lN3tmu.js",
+          10476242
+        ],
+        [
+          "model-status.json",
+          888
+        ],
+        [
+          "ort/ort-wasm-simd-threaded.jsep.mjs",
+          44677
+        ],
+        [
+          "assets/index-ax5NzkK_.css",
+          484
+        ],
+        [
+          "index.html",
+          1938
+        ],
+        [
+          "models/PP-OCRv5_mobile_det.tar",
+          4899840
+        ],
+        [
+          "assets/index-xRvqBUJT.js",
+          38199
+        ],
+        [
+          "ort/ort-wasm-simd-threaded.jsep.wasm",
+          21872216
+        ]
+      ],
+      "medianInferenceMs": 4609.5,
+      "stableAcrossThreeRuns": true,
+      "failedResponses": [],
+      "pageErrors": [],
+      "runs": [
+        {
+          "inferenceMs": 5269,
+          "evaluation": null,
+          "nativeOrderEvaluation": null,
+          "rawOutputLocation": "Ignored local results/comparison-private.json; no ground truth, accuracy not measured."
+        },
+        {
+          "inferenceMs": 4514.5,
+          "evaluation": null,
+          "nativeOrderEvaluation": null,
+          "rawOutputLocation": "Ignored local results/comparison-private.json; no ground truth, accuracy not measured."
+        },
+        {
+          "inferenceMs": 4609.5,
+          "evaluation": null,
+          "nativeOrderEvaluation": null,
+          "rawOutputLocation": "Ignored local results/comparison-private.json; no ground truth, accuracy not measured."
+        }
+      ]
+    },
+    {
+      "file": "example.png",
+      "imageSHA256": "0b0a30736f513b0e66a8752ea00366b239162d6830fbda0cf34bc58cb8b1d4e3",
+      "sampleKind": "modern-synthetic",
+      "reference": "學而時習之不亦說乎有朋自遠方來不亦樂乎人不知而不慍不亦君子乎",
+      "profile": {
+        "kind": "tesseract",
+        "mode": "columns",
+        "tesseractScale": 1,
+        "orientation": "vertical"
+      },
+      "browser": "154.0.8037.57",
+      "crossOriginIsolated": false,
+      "baselineMemory": {
+        "pssMiB": 233.919921875,
+        "rssMiB": 423.55078125,
+        "privateMiB": 159.90625,
+        "processes": 7
+      },
+      "loadedMemory": {
+        "pssMiB": 384.91796875,
+        "rssMiB": 582.1484375,
+        "privateMiB": 305.0234375,
+        "processes": 7
+      },
+      "peakMemory": {
+        "pssMiB": 411.0859375,
+        "rssMiB": 608.8203125,
+        "privateMiB": 330.8046875,
+        "processes": 7
+      },
+      "finalMemory": {
+        "pssMiB": 411.73046875,
+        "rssMiB": 609.48046875,
+        "privateMiB": 331.43359375,
+        "processes": 7
+      },
+      "memorySampling": "Linux Chromium process-tree PSS, 100ms interval; includes native/WASM/renderer/worker memory; observed peak, not hardware maximum",
+      "initialization": {
+        "elapsedMs": 501.10000000009313,
+        "kind": "tesseract",
+        "summary": null
+      },
+      "success": true,
+      "staticUniqueResponseBytes": 15995423,
+      "resourceSizes": [
+        [
+          "ocr/bootstrap-worker.js",
+          1013
+        ],
+        [
+          "ocr/runtime/worker.min.js",
+          111307
+        ],
+        [
+          "ocr/tessdata/chi_tra_vert.traineddata.gz",
+          11945998
+        ],
+        [
+          "ocr/runtime/core/tesseract-core-lstm.wasm.js",
+          3896484
+        ],
+        [
+          "assets/index-ax5NzkK_.css",
+          484
+        ],
+        [
+          "index.html",
+          1938
+        ],
+        [
+          "assets/index-xRvqBUJT.js",
+          38199
+        ]
+      ],
+      "medianInferenceMs": 731.1999999997206,
+      "stableAcrossThreeRuns": true,
+      "failedResponses": [],
+      "pageErrors": [],
+      "runs": [
+        {
+          "inferenceMs": 823.7000000001863,
+          "evaluation": {
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 1,
+            "referenceCharacters": 30,
+            "CER": 0.03333333333333333,
+            "correctAlignedCharacters": 29,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 1,
+            "referenceCharacters": 30,
+            "CER": 0.03333333333333333,
+            "correctAlignedCharacters": 29,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "學而時習之不亦說乎\n\n  有朋自遠方來不亦樂乎\n\n人不知而不骨不亦君子乎\n",
+          "geometryOrderedText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎\n人不知而不骨不亦君子乎",
+          "passes": [
+            {
+              "bbox": [
+                0.6666666666666666,
+                0,
+                0.33333333333333337,
+                1
+              ],
+              "workingSize": [
+                247,
+                900
+              ],
+              "rawItems": null
+            },
+            {
+              "bbox": [
+                0.3333333333333333,
+                0,
+                0.3333333333333333,
+                1
+              ],
+              "workingSize": [
+                246,
+                900
+              ],
+              "rawItems": null
+            },
+            {
+              "bbox": [
+                0,
+                0,
+                0.3333333333333333,
+                1
+              ],
+              "workingSize": [
+                247,
+                900
+              ],
+              "rawItems": null
+            }
+          ]
+        },
+        {
+          "inferenceMs": 731.1999999997206,
+          "evaluation": {
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 1,
+            "referenceCharacters": 30,
+            "CER": 0.03333333333333333,
+            "correctAlignedCharacters": 29,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 1,
+            "referenceCharacters": 30,
+            "CER": 0.03333333333333333,
+            "correctAlignedCharacters": 29,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "學而時習之不亦說乎\n\n  有朋自遠方來不亦樂乎\n\n人不知而不骨不亦君子乎\n",
+          "geometryOrderedText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎\n人不知而不骨不亦君子乎",
+          "passes": [
+            {
+              "bbox": [
+                0.6666666666666666,
+                0,
+                0.33333333333333337,
+                1
+              ],
+              "workingSize": [
+                247,
+                900
+              ],
+              "rawItems": null
+            },
+            {
+              "bbox": [
+                0.3333333333333333,
+                0,
+                0.3333333333333333,
+                1
+              ],
+              "workingSize": [
+                246,
+                900
+              ],
+              "rawItems": null
+            },
+            {
+              "bbox": [
+                0,
+                0,
+                0.3333333333333333,
+                1
+              ],
+              "workingSize": [
+                247,
+                900
+              ],
+              "rawItems": null
+            }
+          ]
+        },
+        {
+          "inferenceMs": 660.3999999999069,
+          "evaluation": {
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 1,
+            "referenceCharacters": 30,
+            "CER": 0.03333333333333333,
+            "correctAlignedCharacters": 29,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "nativeOrderEvaluation": {
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 0,
+            "distance": 1,
+            "referenceCharacters": 30,
+            "CER": 0.03333333333333333,
+            "correctAlignedCharacters": 29,
+            "note": "Aligned matches; reference supplied by a human, never passed to OCR."
+          },
+          "rawEngineText": "學而時習之不亦說乎\n\n  有朋自遠方來不亦樂乎\n\n人不知而不骨不亦君子乎\n",
+          "geometryOrderedText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎\n人不知而不骨不亦君子乎",
+          "passes": [
+            {
+              "bbox": [
+                0.6666666666666666,
+                0,
+                0.33333333333333337,
+                1
+              ],
+              "workingSize": [
+                247,
+                900
+              ],
+              "rawItems": null
+            },
+            {
+              "bbox": [
+                0.3333333333333333,
+                0,
+                0.3333333333333333,
+                1
+              ],
+              "workingSize": [
+                246,
+                900
+              ],
+              "rawItems": null
+            },
+            {
+              "bbox": [
+                0,
+                0,
+                0.3333333333333333,
+                1
+              ],
+              "workingSize": [
+                247,
+                900
+              ],
+              "rawItems": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

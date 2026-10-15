@@ -1,0 +1,9 @@
+{
+  "status": "Not acquired or run in this experiment: cloud proxy denied CONNECT with HTTP 403.",
+  "note": "Future official/community weight comparison must use a separate manifest and independently verify hashes. Never overwrite this experiment's pinned community checksums to accept different files.",
+  "sdkSource": "https://github.com/PaddlePaddle/PaddleOCR/blob/dab3fe35379033fdcb2d0e9572fac0b36c9a9ebf/paddleocr-js/packages/core/src/resources/model-asset.ts",
+  "officialAssets": [
+    "https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0.0/PP-OCRv5_mobile_det_onnx_infer.tar",
+    "https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0.0/PP-OCRv5_mobile_rec_onnx_infer.tar"
+  ]
+}
