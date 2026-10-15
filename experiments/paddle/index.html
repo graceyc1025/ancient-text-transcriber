@@ -2,10 +2,26 @@
 <main><h1>Tesseract / PaddleOCR 对照实验</h1><p>独立研究原型，未替换正式网站。所有推理在浏览器运行，不调用付费API。Paddle使用官方SDK与社区导出的PP-OCRv5模型，尚未证明清代古籍精度。汉字数量不代表正确字数；准确率需要人工真值。</p>
 <label>引擎 <select id="engine"><option value="tesseract">Tesseract chi_tra_vert</option><option value="paddle">PaddleOCR.js PP-OCRv5 mobile</option></select></label>
 <label>排版 <select id="orientation"><option value="vertical">竖排右至左</option><option value="horizontal">横排</option></select></label>
-<label>识别 <select id="mode"><option value="whole">整页</option><option value="columns">均分3栏（仅适合已知3栏图）</option></select></label>
+<label>单次识别 <select id="mode"><option value="whole">整页</option><option value="columns">按下方设置分栏</option></select></label>
+<fieldset id="testSettings"><legend>同图对照设置</legend>
+<label>分栏列数 <input id="columnCount" type="number" min="1" max="30" value="3"></label>
+<label>可选：从左至右的栏边界百分比（例如0, 17, 35, 53, 70, 85, 100；留空则均分）<input id="columnCuts" type="text"></label>
+<label>两引擎共同放大倍数 <select id="imageScale"><option value="1">原尺寸</option><option value="2">2倍</option><option value="3">3倍</option></select></label>
+<label>逐字比较空白规则 <select id="whitespace"><option value="layout">忽略半角空格、Tab、换行；保留全角空格</option><option value="strict">全部码位严格比较，包含空白</option></select></label>
+<label>样本性质 <select id="sampleType"><option value="unverified">年代/版本未核定</option><option value="qing-user-declared">用户声明的清代原书扫描（须填写来源）</option><option value="synthetic">现代排版演示，非古籍精度样本</option></select></label>
+<label>书名、刊刻年代/版本、卷页号、来源链接和转录范围 <textarea id="sourceNotes" rows="2"></textarea></label>
+</fieldset>
 <input id="image" type="file" accept="image/png,image/jpeg"><button id="run">运行真实OCR</button><button id="sample">选择现代竖排演示图</button>
 <p id="status" role="status">请选择图片。Paddle模型未就绪时会明确报错。</p>
 <label>人工校对标准文本（只用于评分，不传给引擎）<textarea id="truth" rows="4"></textarea></label>
-<div class="comparison"><img id="preview" alt="原图"><label>原始候选按几何顺序输出<textarea id="output" rows="15" readonly></textarea></label></div>
+<label>或导入UTF-8标准TXT <input id="truthFile" type="file" accept=".txt,text/plain"></label>
+<label>校对者/版本备注 <input id="reviewer" type="text"></label>
+<label><input id="reviewed" type="checkbox">标准已逐字人工校对，且覆盖范围与当前图片一致</label>
+<p>繁简、异体字、标点、Unicode变体序列不归并、不补写。标准含□或�时不计算CER。请先裁出单页或明确区域，使整页和分栏测试对应同一份标准。蓝线仅为裁切边界预览，需确认没有切字。</p>
+<button id="runSuite">同图运行两引擎×整页/分栏（4种方法）</button><button id="stopSuite" disabled>完成当前方法后停止</button><button id="exportCase">保存测试输入清单JSON（不含图片）</button>
+<button id="exportRecords" disabled>保存全部测试记录JSON</button><button id="exportCSV" disabled>保存汇总CSV</button>
+<p id="inputNote">修改输入会生成新的测试快照，不改写已有记录。刷新前请导出；普通页面不提供全浏览器内存峰值。</p>
+<div class="comparison"><div id="previewStage"><img id="preview" alt="当前待测试原图"><div id="cutsPreview"></div></div><label>单次识别的几何阅读序候选<textarea id="output" rows="15" readonly></textarea></label></div>
 <pre id="details"></pre><button id="download">保存本次原始结果JSON</button>
+<section id="suiteResults" aria-label="不可变测试记录"></section>
 </main></body></html>

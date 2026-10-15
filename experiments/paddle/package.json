@@ -7,7 +7,9 @@
     "build": "node prepare.mjs && vite build",
     "dev": "node prepare.mjs && vite --host 127.0.0.1 --port 5180",
     "benchmark": "node benchmark.mjs",
-    "test": "node --test experiment.test.mjs"
+    "test": "node --test experiment.test.mjs",
+    "test:case": "node qa-case-check.mjs",
+    "benchmark:case": "node case-benchmark.mjs"
   },
   "dependencies": {
     "@paddleocr/paddleocr-js": "0.4.2",

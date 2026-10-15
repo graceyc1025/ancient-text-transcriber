@@ -1,0 +1,2864 @@
+{
+  "scope": "现代排版工具验收，不是清代古籍准确率评测；清代图像/人工标准配对缺失。",
+  "schema": "ancient-ocr-comparison-v2",
+  "id": "bb176f0a-7bad-4628-a0a5-8259d01f1472",
+  "case": {
+    "schema": "ancient-ocr-case-v1",
+    "id": "c87792f1-5dc5-434e-849c-1c6e810bc90e",
+    "createdAt": "2026-10-15T03:07:33.321Z",
+    "image": {
+      "fileName": "example.png",
+      "mime": "image/png",
+      "bytes": 35968,
+      "width": 740,
+      "height": 900,
+      "sha256": "0b0a30736f513b0e66a8752ea00366b239162d6830fbda0cf34bc58cb8b1d4e3"
+    },
+    "reference": {
+      "text": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎\n人不知而不慍不亦君子乎",
+      "sha256": "9ec832fde1e07e378e6a430d7bbe93fd828aa6f2e2b7dfad0b130072fd20b280",
+      "reviewed": true,
+      "reviewer": "fixture checked against the source image",
+      "importedFile": {
+        "fileName": "modern-reviewed.txt",
+        "sha256": "9ec832fde1e07e378e6a430d7bbe93fd828aa6f2e2b7dfad0b130072fd20b280",
+        "originalText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎\n人不知而不慍不亦君子乎"
+      }
+    },
+    "metadata": {
+      "source": "现代合成流程验收，不是清代样本",
+      "sampleType": "synthetic"
+    },
+    "settings": {
+      "orientation": "vertical",
+      "columnCount": 3,
+      "columnCuts": "0, 33.33333333333333, 66.66666666666667, 100",
+      "imageScale": 1,
+      "whitespace": "layout",
+      "columnBoxes": [
+        [
+          0.6666666666666667,
+          0,
+          0.33333333333333326,
+          1
+        ],
+        [
+          0.33333333333333326,
+          0,
+          0.3333333333333335,
+          1
+        ],
+        [
+          0,
+          0,
+          0.33333333333333326,
+          1
+        ]
+      ]
+    },
+    "rules": {
+      "version": "exact-unicode-v1",
+      "variants": "exact-code-points; no normalization or folding",
+      "uncertainReference": "CER unavailable if reference contains □ or U+FFFD",
+      "punctuation": "preserved"
+    }
+  },
+  "startedAt": "2026-10-15T03:07:44.059Z",
+  "methods": [
+    {
+      "id": "tesseract-whole",
+      "kind": "tesseract",
+      "mode": "whole",
+      "label": "Tesseract 整页",
+      "status": "done",
+      "startedAt": "2026-10-15T03:07:44.804Z",
+      "recognition": {
+        "pipelineVersion": "raw-candidate-comparison-v2",
+        "engine": "tesseract",
+        "orientation": "vertical",
+        "mode": "whole",
+        "initialization": {
+          "elapsedMs": 484.79999999981374,
+          "kind": "tesseract",
+          "reused": false,
+          "summary": null
+        },
+        "inferenceMs": 683.0999999996275,
+        "imageScale": 1,
+        "parameters": {
+          "tessedit_pageseg_mode": "5"
+        },
+        "processing": {
+          "grayscale": false,
+          "contrast": 100,
+          "binary": "none",
+          "maxWorkingPixels": 5000000
+        },
+        "confidenceMasking": false,
+        "text": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎\n人不知而不骨不亦君子乎",
+        "originalText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎\n人不知而不骨不亦君子乎\n",
+        "passes": [
+          {
+            "bbox": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "workingSize": [
+              740,
+              900
+            ],
+            "memoryLimited": false,
+            "model": "chi_tra_vert",
+            "psm": "5",
+            "rawText": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎\n人不知而不骨不亦君子乎\n",
+            "rawTSV": "1\t1\t0\t0\t0\t0\t0\t0\t740\t900\t-1\t\n2\t1\t1\t0\t0\t0\t181\t112\t437\t587\t-1\t\n3\t1\t1\t1\t0\t0\t181\t112\t437\t587\t-1\t\n4\t1\t1\t1\t1\t0\t581\t112\t37\t477\t-1\t\n5\t1\t1\t1\t1\t1\t582\t112\t35\t37\t96.932404\t學\n5\t1\t1\t1\t1\t2\t582\t182\t35\t22\t96.500427\t而\n5\t1\t1\t1\t1\t3\t583\t233\t35\t26\t93.190140\t時\n5\t1\t1\t1\t1\t4\t582\t280\t34\t61\t89.394478\t習\n5\t1\t1\t1\t1\t5\t581\t341\t35\t27\t96.946037\t之\n5\t1\t1\t1\t1\t6\t582\t392\t35\t32\t93.147919\t不\n5\t1\t1\t1\t1\t7\t582\t448\t35\t31\t88.424057\t亦\n5\t1\t1\t1\t1\t8\t582\t498\t36\t35\t93.247147\t說\n5\t1\t1\t1\t1\t9\t582\t552\t35\t37\t13.205299\t乎\n4\t1\t1\t1\t2\t0\t381\t112\t37\t532\t-1\t\n5\t1\t1\t1\t2\t1\t382\t112\t35\t37\t93.105545\t有\n5\t1\t1\t1\t2\t2\t382\t169\t34\t35\t87.524246\t朋\n5\t1\t1\t1\t2\t3\t388\t222\t25\t37\t90.478737\t自\n5\t1\t1\t1\t2\t4\t381\t280\t37\t89\t95.741325\t遠方\n5\t1\t1\t1\t2\t5\t382\t397\t35\t27\t96.985725\t來\n5\t1\t1\t1\t2\t6\t382\t448\t35\t31\t93.190414\t不\n5\t1\t1\t1\t2\t7\t382\t500\t35\t34\t92.470787\t亦\n5\t1\t1\t1\t2\t8\t381\t556\t36\t33\t92.684036\t樂\n5\t1\t1\t1\t2\t9\t382\t611\t35\t33\t83.516434\t乎\n4\t1\t1\t1\t3\t0\t181\t113\t37\t586\t-1\t\n5\t1\t1\t1\t3\t1\t182\t113\t35\t36\t96.971657\t人\n5\t1\t1\t1\t3\t2\t182\t168\t35\t36\t93.099113\t不\n5\t1\t1\t1\t3\t3\t182\t222\t35\t37\t54.479366\t知\n5\t1\t1\t1\t3\t4\t182\t279\t35\t35\t96.802155\t而\n5\t1\t1\t1\t3\t5\t182\t333\t35\t36\t93.205605\t不\n5\t1\t1\t1\t3\t6\t181\t388\t37\t36\t0.000000\t骨\n5\t1\t1\t1\t3\t7\t182\t443\t35\t36\t0.000000\t不\n5\t1\t1\t1\t3\t8\t182\t501\t35\t33\t86.549835\t亦\n5\t1\t1\t1\t3\t9\t182\t566\t35\t78\t93.212875\t君子\n5\t1\t1\t1\t3\t10\t182\t664\t35\t35\t89.767822\t乎\n",
+            "sortedRaw": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎\n人不知而不骨不亦君子乎",
+            "text": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎\n人不知而不骨不亦君子乎",
+            "confidenceMasking": false
+          }
+        ]
+      },
+      "evaluation": {
+        "rulesVersion": "exact-unicode-v1",
+        "whitespace": "layout",
+        "referenceCharacters": 30,
+        "candidateCharacters": 30,
+        "CER": 0.03333333333333333,
+        "scorable": true,
+        "reason": null,
+        "substitutions": 1,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 1,
+        "correctAlignedCharacters": 29,
+        "alignment": [
+          {
+            "type": "match",
+            "referenceIndex": 1,
+            "candidateIndex": 1,
+            "expected": "學",
+            "observed": "學"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 2,
+            "candidateIndex": 2,
+            "expected": "而",
+            "observed": "而"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 3,
+            "candidateIndex": 3,
+            "expected": "時",
+            "observed": "時"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 4,
+            "candidateIndex": 4,
+            "expected": "習",
+            "observed": "習"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 5,
+            "candidateIndex": 5,
+            "expected": "之",
+            "observed": "之"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 6,
+            "candidateIndex": 6,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 7,
+            "candidateIndex": 7,
+            "expected": "亦",
+            "observed": "亦"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 8,
+            "candidateIndex": 8,
+            "expected": "說",
+            "observed": "說"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 9,
+            "candidateIndex": 9,
+            "expected": "乎",
+            "observed": "乎"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 10,
+            "candidateIndex": 10,
+            "expected": "有",
+            "observed": "有"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 11,
+            "candidateIndex": 11,
+            "expected": "朋",
+            "observed": "朋"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 12,
+            "candidateIndex": 12,
+            "expected": "自",
+            "observed": "自"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 13,
+            "candidateIndex": 13,
+            "expected": "遠",
+            "observed": "遠"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 14,
+            "candidateIndex": 14,
+            "expected": "方",
+            "observed": "方"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 15,
+            "candidateIndex": 15,
+            "expected": "來",
+            "observed": "來"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 16,
+            "candidateIndex": 16,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 17,
+            "candidateIndex": 17,
+            "expected": "亦",
+            "observed": "亦"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 18,
+            "candidateIndex": 18,
+            "expected": "樂",
+            "observed": "樂"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 19,
+            "candidateIndex": 19,
+            "expected": "乎",
+            "observed": "乎"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 20,
+            "candidateIndex": 20,
+            "expected": "人",
+            "observed": "人"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 21,
+            "candidateIndex": 21,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 22,
+            "candidateIndex": 22,
+            "expected": "知",
+            "observed": "知"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 23,
+            "candidateIndex": 23,
+            "expected": "而",
+            "observed": "而"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 24,
+            "candidateIndex": 24,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "substitution",
+            "referenceIndex": 25,
+            "candidateIndex": 25,
+            "expected": "慍",
+            "observed": "骨"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 26,
+            "candidateIndex": 26,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 27,
+            "candidateIndex": 27,
+            "expected": "亦",
+            "observed": "亦"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 28,
+            "candidateIndex": 28,
+            "expected": "君",
+            "observed": "君"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 29,
+            "candidateIndex": 29,
+            "expected": "子",
+            "observed": "子"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 30,
+            "candidateIndex": 30,
+            "expected": "乎",
+            "observed": "乎"
+          }
+        ]
+      },
+      "nativeOrderEvaluation": {
+        "rulesVersion": "exact-unicode-v1",
+        "whitespace": "layout",
+        "referenceCharacters": 30,
+        "candidateCharacters": 30,
+        "CER": 0.03333333333333333,
+        "scorable": true,
+        "reason": null,
+        "substitutions": 1,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 1,
+        "correctAlignedCharacters": 29,
+        "alignment": [
+          {
+            "type": "match",
+            "referenceIndex": 1,
+            "candidateIndex": 1,
+            "expected": "學",
+            "observed": "學"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 2,
+            "candidateIndex": 2,
+            "expected": "而",
+            "observed": "而"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 3,
+            "candidateIndex": 3,
+            "expected": "時",
+            "observed": "時"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 4,
+            "candidateIndex": 4,
+            "expected": "習",
+            "observed": "習"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 5,
+            "candidateIndex": 5,
+            "expected": "之",
+            "observed": "之"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 6,
+            "candidateIndex": 6,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 7,
+            "candidateIndex": 7,
+            "expected": "亦",
+            "observed": "亦"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 8,
+            "candidateIndex": 8,
+            "expected": "說",
+            "observed": "說"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 9,
+            "candidateIndex": 9,
+            "expected": "乎",
+            "observed": "乎"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 10,
+            "candidateIndex": 10,
+            "expected": "有",
+            "observed": "有"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 11,
+            "candidateIndex": 11,
+            "expected": "朋",
+            "observed": "朋"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 12,
+            "candidateIndex": 12,
+            "expected": "自",
+            "observed": "自"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 13,
+            "candidateIndex": 13,
+            "expected": "遠",
+            "observed": "遠"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 14,
+            "candidateIndex": 14,
+            "expected": "方",
+            "observed": "方"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 15,
+            "candidateIndex": 15,
+            "expected": "來",
+            "observed": "來"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 16,
+            "candidateIndex": 16,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 17,
+            "candidateIndex": 17,
+            "expected": "亦",
+            "observed": "亦"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 18,
+            "candidateIndex": 18,
+            "expected": "樂",
+            "observed": "樂"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 19,
+            "candidateIndex": 19,
+            "expected": "乎",
+            "observed": "乎"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 20,
+            "candidateIndex": 20,
+            "expected": "人",
+            "observed": "人"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 21,
+            "candidateIndex": 21,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 22,
+            "candidateIndex": 22,
+            "expected": "知",
+            "observed": "知"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 23,
+            "candidateIndex": 23,
+            "expected": "而",
+            "observed": "而"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 24,
+            "candidateIndex": 24,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "substitution",
+            "referenceIndex": 25,
+            "candidateIndex": 25,
+            "expected": "慍",
+            "observed": "骨"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 26,
+            "candidateIndex": 26,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 27,
+            "candidateIndex": 27,
+            "expected": "亦",
+            "observed": "亦"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 28,
+            "candidateIndex": 28,
+            "expected": "君",
+            "observed": "君"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 29,
+            "candidateIndex": 29,
+            "expected": "子",
+            "observed": "子"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 30,
+            "candidateIndex": 30,
+            "expected": "乎",
+            "observed": "乎"
+          }
+        ]
+      },
+      "evaluationMs": 0.5,
+      "finishedAt": "2026-10-15T03:07:45.973Z",
+      "wallMs": 1169.7000000001863,
+      "memory": {
+        "scope": "Linux Chromium process-tree PSS (fresh browser per method)",
+        "sampleIntervalMs": 100,
+        "baseline": {
+          "pssMiB": 247.87890625,
+          "rssMiB": 442.89453125,
+          "privateMiB": 168.6484375,
+          "processes": 7
+        },
+        "peak": {
+          "pssMiB": 408.263671875,
+          "rssMiB": 611.4296875,
+          "privateMiB": 322.6796875,
+          "processes": 7
+        },
+        "after": {
+          "pssMiB": 405.900390625,
+          "rssMiB": 609.12890625,
+          "privateMiB": 320.25390625,
+          "processes": 7
+        },
+        "note": "Observed samples, includes native/WASM/Worker memory. RSS sums shared pages; PSS is preferred. Unsupported platform returns null, never zero."
+      },
+      "mainPageHeapSupplement": {
+        "scope": "main-page JavaScript heap only",
+        "before": {
+          "scope": "main-page JavaScript heap only",
+          "usedBytes": 3248096,
+          "totalBrowserPeakMiB": null,
+          "reason": "普通页面不能可靠测量全浏览器/Worker/WASM峰值；此值不代表总内存。请用桌面case-benchmark采集PSS。"
+        },
+        "after": {
+          "scope": "main-page JavaScript heap only",
+          "usedBytes": 2536341,
+          "totalBrowserPeakMiB": null,
+          "reason": "普通页面不能可靠测量全浏览器/Worker/WASM峰值；此值不代表总内存。请用桌面case-benchmark采集PSS。"
+        },
+        "totalBrowserPeakMiB": null
+      },
+      "network": [
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/assets/index-DUp9uYQX.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/assets/index-BKCyutVo.css",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/model-status.json",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/tesseract-models.json",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/ocr/bootstrap-worker.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/ocr/runtime/worker.min.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/ocr/runtime/core/tesseract-core-lstm.wasm.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/ocr/tessdata/chi_tra_vert.traineddata.gz",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "id": "tesseract-columns",
+      "kind": "tesseract",
+      "mode": "columns",
+      "label": "Tesseract 分栏",
+      "status": "done",
+      "startedAt": "2026-10-15T03:07:46.646Z",
+      "recognition": {
+        "pipelineVersion": "raw-candidate-comparison-v2",
+        "engine": "tesseract",
+        "orientation": "vertical",
+        "mode": "columns",
+        "initialization": {
+          "elapsedMs": 487.09999999962747,
+          "kind": "tesseract",
+          "reused": false,
+          "summary": null
+        },
+        "inferenceMs": 695.7999999998137,
+        "imageScale": 1,
+        "parameters": {
+          "tessedit_pageseg_mode": "5"
+        },
+        "processing": {
+          "grayscale": false,
+          "contrast": 100,
+          "binary": "none",
+          "maxWorkingPixels": 5000000
+        },
+        "confidenceMasking": false,
+        "text": "學而時習之不亦說乎\n有朋自遠方來不亦樂乎\n人不知而不骨不亦君子乎",
+        "originalText": "學而時習之不亦說乎\n\n  有朋自遠方來不亦樂乎\n\n人不知而不骨不亦君子乎\n",
+        "passes": [
+          {
+            "bbox": [
+              0.6666666666666667,
+              0,
+              0.33333333333333326,
+              1
+            ],
+            "workingSize": [
+              247,
+              900
+            ],
+            "memoryLimited": false,
+            "model": "chi_tra_vert",
+            "psm": "5",
+            "rawText": "學而時習之不亦說乎\n",
+            "rawTSV": "1\t1\t0\t0\t0\t0\t0\t0\t247\t900\t-1\t\n2\t1\t1\t0\t0\t0\t88\t112\t37\t477\t-1\t\n3\t1\t1\t1\t0\t0\t88\t112\t37\t477\t-1\t\n4\t1\t1\t1\t1\t0\t88\t112\t37\t477\t-1\t\n5\t1\t1\t1\t1\t1\t89\t112\t35\t37\t96.932404\t學\n5\t1\t1\t1\t1\t2\t89\t182\t35\t22\t96.500427\t而\n5\t1\t1\t1\t1\t3\t90\t233\t35\t26\t93.190140\t時\n5\t1\t1\t1\t1\t4\t89\t280\t34\t61\t89.394478\t習\n5\t1\t1\t1\t1\t5\t88\t341\t35\t27\t96.946037\t之\n5\t1\t1\t1\t1\t6\t89\t392\t35\t32\t93.147919\t不\n5\t1\t1\t1\t1\t7\t89\t448\t35\t31\t88.424057\t亦\n5\t1\t1\t1\t1\t8\t89\t498\t36\t35\t93.247147\t說\n5\t1\t1\t1\t1\t9\t89\t552\t35\t37\t13.205299\t乎\n",
+            "sortedRaw": "學而時習之不亦說乎",
+            "text": "學而時習之不亦說乎",
+            "confidenceMasking": false
+          },
+          {
+            "bbox": [
+              0.33333333333333326,
+              0,
+              0.3333333333333335,
+              1
+            ],
+            "workingSize": [
+              246,
+              900
+            ],
+            "memoryLimited": false,
+            "model": "chi_tra_vert",
+            "psm": "5",
+            "rawText": "  有朋自遠方來不亦樂乎\n",
+            "rawTSV": "1\t1\t0\t0\t0\t0\t0\t0\t246\t900\t-1\t\n2\t1\t1\t0\t0\t0\t134\t112\t37\t532\t-1\t\n3\t1\t1\t1\t0\t0\t0\t40\t246\t821\t-1\t\n4\t1\t1\t1\t1\t0\t134\t112\t37\t532\t-1\t\n5\t1\t1\t1\t1\t1\t135\t112\t35\t37\t93.105545\t有\n5\t1\t1\t1\t1\t2\t135\t169\t34\t35\t87.524246\t朋\n5\t1\t1\t1\t1\t3\t141\t222\t25\t37\t90.478737\t自\n5\t1\t1\t1\t1\t4\t134\t280\t37\t89\t95.741325\t遠方\n5\t1\t1\t1\t1\t5\t135\t397\t35\t27\t96.985725\t來\n5\t1\t1\t1\t1\t6\t135\t448\t35\t31\t93.190414\t不\n5\t1\t1\t1\t1\t7\t135\t500\t35\t34\t92.470787\t亦\n5\t1\t1\t1\t1\t8\t134\t556\t36\t33\t92.684036\t樂\n5\t1\t1\t1\t1\t9\t135\t611\t35\t33\t83.516434\t乎\n",
+            "sortedRaw": "有朋自遠方來不亦樂乎",
+            "text": "有朋自遠方來不亦樂乎",
+            "confidenceMasking": false
+          },
+          {
+            "bbox": [
+              0,
+              0,
+              0.33333333333333326,
+              1
+            ],
+            "workingSize": [
+              247,
+              900
+            ],
+            "memoryLimited": false,
+            "model": "chi_tra_vert",
+            "psm": "5",
+            "rawText": "人不知而不骨不亦君子乎\n",
+            "rawTSV": "1\t1\t0\t0\t0\t0\t0\t0\t247\t900\t-1\t\n2\t1\t1\t0\t0\t0\t181\t113\t37\t586\t-1\t\n3\t1\t1\t1\t0\t0\t181\t113\t37\t586\t-1\t\n4\t1\t1\t1\t1\t0\t181\t113\t37\t586\t-1\t\n5\t1\t1\t1\t1\t1\t182\t113\t35\t36\t96.971657\t人\n5\t1\t1\t1\t1\t2\t182\t168\t35\t36\t93.099113\t不\n5\t1\t1\t1\t1\t3\t182\t222\t35\t37\t54.479366\t知\n5\t1\t1\t1\t1\t4\t182\t279\t35\t35\t96.802155\t而\n5\t1\t1\t1\t1\t5\t182\t333\t35\t36\t93.205605\t不\n5\t1\t1\t1\t1\t6\t181\t388\t37\t36\t0.000000\t骨\n5\t1\t1\t1\t1\t7\t182\t443\t35\t36\t0.000000\t不\n5\t1\t1\t1\t1\t8\t182\t501\t35\t33\t86.549835\t亦\n5\t1\t1\t1\t1\t9\t182\t566\t35\t78\t93.212875\t君子\n5\t1\t1\t1\t1\t10\t182\t664\t35\t35\t89.767822\t乎\n",
+            "sortedRaw": "人不知而不骨不亦君子乎",
+            "text": "人不知而不骨不亦君子乎",
+            "confidenceMasking": false
+          }
+        ]
+      },
+      "evaluation": {
+        "rulesVersion": "exact-unicode-v1",
+        "whitespace": "layout",
+        "referenceCharacters": 30,
+        "candidateCharacters": 30,
+        "CER": 0.03333333333333333,
+        "scorable": true,
+        "reason": null,
+        "substitutions": 1,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 1,
+        "correctAlignedCharacters": 29,
+        "alignment": [
+          {
+            "type": "match",
+            "referenceIndex": 1,
+            "candidateIndex": 1,
+            "expected": "學",
+            "observed": "學"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 2,
+            "candidateIndex": 2,
+            "expected": "而",
+            "observed": "而"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 3,
+            "candidateIndex": 3,
+            "expected": "時",
+            "observed": "時"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 4,
+            "candidateIndex": 4,
+            "expected": "習",
+            "observed": "習"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 5,
+            "candidateIndex": 5,
+            "expected": "之",
+            "observed": "之"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 6,
+            "candidateIndex": 6,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 7,
+            "candidateIndex": 7,
+            "expected": "亦",
+            "observed": "亦"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 8,
+            "candidateIndex": 8,
+            "expected": "說",
+            "observed": "說"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 9,
+            "candidateIndex": 9,
+            "expected": "乎",
+            "observed": "乎"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 10,
+            "candidateIndex": 10,
+            "expected": "有",
+            "observed": "有"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 11,
+            "candidateIndex": 11,
+            "expected": "朋",
+            "observed": "朋"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 12,
+            "candidateIndex": 12,
+            "expected": "自",
+            "observed": "自"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 13,
+            "candidateIndex": 13,
+            "expected": "遠",
+            "observed": "遠"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 14,
+            "candidateIndex": 14,
+            "expected": "方",
+            "observed": "方"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 15,
+            "candidateIndex": 15,
+            "expected": "來",
+            "observed": "來"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 16,
+            "candidateIndex": 16,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 17,
+            "candidateIndex": 17,
+            "expected": "亦",
+            "observed": "亦"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 18,
+            "candidateIndex": 18,
+            "expected": "樂",
+            "observed": "樂"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 19,
+            "candidateIndex": 19,
+            "expected": "乎",
+            "observed": "乎"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 20,
+            "candidateIndex": 20,
+            "expected": "人",
+            "observed": "人"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 21,
+            "candidateIndex": 21,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 22,
+            "candidateIndex": 22,
+            "expected": "知",
+            "observed": "知"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 23,
+            "candidateIndex": 23,
+            "expected": "而",
+            "observed": "而"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 24,
+            "candidateIndex": 24,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "substitution",
+            "referenceIndex": 25,
+            "candidateIndex": 25,
+            "expected": "慍",
+            "observed": "骨"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 26,
+            "candidateIndex": 26,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 27,
+            "candidateIndex": 27,
+            "expected": "亦",
+            "observed": "亦"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 28,
+            "candidateIndex": 28,
+            "expected": "君",
+            "observed": "君"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 29,
+            "candidateIndex": 29,
+            "expected": "子",
+            "observed": "子"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 30,
+            "candidateIndex": 30,
+            "expected": "乎",
+            "observed": "乎"
+          }
+        ]
+      },
+      "nativeOrderEvaluation": {
+        "rulesVersion": "exact-unicode-v1",
+        "whitespace": "layout",
+        "referenceCharacters": 30,
+        "candidateCharacters": 30,
+        "CER": 0.03333333333333333,
+        "scorable": true,
+        "reason": null,
+        "substitutions": 1,
+        "deletions": 0,
+        "insertions": 0,
+        "distance": 1,
+        "correctAlignedCharacters": 29,
+        "alignment": [
+          {
+            "type": "match",
+            "referenceIndex": 1,
+            "candidateIndex": 1,
+            "expected": "學",
+            "observed": "學"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 2,
+            "candidateIndex": 2,
+            "expected": "而",
+            "observed": "而"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 3,
+            "candidateIndex": 3,
+            "expected": "時",
+            "observed": "時"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 4,
+            "candidateIndex": 4,
+            "expected": "習",
+            "observed": "習"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 5,
+            "candidateIndex": 5,
+            "expected": "之",
+            "observed": "之"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 6,
+            "candidateIndex": 6,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 7,
+            "candidateIndex": 7,
+            "expected": "亦",
+            "observed": "亦"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 8,
+            "candidateIndex": 8,
+            "expected": "說",
+            "observed": "說"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 9,
+            "candidateIndex": 9,
+            "expected": "乎",
+            "observed": "乎"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 10,
+            "candidateIndex": 10,
+            "expected": "有",
+            "observed": "有"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 11,
+            "candidateIndex": 11,
+            "expected": "朋",
+            "observed": "朋"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 12,
+            "candidateIndex": 12,
+            "expected": "自",
+            "observed": "自"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 13,
+            "candidateIndex": 13,
+            "expected": "遠",
+            "observed": "遠"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 14,
+            "candidateIndex": 14,
+            "expected": "方",
+            "observed": "方"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 15,
+            "candidateIndex": 15,
+            "expected": "來",
+            "observed": "來"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 16,
+            "candidateIndex": 16,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 17,
+            "candidateIndex": 17,
+            "expected": "亦",
+            "observed": "亦"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 18,
+            "candidateIndex": 18,
+            "expected": "樂",
+            "observed": "樂"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 19,
+            "candidateIndex": 19,
+            "expected": "乎",
+            "observed": "乎"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 20,
+            "candidateIndex": 20,
+            "expected": "人",
+            "observed": "人"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 21,
+            "candidateIndex": 21,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 22,
+            "candidateIndex": 22,
+            "expected": "知",
+            "observed": "知"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 23,
+            "candidateIndex": 23,
+            "expected": "而",
+            "observed": "而"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 24,
+            "candidateIndex": 24,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "substitution",
+            "referenceIndex": 25,
+            "candidateIndex": 25,
+            "expected": "慍",
+            "observed": "骨"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 26,
+            "candidateIndex": 26,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 27,
+            "candidateIndex": 27,
+            "expected": "亦",
+            "observed": "亦"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 28,
+            "candidateIndex": 28,
+            "expected": "君",
+            "observed": "君"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 29,
+            "candidateIndex": 29,
+            "expected": "子",
+            "observed": "子"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 30,
+            "candidateIndex": 30,
+            "expected": "乎",
+            "observed": "乎"
+          }
+        ]
+      },
+      "evaluationMs": 0.7999999998137355,
+      "finishedAt": "2026-10-15T03:07:47.832Z",
+      "wallMs": 1186,
+      "memory": {
+        "scope": "Linux Chromium process-tree PSS (fresh browser per method)",
+        "sampleIntervalMs": 100,
+        "baseline": {
+          "pssMiB": 243.734375,
+          "rssMiB": 435.2578125,
+          "privateMiB": 168.0546875,
+          "processes": 7
+        },
+        "peak": {
+          "pssMiB": 409.529296875,
+          "rssMiB": 612.734375,
+          "privateMiB": 323.9921875,
+          "processes": 7
+        },
+        "after": {
+          "pssMiB": 408.4345703125,
+          "rssMiB": 611.703125,
+          "privateMiB": 322.83984375,
+          "processes": 7
+        },
+        "note": "Observed samples, includes native/WASM/Worker memory. RSS sums shared pages; PSS is preferred. Unsupported platform returns null, never zero."
+      },
+      "mainPageHeapSupplement": {
+        "scope": "main-page JavaScript heap only",
+        "before": {
+          "scope": "main-page JavaScript heap only",
+          "usedBytes": 3185230,
+          "totalBrowserPeakMiB": null,
+          "reason": "普通页面不能可靠测量全浏览器/Worker/WASM峰值；此值不代表总内存。请用桌面case-benchmark采集PSS。"
+        },
+        "after": {
+          "scope": "main-page JavaScript heap only",
+          "usedBytes": 2493390,
+          "totalBrowserPeakMiB": null,
+          "reason": "普通页面不能可靠测量全浏览器/Worker/WASM峰值；此值不代表总内存。请用桌面case-benchmark采集PSS。"
+        },
+        "totalBrowserPeakMiB": null
+      },
+      "network": [
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/assets/index-DUp9uYQX.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/assets/index-BKCyutVo.css",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/ocr/bootstrap-worker.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/ocr/runtime/worker.min.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/ocr/runtime/core/tesseract-core-lstm.wasm.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/ocr/tessdata/chi_tra_vert.traineddata.gz",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "id": "paddle-whole",
+      "kind": "paddle",
+      "mode": "whole",
+      "label": "PaddleOCR 整页",
+      "status": "done",
+      "startedAt": "2026-10-15T03:07:48.492Z",
+      "recognition": {
+        "pipelineVersion": "raw-candidate-comparison-v2",
+        "engine": "paddle",
+        "orientation": "vertical",
+        "mode": "whole",
+        "initialization": {
+          "elapsedMs": 1754.7000000001863,
+          "kind": "paddle",
+          "reused": false,
+          "summary": {
+            "backend": "wasm",
+            "webgpuAvailable": false,
+            "detProvider": "wasm",
+            "recProvider": "wasm",
+            "assets": [
+              {
+                "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/models/PP-OCRv5_mobile_det.tar",
+                "bytes": 4899840
+              },
+              {
+                "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/models/PP-OCRv5_mobile_rec.tar",
+                "bytes": 16672768
+              }
+            ],
+            "elapsedMs": 1105.5,
+            "pipelineConfigWarnings": [
+              "DocPreprocessor is not yet supported in PaddleOCR.js: config will be ignored for now.",
+              "TextLineOrientation is not yet supported in PaddleOCR.js: config will be ignored for now."
+            ]
+          }
+        },
+        "inferenceMs": 1647.5999999996275,
+        "imageScale": 1,
+        "parameters": {
+          "textRecScoreThresh": 0,
+          "textDetLimitSideLen": 960,
+          "textDetLimitType": "max",
+          "textDetMaxSideLimit": 4000,
+          "textDetThresh": 0.3,
+          "textDetBoxThresh": 0.6,
+          "textDetUnclipRatio": 2,
+          "batchSize": 1
+        },
+        "processing": {
+          "grayscale": false,
+          "contrast": 100,
+          "binary": "none",
+          "maxWorkingPixels": 5000000
+        },
+        "confidenceMasking": false,
+        "text": "學而時習之不亦說乎\n有朋自方來不亦樂乎\n人不知而不慍不亦君子乎",
+        "originalText": "人不知而不慍不亦君子乎\n有朋自方來不亦樂乎\n學而時習之不亦說乎",
+        "passes": [
+          {
+            "bbox": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "workingSize": [
+              740,
+              900
+            ],
+            "memoryLimited": false,
+            "raw": {
+              "image": {
+                "width": 740,
+                "height": 900
+              },
+              "items": [
+                {
+                  "poly": [
+                    [
+                      170,
+                      105
+                    ],
+                    [
+                      228,
+                      105
+                    ],
+                    [
+                      228,
+                      709
+                    ],
+                    [
+                      170,
+                      709
+                    ]
+                  ],
+                  "text": "人不知而不慍不亦君子乎",
+                  "score": 0.9917045940052379
+                },
+                {
+                  "poly": [
+                    [
+                      372,
+                      102
+                    ],
+                    [
+                      427,
+                      102
+                    ],
+                    [
+                      427,
+                      653
+                    ],
+                    [
+                      372,
+                      653
+                    ]
+                  ],
+                  "text": "有朋自方來不亦樂乎",
+                  "score": 0.9995047714975145
+                },
+                {
+                  "poly": [
+                    [
+                      570,
+                      99
+                    ],
+                    [
+                      632,
+                      100
+                    ],
+                    [
+                      629,
+                      600
+                    ],
+                    [
+                      568,
+                      599
+                    ]
+                  ],
+                  "text": "學而時習之不亦說乎",
+                  "score": 0.9902807474136353
+                }
+              ],
+              "metrics": {
+                "detMs": 1113.5,
+                "recMs": 463.90000000037253,
+                "totalMs": 1588.4000000003725,
+                "detectedBoxes": 3,
+                "recognizedCount": 3
+              },
+              "runtime": {
+                "requestedBackend": "wasm",
+                "detProvider": "wasm",
+                "recProvider": "wasm",
+                "webgpuAvailable": false
+              }
+            },
+            "text": "學而時習之不亦說乎\n有朋自方來不亦樂乎\n人不知而不慍不亦君子乎",
+            "confidenceMasking": false
+          }
+        ]
+      },
+      "evaluation": {
+        "rulesVersion": "exact-unicode-v1",
+        "whitespace": "layout",
+        "referenceCharacters": 30,
+        "candidateCharacters": 29,
+        "CER": 0.03333333333333333,
+        "scorable": true,
+        "reason": null,
+        "substitutions": 0,
+        "deletions": 1,
+        "insertions": 0,
+        "distance": 1,
+        "correctAlignedCharacters": 29,
+        "alignment": [
+          {
+            "type": "match",
+            "referenceIndex": 1,
+            "candidateIndex": 1,
+            "expected": "學",
+            "observed": "學"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 2,
+            "candidateIndex": 2,
+            "expected": "而",
+            "observed": "而"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 3,
+            "candidateIndex": 3,
+            "expected": "時",
+            "observed": "時"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 4,
+            "candidateIndex": 4,
+            "expected": "習",
+            "observed": "習"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 5,
+            "candidateIndex": 5,
+            "expected": "之",
+            "observed": "之"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 6,
+            "candidateIndex": 6,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 7,
+            "candidateIndex": 7,
+            "expected": "亦",
+            "observed": "亦"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 8,
+            "candidateIndex": 8,
+            "expected": "說",
+            "observed": "說"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 9,
+            "candidateIndex": 9,
+            "expected": "乎",
+            "observed": "乎"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 10,
+            "candidateIndex": 10,
+            "expected": "有",
+            "observed": "有"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 11,
+            "candidateIndex": 11,
+            "expected": "朋",
+            "observed": "朋"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 12,
+            "candidateIndex": 12,
+            "expected": "自",
+            "observed": "自"
+          },
+          {
+            "type": "deletion",
+            "referenceIndex": 13,
+            "candidateIndex": null,
+            "expected": "遠",
+            "observed": ""
+          },
+          {
+            "type": "match",
+            "referenceIndex": 14,
+            "candidateIndex": 13,
+            "expected": "方",
+            "observed": "方"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 15,
+            "candidateIndex": 14,
+            "expected": "來",
+            "observed": "來"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 16,
+            "candidateIndex": 15,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 17,
+            "candidateIndex": 16,
+            "expected": "亦",
+            "observed": "亦"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 18,
+            "candidateIndex": 17,
+            "expected": "樂",
+            "observed": "樂"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 19,
+            "candidateIndex": 18,
+            "expected": "乎",
+            "observed": "乎"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 20,
+            "candidateIndex": 19,
+            "expected": "人",
+            "observed": "人"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 21,
+            "candidateIndex": 20,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 22,
+            "candidateIndex": 21,
+            "expected": "知",
+            "observed": "知"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 23,
+            "candidateIndex": 22,
+            "expected": "而",
+            "observed": "而"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 24,
+            "candidateIndex": 23,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 25,
+            "candidateIndex": 24,
+            "expected": "慍",
+            "observed": "慍"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 26,
+            "candidateIndex": 25,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 27,
+            "candidateIndex": 26,
+            "expected": "亦",
+            "observed": "亦"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 28,
+            "candidateIndex": 27,
+            "expected": "君",
+            "observed": "君"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 29,
+            "candidateIndex": 28,
+            "expected": "子",
+            "observed": "子"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 30,
+            "candidateIndex": 29,
+            "expected": "乎",
+            "observed": "乎"
+          }
+        ]
+      },
+      "nativeOrderEvaluation": {
+        "rulesVersion": "exact-unicode-v1",
+        "whitespace": "layout",
+        "referenceCharacters": 30,
+        "candidateCharacters": 29,
+        "CER": 0.5666666666666667,
+        "scorable": true,
+        "reason": null,
+        "substitutions": 12,
+        "deletions": 3,
+        "insertions": 2,
+        "distance": 17,
+        "correctAlignedCharacters": 15,
+        "alignment": [
+          {
+            "type": "insertion",
+            "referenceIndex": null,
+            "candidateIndex": 1,
+            "expected": "",
+            "observed": "人"
+          },
+          {
+            "type": "substitution",
+            "referenceIndex": 1,
+            "candidateIndex": 2,
+            "expected": "學",
+            "observed": "不"
+          },
+          {
+            "type": "substitution",
+            "referenceIndex": 2,
+            "candidateIndex": 3,
+            "expected": "而",
+            "observed": "知"
+          },
+          {
+            "type": "substitution",
+            "referenceIndex": 3,
+            "candidateIndex": 4,
+            "expected": "時",
+            "observed": "而"
+          },
+          {
+            "type": "substitution",
+            "referenceIndex": 4,
+            "candidateIndex": 5,
+            "expected": "習",
+            "observed": "不"
+          },
+          {
+            "type": "substitution",
+            "referenceIndex": 5,
+            "candidateIndex": 6,
+            "expected": "之",
+            "observed": "慍"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 6,
+            "candidateIndex": 7,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 7,
+            "candidateIndex": 8,
+            "expected": "亦",
+            "observed": "亦"
+          },
+          {
+            "type": "insertion",
+            "referenceIndex": null,
+            "candidateIndex": 9,
+            "expected": "",
+            "observed": "君"
+          },
+          {
+            "type": "substitution",
+            "referenceIndex": 8,
+            "candidateIndex": 10,
+            "expected": "說",
+            "observed": "子"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 9,
+            "candidateIndex": 11,
+            "expected": "乎",
+            "observed": "乎"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 10,
+            "candidateIndex": 12,
+            "expected": "有",
+            "observed": "有"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 11,
+            "candidateIndex": 13,
+            "expected": "朋",
+            "observed": "朋"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 12,
+            "candidateIndex": 14,
+            "expected": "自",
+            "observed": "自"
+          },
+          {
+            "type": "deletion",
+            "referenceIndex": 13,
+            "candidateIndex": null,
+            "expected": "遠",
+            "observed": ""
+          },
+          {
+            "type": "match",
+            "referenceIndex": 14,
+            "candidateIndex": 15,
+            "expected": "方",
+            "observed": "方"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 15,
+            "candidateIndex": 16,
+            "expected": "來",
+            "observed": "來"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 16,
+            "candidateIndex": 17,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 17,
+            "candidateIndex": 18,
+            "expected": "亦",
+            "observed": "亦"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 18,
+            "candidateIndex": 19,
+            "expected": "樂",
+            "observed": "樂"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 19,
+            "candidateIndex": 20,
+            "expected": "乎",
+            "observed": "乎"
+          },
+          {
+            "type": "deletion",
+            "referenceIndex": 20,
+            "candidateIndex": null,
+            "expected": "人",
+            "observed": ""
+          },
+          {
+            "type": "substitution",
+            "referenceIndex": 21,
+            "candidateIndex": 21,
+            "expected": "不",
+            "observed": "學"
+          },
+          {
+            "type": "substitution",
+            "referenceIndex": 22,
+            "candidateIndex": 22,
+            "expected": "知",
+            "observed": "而"
+          },
+          {
+            "type": "substitution",
+            "referenceIndex": 23,
+            "candidateIndex": 23,
+            "expected": "而",
+            "observed": "時"
+          },
+          {
+            "type": "substitution",
+            "referenceIndex": 24,
+            "candidateIndex": 24,
+            "expected": "不",
+            "observed": "習"
+          },
+          {
+            "type": "substitution",
+            "referenceIndex": 25,
+            "candidateIndex": 25,
+            "expected": "慍",
+            "observed": "之"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 26,
+            "candidateIndex": 26,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 27,
+            "candidateIndex": 27,
+            "expected": "亦",
+            "observed": "亦"
+          },
+          {
+            "type": "deletion",
+            "referenceIndex": 28,
+            "candidateIndex": null,
+            "expected": "君",
+            "observed": ""
+          },
+          {
+            "type": "substitution",
+            "referenceIndex": 29,
+            "candidateIndex": 28,
+            "expected": "子",
+            "observed": "說"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 30,
+            "candidateIndex": 29,
+            "expected": "乎",
+            "observed": "乎"
+          }
+        ]
+      },
+      "evaluationMs": 0.900000000372529,
+      "finishedAt": "2026-10-15T03:07:51.896Z",
+      "wallMs": 3404.2999999998137,
+      "memory": {
+        "scope": "Linux Chromium process-tree PSS (fresh browser per method)",
+        "sampleIntervalMs": 100,
+        "baseline": {
+          "pssMiB": 249.7060546875,
+          "rssMiB": 444.66796875,
+          "privateMiB": 170.61328125,
+          "processes": 7
+        },
+        "peak": {
+          "pssMiB": 762.2529296875,
+          "rssMiB": 966.75390625,
+          "privateMiB": 675.5625,
+          "processes": 7
+        },
+        "after": {
+          "pssMiB": 597.8076171875,
+          "rssMiB": 802.359375,
+          "privateMiB": 511.0703125,
+          "processes": 7
+        },
+        "note": "Observed samples, includes native/WASM/Worker memory. RSS sums shared pages; PSS is preferred. Unsupported platform returns null, never zero."
+      },
+      "mainPageHeapSupplement": {
+        "scope": "main-page JavaScript heap only",
+        "before": {
+          "scope": "main-page JavaScript heap only",
+          "usedBytes": 3035710,
+          "totalBrowserPeakMiB": null,
+          "reason": "普通页面不能可靠测量全浏览器/Worker/WASM峰值；此值不代表总内存。请用桌面case-benchmark采集PSS。"
+        },
+        "after": {
+          "scope": "main-page JavaScript heap only",
+          "usedBytes": 76507673,
+          "totalBrowserPeakMiB": null,
+          "reason": "普通页面不能可靠测量全浏览器/Worker/WASM峰值；此值不代表总内存。请用桌面case-benchmark采集PSS。"
+        },
+        "totalBrowserPeakMiB": null
+      },
+      "network": [
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/assets/index-DUp9uYQX.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/assets/index-BKCyutVo.css",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/model-status.json",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/assets/dist-DK11KRlE.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/assets/ort.bundle.min-BKbF7jU7.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/models/PP-OCRv5_mobile_det.tar",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/models/PP-OCRv5_mobile_rec.tar",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/ort/ort-wasm-simd-threaded.jsep.mjs",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/ort/ort-wasm-simd-threaded.jsep.wasm",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "id": "paddle-columns",
+      "kind": "paddle",
+      "mode": "columns",
+      "label": "PaddleOCR 分栏",
+      "status": "done",
+      "startedAt": "2026-10-15T03:07:52.556Z",
+      "recognition": {
+        "pipelineVersion": "raw-candidate-comparison-v2",
+        "engine": "paddle",
+        "orientation": "vertical",
+        "mode": "columns",
+        "initialization": {
+          "elapsedMs": 1662.3999999994412,
+          "kind": "paddle",
+          "reused": false,
+          "summary": {
+            "backend": "wasm",
+            "webgpuAvailable": false,
+            "detProvider": "wasm",
+            "recProvider": "wasm",
+            "assets": [
+              {
+                "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/models/PP-OCRv5_mobile_det.tar",
+                "bytes": 4899840
+              },
+              {
+                "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/models/PP-OCRv5_mobile_rec.tar",
+                "bytes": 16672768
+              }
+            ],
+            "elapsedMs": 1055.5999999996275,
+            "pipelineConfigWarnings": [
+              "DocPreprocessor is not yet supported in PaddleOCR.js: config will be ignored for now.",
+              "TextLineOrientation is not yet supported in PaddleOCR.js: config will be ignored for now."
+            ]
+          }
+        },
+        "inferenceMs": 1784.800000000745,
+        "imageScale": 1,
+        "parameters": {
+          "textRecScoreThresh": 0,
+          "textDetLimitSideLen": 960,
+          "textDetLimitType": "max",
+          "textDetMaxSideLimit": 4000,
+          "textDetThresh": 0.3,
+          "textDetBoxThresh": 0.6,
+          "textDetUnclipRatio": 2,
+          "batchSize": 1
+        },
+        "processing": {
+          "grayscale": false,
+          "contrast": 100,
+          "binary": "none",
+          "maxWorkingPixels": 5000000
+        },
+        "confidenceMasking": false,
+        "text": "學而時習之不亦說乎\n有朋自方來不亦樂乎\n人不知而不慍不亦君子乎",
+        "originalText": "學而時習之不亦說乎\n有朋自方來不亦樂乎\n人不知而不慍不亦君子乎",
+        "passes": [
+          {
+            "bbox": [
+              0.6666666666666667,
+              0,
+              0.33333333333333326,
+              1
+            ],
+            "workingSize": [
+              247,
+              900
+            ],
+            "memoryLimited": false,
+            "raw": {
+              "image": {
+                "width": 247,
+                "height": 900
+              },
+              "items": [
+                {
+                  "poly": [
+                    [
+                      77,
+                      102
+                    ],
+                    [
+                      136,
+                      102
+                    ],
+                    [
+                      136,
+                      599
+                    ],
+                    [
+                      77,
+                      599
+                    ]
+                  ],
+                  "text": "學而時習之不亦說乎",
+                  "score": 0.9981974959373474
+                }
+              ],
+              "metrics": {
+                "detMs": 656.9000000003725,
+                "recMs": 289.3999999994412,
+                "totalMs": 954.2999999998137,
+                "detectedBoxes": 1,
+                "recognizedCount": 1
+              },
+              "runtime": {
+                "requestedBackend": "wasm",
+                "detProvider": "wasm",
+                "recProvider": "wasm",
+                "webgpuAvailable": false
+              }
+            },
+            "text": "學而時習之不亦說乎",
+            "confidenceMasking": false
+          },
+          {
+            "bbox": [
+              0.33333333333333326,
+              0,
+              0.3333333333333335,
+              1
+            ],
+            "workingSize": [
+              246,
+              900
+            ],
+            "memoryLimited": false,
+            "raw": {
+              "image": {
+                "width": 246,
+                "height": 900
+              },
+              "items": [
+                {
+                  "poly": [
+                    [
+                      123,
+                      100
+                    ],
+                    [
+                      182,
+                      100
+                    ],
+                    [
+                      182,
+                      654
+                    ],
+                    [
+                      123,
+                      654
+                    ]
+                  ],
+                  "text": "有朋自方來不亦樂乎",
+                  "score": 0.9968818558586968
+                }
+              ],
+              "metrics": {
+                "detMs": 343.5,
+                "recMs": 147.6000000005588,
+                "totalMs": 492.5,
+                "detectedBoxes": 1,
+                "recognizedCount": 1
+              },
+              "runtime": {
+                "requestedBackend": "wasm",
+                "detProvider": "wasm",
+                "recProvider": "wasm",
+                "webgpuAvailable": false
+              }
+            },
+            "text": "有朋自方來不亦樂乎",
+            "confidenceMasking": false
+          },
+          {
+            "bbox": [
+              0,
+              0,
+              0.33333333333333326,
+              1
+            ],
+            "workingSize": [
+              247,
+              900
+            ],
+            "memoryLimited": false,
+            "raw": {
+              "image": {
+                "width": 247,
+                "height": 900
+              },
+              "items": [
+                {
+                  "poly": [
+                    [
+                      169,
+                      103
+                    ],
+                    [
+                      231,
+                      104
+                    ],
+                    [
+                      229,
+                      710
+                    ],
+                    [
+                      167,
+                      710
+                    ]
+                  ],
+                  "text": "人不知而不慍不亦君子乎",
+                  "score": 0.9864814931696112
+                }
+              ],
+              "metrics": {
+                "detMs": 150.5,
+                "recMs": 109.09999999962747,
+                "totalMs": 260.79999999981374,
+                "detectedBoxes": 1,
+                "recognizedCount": 1
+              },
+              "runtime": {
+                "requestedBackend": "wasm",
+                "detProvider": "wasm",
+                "recProvider": "wasm",
+                "webgpuAvailable": false
+              }
+            },
+            "text": "人不知而不慍不亦君子乎",
+            "confidenceMasking": false
+          }
+        ]
+      },
+      "evaluation": {
+        "rulesVersion": "exact-unicode-v1",
+        "whitespace": "layout",
+        "referenceCharacters": 30,
+        "candidateCharacters": 29,
+        "CER": 0.03333333333333333,
+        "scorable": true,
+        "reason": null,
+        "substitutions": 0,
+        "deletions": 1,
+        "insertions": 0,
+        "distance": 1,
+        "correctAlignedCharacters": 29,
+        "alignment": [
+          {
+            "type": "match",
+            "referenceIndex": 1,
+            "candidateIndex": 1,
+            "expected": "學",
+            "observed": "學"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 2,
+            "candidateIndex": 2,
+            "expected": "而",
+            "observed": "而"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 3,
+            "candidateIndex": 3,
+            "expected": "時",
+            "observed": "時"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 4,
+            "candidateIndex": 4,
+            "expected": "習",
+            "observed": "習"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 5,
+            "candidateIndex": 5,
+            "expected": "之",
+            "observed": "之"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 6,
+            "candidateIndex": 6,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 7,
+            "candidateIndex": 7,
+            "expected": "亦",
+            "observed": "亦"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 8,
+            "candidateIndex": 8,
+            "expected": "說",
+            "observed": "說"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 9,
+            "candidateIndex": 9,
+            "expected": "乎",
+            "observed": "乎"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 10,
+            "candidateIndex": 10,
+            "expected": "有",
+            "observed": "有"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 11,
+            "candidateIndex": 11,
+            "expected": "朋",
+            "observed": "朋"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 12,
+            "candidateIndex": 12,
+            "expected": "自",
+            "observed": "自"
+          },
+          {
+            "type": "deletion",
+            "referenceIndex": 13,
+            "candidateIndex": null,
+            "expected": "遠",
+            "observed": ""
+          },
+          {
+            "type": "match",
+            "referenceIndex": 14,
+            "candidateIndex": 13,
+            "expected": "方",
+            "observed": "方"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 15,
+            "candidateIndex": 14,
+            "expected": "來",
+            "observed": "來"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 16,
+            "candidateIndex": 15,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 17,
+            "candidateIndex": 16,
+            "expected": "亦",
+            "observed": "亦"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 18,
+            "candidateIndex": 17,
+            "expected": "樂",
+            "observed": "樂"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 19,
+            "candidateIndex": 18,
+            "expected": "乎",
+            "observed": "乎"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 20,
+            "candidateIndex": 19,
+            "expected": "人",
+            "observed": "人"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 21,
+            "candidateIndex": 20,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 22,
+            "candidateIndex": 21,
+            "expected": "知",
+            "observed": "知"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 23,
+            "candidateIndex": 22,
+            "expected": "而",
+            "observed": "而"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 24,
+            "candidateIndex": 23,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 25,
+            "candidateIndex": 24,
+            "expected": "慍",
+            "observed": "慍"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 26,
+            "candidateIndex": 25,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 27,
+            "candidateIndex": 26,
+            "expected": "亦",
+            "observed": "亦"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 28,
+            "candidateIndex": 27,
+            "expected": "君",
+            "observed": "君"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 29,
+            "candidateIndex": 28,
+            "expected": "子",
+            "observed": "子"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 30,
+            "candidateIndex": 29,
+            "expected": "乎",
+            "observed": "乎"
+          }
+        ]
+      },
+      "nativeOrderEvaluation": {
+        "rulesVersion": "exact-unicode-v1",
+        "whitespace": "layout",
+        "referenceCharacters": 30,
+        "candidateCharacters": 29,
+        "CER": 0.03333333333333333,
+        "scorable": true,
+        "reason": null,
+        "substitutions": 0,
+        "deletions": 1,
+        "insertions": 0,
+        "distance": 1,
+        "correctAlignedCharacters": 29,
+        "alignment": [
+          {
+            "type": "match",
+            "referenceIndex": 1,
+            "candidateIndex": 1,
+            "expected": "學",
+            "observed": "學"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 2,
+            "candidateIndex": 2,
+            "expected": "而",
+            "observed": "而"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 3,
+            "candidateIndex": 3,
+            "expected": "時",
+            "observed": "時"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 4,
+            "candidateIndex": 4,
+            "expected": "習",
+            "observed": "習"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 5,
+            "candidateIndex": 5,
+            "expected": "之",
+            "observed": "之"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 6,
+            "candidateIndex": 6,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 7,
+            "candidateIndex": 7,
+            "expected": "亦",
+            "observed": "亦"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 8,
+            "candidateIndex": 8,
+            "expected": "說",
+            "observed": "說"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 9,
+            "candidateIndex": 9,
+            "expected": "乎",
+            "observed": "乎"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 10,
+            "candidateIndex": 10,
+            "expected": "有",
+            "observed": "有"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 11,
+            "candidateIndex": 11,
+            "expected": "朋",
+            "observed": "朋"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 12,
+            "candidateIndex": 12,
+            "expected": "自",
+            "observed": "自"
+          },
+          {
+            "type": "deletion",
+            "referenceIndex": 13,
+            "candidateIndex": null,
+            "expected": "遠",
+            "observed": ""
+          },
+          {
+            "type": "match",
+            "referenceIndex": 14,
+            "candidateIndex": 13,
+            "expected": "方",
+            "observed": "方"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 15,
+            "candidateIndex": 14,
+            "expected": "來",
+            "observed": "來"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 16,
+            "candidateIndex": 15,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 17,
+            "candidateIndex": 16,
+            "expected": "亦",
+            "observed": "亦"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 18,
+            "candidateIndex": 17,
+            "expected": "樂",
+            "observed": "樂"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 19,
+            "candidateIndex": 18,
+            "expected": "乎",
+            "observed": "乎"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 20,
+            "candidateIndex": 19,
+            "expected": "人",
+            "observed": "人"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 21,
+            "candidateIndex": 20,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 22,
+            "candidateIndex": 21,
+            "expected": "知",
+            "observed": "知"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 23,
+            "candidateIndex": 22,
+            "expected": "而",
+            "observed": "而"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 24,
+            "candidateIndex": 23,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 25,
+            "candidateIndex": 24,
+            "expected": "慍",
+            "observed": "慍"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 26,
+            "candidateIndex": 25,
+            "expected": "不",
+            "observed": "不"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 27,
+            "candidateIndex": 26,
+            "expected": "亦",
+            "observed": "亦"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 28,
+            "candidateIndex": 27,
+            "expected": "君",
+            "observed": "君"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 29,
+            "candidateIndex": 28,
+            "expected": "子",
+            "observed": "子"
+          },
+          {
+            "type": "match",
+            "referenceIndex": 30,
+            "candidateIndex": 29,
+            "expected": "乎",
+            "observed": "乎"
+          }
+        ]
+      },
+      "evaluationMs": 0.900000000372529,
+      "finishedAt": "2026-10-15T03:07:56.006Z",
+      "wallMs": 3449.4000000003725,
+      "memory": {
+        "scope": "Linux Chromium process-tree PSS (fresh browser per method)",
+        "sampleIntervalMs": 100,
+        "baseline": {
+          "pssMiB": 247.58203125,
+          "rssMiB": 442.390625,
+          "privateMiB": 168.69140625,
+          "processes": 7
+        },
+        "peak": {
+          "pssMiB": 715.900390625,
+          "rssMiB": 919.34375,
+          "privateMiB": 630.27734375,
+          "processes": 7
+        },
+        "after": {
+          "pssMiB": 524.123046875,
+          "rssMiB": 727.6171875,
+          "privateMiB": 438.453125,
+          "processes": 7
+        },
+        "note": "Observed samples, includes native/WASM/Worker memory. RSS sums shared pages; PSS is preferred. Unsupported platform returns null, never zero."
+      },
+      "mainPageHeapSupplement": {
+        "scope": "main-page JavaScript heap only",
+        "before": {
+          "scope": "main-page JavaScript heap only",
+          "usedBytes": 3184010,
+          "totalBrowserPeakMiB": null,
+          "reason": "普通页面不能可靠测量全浏览器/Worker/WASM峰值；此值不代表总内存。请用桌面case-benchmark采集PSS。"
+        },
+        "after": {
+          "scope": "main-page JavaScript heap only",
+          "usedBytes": 78898321,
+          "totalBrowserPeakMiB": null,
+          "reason": "普通页面不能可靠测量全浏览器/Worker/WASM峰值；此值不代表总内存。请用桌面case-benchmark采集PSS。"
+        },
+        "totalBrowserPeakMiB": null
+      },
+      "network": [
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/assets/index-DUp9uYQX.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/assets/index-BKCyutVo.css",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/model-status.json",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/assets/dist-DK11KRlE.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/assets/ort.bundle.min-BKbF7jU7.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/models/PP-OCRv5_mobile_det.tar",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/models/PP-OCRv5_mobile_rec.tar",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/ort/ort-wasm-simd-threaded.jsep.mjs",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/ort/ort-wasm-simd-threaded.jsep.wasm",
+          "method": "GET"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "paddle": {
+      "variant": "community-export",
+      "assets": [
+        {
+          "name": "PP-OCRv5_mobile_det",
+          "file": "PP-OCRv5_mobile_det.tar",
+          "sha256": "20a24ea052a918e9b8fd5a6173e2522e9e48fd446efd1522ade6ecfc9ce2ce26",
+          "bytes": 4899840,
+          "weightSHA256": "30acfc4e21f2a23669d01a75aaeb92190f96874613108a0f7086bed264420abc",
+          "weightBytes": 4896928,
+          "weightFormat": "ORT",
+          "available": true
+        },
+        {
+          "name": "PP-OCRv5_mobile_rec",
+          "file": "PP-OCRv5_mobile_rec.tar",
+          "sha256": "6ba41cca773becaa1a90185da165d642ee970f78dc2b70bd3644276717b07840",
+          "bytes": 16672768,
+          "weightSHA256": "d253c3cbee6e507828a5271a30ab0ec8ae7c2a99d0cc8e6f844fe380809d22b3",
+          "weightBytes": 16559278,
+          "weightFormat": "ONNX",
+          "available": true
+        }
+      ],
+      "ort": {
+        "version": "1.22.0",
+        "runtimeBytes": 11210254
+      },
+      "sdk": "0.4.2"
+    },
+    "tesseract": {
+      "source": "https://github.com/tesseract-ocr/tessdata_best",
+      "commit": "e12c65a915945e4c28e237a9b52bc4a8f39a0cec",
+      "license": "Apache-2.0",
+      "models": [
+        {
+          "name": "chi_tra_vert",
+          "sha256": "bbe518f94b9e3852109113507357bfe7e257834d88d2d1ead44178046bcd2181"
+        },
+        {
+          "name": "chi_tra",
+          "sha256": "1aa60488574cafa69486d919284f079ca9b68fcc7f6ad8dc1ff1b318dfd97028"
+        }
+      ]
+    }
+  },
+  "environment": {
+    "browser": "154.0.8037.57",
+    "freshBrowserPerMethod": true,
+    "platform": "linux",
+    "arch": "x64"
+  },
+  "finishedAt": "2026-10-15T03:07:56.111Z",
+  "acceptance": {
+    "scope": "Modern-image desktop tool validation only. No Qing ground truth exists in the repository.",
+    "fourRealMethods": true,
+    "inputHashes": true,
+    "immutableReferenceAndRawResults": true,
+    "sharedCrops": true,
+    "JSONAndCSV": true,
+    "partialFailurePreserved": true,
+    "freshDesktopProcessTreeMemory": true,
+    "networkLocalOnly": true,
+    "methods": [
+      {
+        "id": "tesseract-whole",
+        "status": "done",
+        "CER": 0.03333333333333333,
+        "initializationMs": 484.79999999981374,
+        "inferenceMs": 683.0999999996275,
+        "peakPSSMiB": 408.263671875
+      },
+      {
+        "id": "tesseract-columns",
+        "status": "done",
+        "CER": 0.03333333333333333,
+        "initializationMs": 487.09999999962747,
+        "inferenceMs": 695.7999999998137,
+        "peakPSSMiB": 409.529296875
+      },
+      {
+        "id": "paddle-whole",
+        "status": "done",
+        "CER": 0.03333333333333333,
+        "initializationMs": 1754.7000000001863,
+        "inferenceMs": 1647.5999999996275,
+        "peakPSSMiB": 762.2529296875
+      },
+      {
+        "id": "paddle-columns",
+        "status": "done",
+        "CER": 0.03333333333333333,
+        "initializationMs": 1662.3999999994412,
+        "inferenceMs": 1784.800000000745,
+        "peakPSSMiB": 715.900390625
+      }
+    ]
+  }
+}

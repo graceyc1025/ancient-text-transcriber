@@ -2,7 +2,11 @@
 
 实验分支 `experiment/paddleocr-v5-browser` 从未合并的 `fix/ocr-square-diagnosis` 派生。正式入口、Tesseract功能、根依赖及Pages工作流没有因本实验而改变。**此目录不是已部署的网站，也不会自动发布。**
 
-结论与实际输出见[实验报告](../../docs/PaddleOCR浏览器实验报告.md)。本次证明静态浏览器管线可运行，**未证明更适合清代刻本或行草**。现代图真值经对照核查；本地未鉴定手稿无完整真值，不给正确率。
+新增的同图四方法、人工标准、严格CER及记录导出功能，见[清代古籍对照测试操作](../../docs/清代古籍对照测试操作.md)。仓库仍缺可靠的清代图片与标准文本配对，需用户提供，**未证明更适合清代刻本或行草**。
+
+本轮[工具验收记录与实际输出](../../docs/清代对照工具验收记录.md)使用现代演示图，只证明流程可用；完整机器记录随文保留，清代样本准确率未测试。
+
+最初可行性结论与实际输出见[历史实验报告](../../docs/PaddleOCR浏览器实验报告.md)。其中旧参数和现代图数据保留为历史证据，不代表本轮新管线结果。当前管线标记为 `raw-candidate-comparison-v2`，两引擎默认共用原尺寸，默认分栏数须按真实图调整；结果保存原生与几何顺序文本、实际参数，不以置信度隐藏候选。
 
 ## 实际使用的模型
 
@@ -27,6 +31,7 @@ npm pack pdfmarkdown-ppocrv5-models@1.0.0 --ignore-scripts --pack-destination /t
 node import-community-models.mjs /tmp/pdfmarkdown-ppocrv5-models-1.0.0.tgz
 npm run build
 npm test
+npm run test:case
 node browser-check.mjs
 npm run benchmark
 # 已有本地扫描的可选对照；路径相对本目录
@@ -34,6 +39,8 @@ npm run benchmark -- ../../tests/samples/local/page_2.png ../../tests/samples/lo
 ```
 
 `npm run dev` 启动开发服务；`node serve.mjs` 为内部测试提供项目子路径的只读静态服务。它没有上传或识别接口。`npm run build`生成本目录dist，**不要覆盖根dist或运行正式部署工作流**。默认benchmark逐配置新建浏览器，每种3次，结果写results/comparison.json。可用PADDLE_BENCHMARK_OUTPUT指定输出路径，BENCHMARK_PROFILE仅补测指定配置。
+
+网页支持上传图片、导入人工UTF-8 TXT、预览自定栏边界、依次运行四方法、查看原始候选与逐字差异、下载输入清单/完整JSON/CSV。标准含□或尚未确认校对时不计算CER。普通网页仅有主页面JS堆补充信息，不提供虚假的总内存峰值。需要独立桌面PSS采样：`npm run benchmark:case -- --case /path/input.json --image /path/scan.png --out results/case.json`，详见操作文档。`npm run test:case`使用真实现代图OCR验收流程及故障处理，不能替代清代准确率评测。
 
 模型、node_modules、dist和原始扫描结果均忽略，不提交私人文献。构建时模型缺失会明确记录不可用，界面不会返回模拟文字。未取得的官方原始资源位置记录于official-sources.json；如另做官方包对照，应使用独立清单，不要覆盖社区模型哈希或混写结果。
 
