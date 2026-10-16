@@ -1,0 +1,197 @@
+{
+  "scoreStatus": "provisional-against-unreviewed-reference",
+  "referenceReviewed": false,
+  "referenceCodepoints": 120,
+  "frozenApplicationCommit": "8817b2589b4fccfcfe2e2c6233e6ef0fb6e67bc9",
+  "sourceImageSHA256": "7d8c46194259f8fdadcce0c900a64ba1cd3e7acbf7790134cce33928cffd64d8",
+  "evaluationImageSHA256": "1edd5669ae7e9d2cc90eb9fe6fef35fb85b5c0b49e2858f537c2a84444ab03d0",
+  "referenceSHA256": "303df4ac1bc61f0ba8f7b9ea2fc57cf5bfed4661a01a5e1bbd5f85c10a41eae8",
+  "modelsUnchangedFromPreviousSample": true,
+  "methods": [
+    {
+      "method": "tesseract-whole",
+      "columnProfile": null,
+      "CER": 0.8666666666666667,
+      "S": 100,
+      "D": 4,
+      "I": 0,
+      "alignedMatches": 16,
+      "nativeOrderCER": 0.8666666666666667,
+      "candidateCodepoints": 116,
+      "initializationMs": 479.90000000596046,
+      "inferenceMs": 5865.70000000298,
+      "wallMs": 6346.9000000059605,
+      "peakPSSMiB": 710.7724609375,
+      "baselinePSSMiB": 247.0205078125,
+      "zeroDetectionColumns": 0,
+      "detectedButNoTextColumns": 0,
+      "emptyPasses": 0,
+      "squareCount": 0
+    },
+    {
+      "method": "tesseract-columns",
+      "columnProfile": "repaired",
+      "CER": 0.9,
+      "S": 105,
+      "D": 2,
+      "I": 1,
+      "alignedMatches": 13,
+      "nativeOrderCER": 0.9,
+      "candidateCodepoints": 119,
+      "initializationMs": 476.40000000596046,
+      "inferenceMs": 6994.399999991059,
+      "wallMs": 7472.5999999940395,
+      "peakPSSMiB": 733.3837890625,
+      "baselinePSSMiB": 249.9814453125,
+      "zeroDetectionColumns": 0,
+      "detectedButNoTextColumns": 0,
+      "emptyPasses": 1,
+      "squareCount": 0
+    },
+    {
+      "method": "paddle-whole",
+      "columnProfile": null,
+      "CER": 0.225,
+      "S": 25,
+      "D": 2,
+      "I": 0,
+      "alignedMatches": 93,
+      "nativeOrderCER": 0.7916666666666666,
+      "candidateCodepoints": 118,
+      "initializationMs": 1745.2000000029802,
+      "inferenceMs": 2526.5999999940395,
+      "wallMs": 4276.79999999702,
+      "peakPSSMiB": 1031.0927734375,
+      "baselinePSSMiB": 244.8447265625,
+      "zeroDetectionColumns": 0,
+      "detectedButNoTextColumns": 0,
+      "emptyPasses": 0,
+      "squareCount": 0
+    },
+    {
+      "method": "paddle-columns",
+      "columnProfile": "repaired",
+      "CER": 0.24166666666666667,
+      "S": 26,
+      "D": 3,
+      "I": 0,
+      "alignedMatches": 91,
+      "nativeOrderCER": 0.24166666666666667,
+      "candidateCodepoints": 117,
+      "initializationMs": 1731.8999999910593,
+      "inferenceMs": 4741.29999999702,
+      "wallMs": 6474.79999999702,
+      "peakPSSMiB": 1001.3896484375,
+      "baselinePSSMiB": 248.173828125,
+      "zeroDetectionColumns": 0,
+      "detectedButNoTextColumns": 0,
+      "emptyPasses": 0,
+      "squareCount": 0
+    },
+    {
+      "method": "paddle-legacy-columns",
+      "columnProfile": "legacy",
+      "CER": 0.21666666666666667,
+      "S": 23,
+      "D": 3,
+      "I": 0,
+      "alignedMatches": 94,
+      "nativeOrderCER": 0.21666666666666667,
+      "candidateCodepoints": 117,
+      "initializationMs": 1638.5999999940395,
+      "inferenceMs": 3385.4000000059605,
+      "wallMs": 5028.70000000298,
+      "peakPSSMiB": 948.974609375,
+      "baselinePSSMiB": 256.5341796875,
+      "zeroDetectionColumns": 0,
+      "detectedButNoTextColumns": 0,
+      "emptyPasses": 0,
+      "squareCount": 0
+    }
+  ],
+  "previousSample": [
+    {
+      "method": "tesseract-whole",
+      "referenceCodepoints": 542,
+      "referenceReviewed": true,
+      "CER": 0.3081180811808118,
+      "S": 161,
+      "D": 5,
+      "I": 1
+    },
+    {
+      "method": "tesseract-columns",
+      "referenceCodepoints": 542,
+      "referenceReviewed": true,
+      "CER": 0.4280442804428044,
+      "S": 158,
+      "D": 2,
+      "I": 72
+    },
+    {
+      "method": "paddle-whole",
+      "referenceCodepoints": 542,
+      "referenceReviewed": true,
+      "CER": 0.12361623616236163,
+      "S": 40,
+      "D": 27,
+      "I": 0
+    },
+    {
+      "method": "paddle-columns",
+      "referenceCodepoints": 542,
+      "referenceReviewed": true,
+      "CER": 0.12915129151291513,
+      "S": 37,
+      "D": 33,
+      "I": 0
+    }
+  ],
+  "dictionaryCoverage": {
+    "new-unreviewed": {
+      "referenceCodepoints": 120,
+      "missing": [
+        {
+          "referenceIndex1": 10,
+          "character": "淂",
+          "codepoint": "U+6DC2"
+        },
+        {
+          "referenceIndex1": 84,
+          "character": "扵",
+          "codepoint": "U+6275"
+        },
+        {
+          "referenceIndex1": 90,
+          "character": "扵",
+          "codepoint": "U+6275"
+        }
+      ],
+      "minimumExactCERFromUnavailableCodepoints": 0.025
+    },
+    "previous-minguo": {
+      "referenceCodepoints": 542,
+      "missing": [],
+      "minimumExactCERFromUnavailableCodepoints": 0.0
+    }
+  },
+  "diagnosis": {
+    "paddleBothColumnMethodsHaveNoEmptyColumns": true,
+    "paddingDeltaEditingErrors": 3,
+    "paddingDeltaCERPercentagePoints": 2.5,
+    "noPostResultTuning": true,
+    "referenceNumericScoresProvisional": true,
+    "oldSampleIsReviewedNewSampleIsPending": true,
+    "onlyTwoHistoricalImagesNotControlledFontExperiment": true
+  },
+  "validation": {
+    "buildCompleted": true,
+    "mainMethodsCompleted": 4,
+    "predeclaredLegacyControlCompleted": 1,
+    "exactInputAndReferenceHashesChecked": true,
+    "modelsEqualPreviousSample": true,
+    "sourceUnchangedAgainst8817b25": true,
+    "browserNetworkSameOriginGETHEADOnly": true,
+    "mobileHardwareTested": false
+  }
+}
