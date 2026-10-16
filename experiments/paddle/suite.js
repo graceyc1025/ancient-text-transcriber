@@ -7,7 +7,7 @@ export async function runMethod(file,testCase,method){
   try{
     await release();
     const settings=testCase.settings;
-    result.recognition=await recognize(file,{kind:method.kind,mode:method.mode,...settings});
+    result.recognition=await recognize(file,{...settings,kind:method.kind,mode:method.mode,...(method.columnProfile?{columnProfile:method.columnProfile}:{})});
     const evaluationStart=performance.now(),rules={whitespace:settings.whitespace,reviewed:testCase.reference.reviewed===true};
     result.evaluation=evaluate(testCase.reference.text,result.recognition.text,rules);
     result.nativeOrderEvaluation=evaluate(testCase.reference.text,result.recognition.originalText,rules);

@@ -6,6 +6,8 @@
 <fieldset id="testSettings"><legend>同图对照设置</legend>
 <label>分栏列数 <input id="columnCount" type="number" min="1" max="30" value="3"></label>
 <label>可选：从左至右的栏边界百分比（例如0, 17, 35, 53, 70, 85, 100；留空则均分）<input id="columnCuts" type="text"></label>
+<label>分栏处理 <select id="columnProfile"><option value="repaired">补白修复与裁剪诊断</option><option value="legacy">原始窄裁栏（用于复现旧结果）</option></select></label>
+<p>修复方式为Paddle竖排单栏按栏宽补白；Tesseract保留原方式并提示相交文字框，不自动删重。整页及横排识别保持原参数。</p>
 <label>两引擎共同放大倍数 <select id="imageScale"><option value="1">原尺寸</option><option value="2">2倍</option><option value="3">3倍</option></select></label>
 <label>逐字比较空白规则 <select id="whitespace"><option value="layout">忽略半角空格、Tab、换行；保留全角空格</option><option value="strict">全部码位严格比较，包含空白</option></select></label>
 <label>样本性质 <select id="sampleType"><option value="unverified">年代/版本未核定</option><option value="qing-user-declared">用户声明的清代原书扫描（须填写来源）</option><option value="synthetic">现代排版演示，非古籍精度样本</option></select></label>

@@ -1,0 +1,179 @@
+{
+  "scope": "same single historical spread, no held-out historical sample",
+  "imageSHA256": "80128397a2b097f2dbacea13f7e69c94d0ea75b83d932c2dd5f58590a70ab0dd",
+  "referenceSHA256": "484f49aeda0e33460feead6124b2a8caac6afc218d70bbd67fc070743d65d2ce",
+  "referenceCodepoints": 542,
+  "beforeApplicationCommit": "ce0fbd3",
+  "modelsAndWholeParametersUnchanged": true,
+  "comparison": [
+    {
+      "method": "tesseract-whole",
+      "before": {
+        "CER": 0.3081180811808118,
+        "substitutions": 161,
+        "deletions": 5,
+        "insertions": 1
+      },
+      "after": {
+        "CER": 0.3081180811808118,
+        "substitutions": 161,
+        "deletions": 5,
+        "insertions": 1
+      },
+      "beforeInferenceMs": 9606,
+      "afterInferenceMs": 9968.79999999702,
+      "afterPeakPSSMiB": 758.3623046875,
+      "textUnchanged": true
+    },
+    {
+      "method": "tesseract-columns",
+      "before": {
+        "CER": 0.4280442804428044,
+        "substitutions": 158,
+        "deletions": 2,
+        "insertions": 72
+      },
+      "after": {
+        "CER": 0.4280442804428044,
+        "substitutions": 158,
+        "deletions": 2,
+        "insertions": 72
+      },
+      "beforeInferenceMs": 18156,
+      "afterInferenceMs": 17270.79999999702,
+      "afterPeakPSSMiB": 716.9208984375,
+      "textUnchanged": true
+    },
+    {
+      "method": "paddle-whole",
+      "before": {
+        "CER": 0.12361623616236163,
+        "substitutions": 40,
+        "deletions": 27,
+        "insertions": 0
+      },
+      "after": {
+        "CER": 0.12361623616236163,
+        "substitutions": 40,
+        "deletions": 27,
+        "insertions": 0
+      },
+      "beforeInferenceMs": 5051.9000000059605,
+      "afterInferenceMs": 5450.79999999702,
+      "afterPeakPSSMiB": 1044.3447265625,
+      "textUnchanged": true
+    },
+    {
+      "method": "paddle-columns",
+      "before": {
+        "CER": 0.5793357933579336,
+        "substitutions": 25,
+        "deletions": 289,
+        "insertions": 0
+      },
+      "after": {
+        "CER": 0.12915129151291513,
+        "substitutions": 37,
+        "deletions": 33,
+        "insertions": 0
+      },
+      "beforeInferenceMs": 5266.699999988079,
+      "afterInferenceMs": 7415.100000008941,
+      "afterPeakPSSMiB": 1022.626953125,
+      "textUnchanged": false
+    }
+  ],
+  "paddleColumnsAfter": {
+    "zeroBoxColumns": 0,
+    "boxButEmptyColumns": 0
+  },
+  "ablations": [
+    {
+      "method": "paddle-padding",
+      "profile": "padding",
+      "CER": 0.12915129151291513,
+      "S": 37,
+      "D": 33,
+      "I": 0,
+      "inferenceMs": 7451.5999999940395
+    },
+    {
+      "method": "paddle-seam-line",
+      "profile": "seam-line",
+      "CER": 0.13099630996309963,
+      "S": 39,
+      "D": 32,
+      "I": 0,
+      "inferenceMs": 7332.29999999702
+    },
+    {
+      "method": "tesseract-padding",
+      "profile": "padding",
+      "CER": 0.47232472324723246,
+      "S": 184,
+      "D": 42,
+      "I": 30,
+      "inferenceMs": 19665
+    },
+    {
+      "method": "tesseract-single-line",
+      "profile": "single-line",
+      "CER": 0.5498154981549815,
+      "S": 179,
+      "D": 118,
+      "I": 1,
+      "inferenceMs": 12767.5
+    },
+    {
+      "method": "tesseract-raw-line",
+      "profile": "raw-line",
+      "CER": 0.9870848708487084,
+      "S": 16,
+      "D": 519,
+      "I": 0,
+      "inferenceMs": 11114.40000000596
+    },
+    {
+      "method": "tesseract-seam-line",
+      "profile": "seam-line",
+      "CER": 0.518450184501845,
+      "S": 175,
+      "D": 106,
+      "I": 0,
+      "inferenceMs": 12258.79999999702
+    },
+    {
+      "method": "tesseract-seams",
+      "profile": "seams",
+      "CER": 0.5424354243542435,
+      "S": 171,
+      "D": 22,
+      "I": 101,
+      "inferenceMs": 18743.5
+    },
+    {
+      "method": "tesseract-seam-padding",
+      "profile": "seam-padding",
+      "CER": 0.522140221402214,
+      "S": 193,
+      "D": 58,
+      "I": 32,
+      "inferenceMs": 20238.5
+    }
+  ],
+  "beforePaddleColumns": {
+    "zeroBoxColumns": 5,
+    "boxButEmptyColumns": 1
+  },
+  "validation": {
+    "experimentalUnitTestsPassed": 12,
+    "experimentalDesktopWorkflowPassed": true,
+    "sourcePixelConservationPassed": true,
+    "referenceIndependenceRealOCRPassed": true,
+    "experimentalBrowserChecksPassed": 3,
+    "rootUnitTestsPassed": 18,
+    "rootBrowserTestsPassed": 7,
+    "phoneHardwareTested": false
+  },
+  "notes": "Single user-provided historical spread used for diagnosis and selection; no independent historical holdout. Full private images/reference/raw output remain ignored locally."
+}

@@ -4,6 +4,34 @@ import {editOperations} from '../../src/evaluation.js';
 import {sortItems,score} from './engine.js';
 import {evaluate,columnBoxes,rawTSVLines} from './evaluation.js';
 import {validateSettings,recordsCSV} from './cases.js';
+import {columnProfile,refineCuts,preparationGeometry,auditColumnBoxes,overlappingLines} from './columns.js';
+import {predictWithTrace} from './paddle-trace.js';
+test('旧输入默认保持原方式；修复只改变分栏图像、不改变整页参数',()=>{
+  assert.equal(validateSettings({}).columnProfile,'legacy');
+  assert.equal(columnProfile('repaired','paddle','vertical').padding,1);
+  assert.equal(columnProfile('repaired','tesseract','vertical').effective,'legacy');
+  assert.equal(columnProfile('repaired','paddle','horizontal').effective,'legacy');
+  const g=preparationGeometry(150,2700,columnProfile('padding','paddle','vertical'));assert.deepEqual(g.workingSize,[450,2700]);assert.deepEqual(g.sourceSize,[150,2700]);
+  const bounded=preparationGeometry(2200,7000,columnProfile('padding','paddle','vertical'));assert(bounded.workingSize[0]*bounded.workingSize[1]<5_010_000);assert(bounded.scale<1);
+});
+test('切线移动只依据墨迹且有限，移动前后每个像素恰归一栏',()=>{
+  const density=Array(120).fill(1);density.fill(0,36,39);density.fill(0,83,86);
+  const cuts=refineCuts(density,[0,40,80,120]);assert(cuts[1]<40&&cuts[2]>80);assert(Math.abs(cuts[1]-40)<=7);assert(Math.abs(cuts[2]-80)<=7);
+  const boxes=cuts.slice(0,-1).map((x,i)=>[x/120,0,(cuts[i+1]-x)/120,1]);const audit=auditColumnBoxes(boxes.reverse(),120,400);assert(audit.fullCoverage);assert.equal(audit.overlapPixels,0);assert.equal(audit.gapPixels,0);
+  const ownership=new Uint8Array(120);for(const [a,,b]of audit.rectangles)for(let x=a;x<b;x++)ownership[x]++;assert([...ownership].every(n=>n===1));
+  assert.deepEqual(refineCuts(Array(120).fill(0),[0,40,80,120]),[0,40,80,120]);
+  assert.equal(auditColumnBoxes([[0,0,.6,1],[.5,0,.5,1]],120,400).overlapPixels,12);
+});
+test('相交框审计不按相似文字去重，也不修改低置信候选',()=>{
+  const item=(a,b,text)=>({poly:[[a,0],[b,0],[b,100],[a,100]],text});const items=[item(0,100,'□'),item(10,90,'不同'),item(110,120,'□')];const original=structuredClone(items);
+  assert.equal(overlappingLines(items).length,1);assert.deepEqual(items,original);
+});
+test('SDK中间结果观察保留空文本/非有限分数，恢复方法并透传失败（非OCR模拟评测）',async()=>{
+  const raw={items:[]},detResult=[{boxes:[{poly:[[0,0],[1,0],[1,2],[0,2]]}]}],recResult=[{text:'',score:NaN},{text:'𠮷',score:0}];
+  const instance={detModel:{predict:async()=>detResult},recModel:{predict:async()=>recResult},async predict(){assert.equal(await this.detModel.predict(),detResult);assert.equal(await this.recModel.predict(),recResult);return raw;}};
+  const det=instance.detModel.predict,rec=instance.recModel.predict,observed=await predictWithTrace(instance,null,{});assert.equal(observed.result,raw);assert.equal(observed.trace.recognitions[0][0].text,'');assert.equal(observed.trace.recognitions[0][0].scoreFinite,false);assert.equal(instance.detModel.predict,det);assert.equal(instance.recModel.predict,rec);
+  instance.predict=async()=>{throw new Error('actual inference failure');};await assert.rejects(()=>predictWithTrace(instance,null,{}),/actual inference failure/);assert.equal(instance.detModel.predict,det);assert.equal(instance.recModel.predict,rec);
+});
 test('对照评分不把简体、缺字或错误列序视作正确',()=>{
   const reference='學習說慍';assert.equal(editOperations(reference,'学习说愠').distance,4);
   const omitted=editOperations('有朋自遠方來','有朋自方來');assert.equal(omitted.deletions,1);assert.equal(omitted.substitutions,0);

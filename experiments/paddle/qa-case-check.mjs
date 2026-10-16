@@ -8,7 +8,19 @@ try{
   let ready=false;for(let i=0;i<30;i++){try{if((await fetch(base)).ok){ready=true;break;}}catch{}await sleep(200);}assert(ready);
   await mkdir(results,{recursive:true});browser=await chromium.launch({executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH||'/usr/bin/chromium'});
   const page=await browser.newPage({viewport:{width:1440,height:1100}}),requests=[],errors=[];page.on('dialog',d=>d.accept());page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(/^https?:/.test(r.url()))requests.push({url:r.url(),method:r.method()});});
-  await page.goto(base);await page.locator('#image').setInputFiles(path.join(root,'public/images/example.png'));await page.waitForFunction(()=>document.querySelector('#preview').naturalWidth===740);
+  await page.goto(base);
+  // Pixel conservation, not a modern-image accuracy claim: padding and lossless
+  // quarter-turn preserve every source pixel and surround it only with white.
+  await page.evaluate(()=>{
+    const source=document.createElement('canvas');source.width=7;source.height=11;const ctx=source.getContext('2d'),data=ctx.createImageData(7,11);
+    for(let y=0;y<11;y++)for(let x=0;x<7;x++){const i=(y*7+x)*4;data.data.set([10+x*20,10+y*15,50,255],i);}ctx.putImageData(data,0,0);
+    for(const name of ['padding','single-line']){
+      const prepared=window.ocrExperiment.prepareColumn(source,window.ocrExperiment.columnProfile(name,'tesseract','vertical')),canvas=prepared.canvas,pixels=canvas.getContext('2d').getImageData(0,0,canvas.width,canvas.height).data;
+      for(let y=0;y<11;y++)for(let x=0;x<7;x++){const dx=name==='padding'?x+7:y,dy=name==='padding'?y:13-x,a=(dy*canvas.width+dx)*4,b=(y*7+x)*4;for(let k=0;k<4;k++)if(pixels[a+k]!==data.data[b+k])throw new Error('Column transform changed a source pixel');}
+      if(pixels[0]!==255||pixels[1]!==255||pixels[2]!==255)throw new Error('Padding is not white');canvas.width=0;canvas.height=0;
+    }source.width=0;source.height=0;
+  });
+  await page.locator('#image').setInputFiles(path.join(root,'public/images/example.png'));await page.waitForFunction(()=>document.querySelector('#preview').naturalWidth===740);
   const truth=JSON.parse(await readFile(path.join(root,'tests/samples/synthetic-ground-truth.json'),'utf8')).columns_right_to_left.join('\n');
   await page.locator('#truthFile').setInputFiles({name:'modern-reviewed.txt',mimeType:'text/plain',buffer:Buffer.from(truth)});await page.waitForFunction(t=>document.querySelector('#truth').value===t,truth);
   await page.locator('#sourceNotes').fill('现代合成流程验收，不是清代样本');await page.locator('#sampleType').selectOption('synthetic');await page.locator('#reviewer').fill('fixture checked against the source image');await page.locator('#reviewed').check();
@@ -18,10 +30,17 @@ try{
   await page.locator('#runSuite').click();await page.waitForFunction(()=>!document.querySelector('#runSuite').disabled,{timeout:180000});
   const recordEvent=page.waitForEvent('download');await page.locator('#exportRecords').click();const bundle=JSON.parse(await readFile(await(await recordEvent).path(),'utf8')),record=bundle.records[0];assert.equal(record.methods.length,4);assert(record.methods.every(m=>m.status==='done'&&m.evaluation.scorable));
   assert.equal(record.case.id,testCase.id);assert(record.methods.every(m=>m.recognition.confidenceMasking===false&&m.memory.totalBrowserPeakMiB===null));
-  assert(record.methods.every(m=>m.evaluation.referenceCharacters===30));assert.deepEqual(record.methods[1].recognition.passes.map(p=>p.bbox),record.methods[3].recognition.passes.map(p=>p.bbox));assert.deepEqual(record.methods[1].recognition.passes.map(p=>p.workingSize),record.methods[3].recognition.passes.map(p=>p.workingSize));
+  assert.equal(testCase.settings.columnProfile,'repaired');assert(record.methods.every(m=>m.evaluation.referenceCharacters===30));assert.deepEqual(record.methods[1].recognition.passes.map(p=>p.bbox),record.methods[3].recognition.passes.map(p=>p.bbox));assert.deepEqual(record.methods[1].recognition.passes.map(p=>p.preparation.sourceSize),record.methods[3].recognition.passes.map(p=>p.preparation.sourceSize));
+  assert(record.methods.filter(m=>m.mode==='columns').every(m=>m.recognition.cropAudit.fullCoverage&&m.recognition.cropAudit.overlapPixels===0));assert(record.methods[3].recognition.passes.every(p=>p.preparation.paddingPixels[0]===p.preparation.sourceSize[0]));
   assert(record.methods[0].recognition.passes[0].rawTSV);assert(record.methods[2].recognition.passes[0].raw.items.length>0);
-  assert(record.methods.every(m=>m.recognition.pipelineVersion==='raw-candidate-comparison-v2'));assert.equal(record.methods[2].recognition.parameters.textRecScoreThresh,0);assert.equal(record.methods[2].recognition.parameters.textDetUnclipRatio,2);assert.equal(record.methods[0].recognition.parameters.tessedit_pageseg_mode,'5');
+  assert(record.methods.every(m=>m.recognition.pipelineVersion===(m.mode==='columns'?'column-input-v3':'raw-candidate-comparison-v2')));assert.equal(record.methods[2].recognition.parameters.textRecScoreThresh,0);assert.equal(record.methods[2].recognition.parameters.textDetUnclipRatio,2);assert.equal(record.methods[0].recognition.parameters.tessedit_pageseg_mode,'5');assert(record.methods[3].recognition.passes.every(p=>p.intermediate&&p.intermediate.errors.length===0));
   await writeFile(path.join(results,'qa-ui-records.json'),JSON.stringify(bundle,null,2));
+  // Run the same real OCR with an unrelated reference. Recognition must remain
+  // identical; the reference is used only in evaluate(), after inference.
+  const independent=await page.evaluate(async testCase=>{
+    const bytes=await(await fetch('./images/example.png')).blob(),file=new File([bytes],'example.png',{type:'image/png'}),copy=structuredClone(testCase);copy.reference.text='完全不同的人工标准';copy.reference.reviewed=true;
+    return await window.ocrExperiment.runMethod(file,copy,{kind:'paddle',mode:'columns',id:'reference-independent',label:'reference independence'});
+  },testCase);assert.equal(independent.status,'done');assert.equal(independent.recognition.text,record.methods[3].recognition.text);
   const csvEvent=page.waitForEvent('download');await page.locator('#exportCSV').click();const csv=await readFile(await(await csvEvent).path(),'utf8');assert(csv.includes('browserProcessTreePeakMiB'));assert(csv.includes('tesseract-whole'));
   await page.locator('#truth').fill('變更□');assert.equal(await page.locator('#reviewed').isChecked(),false);const unchangedEvent=page.waitForEvent('download');await page.locator('#exportRecords').click();assert.deepEqual(JSON.parse(await readFile(await(await unchangedEvent).path(),'utf8')).records[0],record);
   assert(requests.every(r=>new URL(r.url).origin===new URL(base).origin&&['GET','HEAD'].includes(r.method)));assert.deepEqual(errors,[]);await page.screenshot({path:path.join(results,'qa-desktop.png'),fullPage:true});

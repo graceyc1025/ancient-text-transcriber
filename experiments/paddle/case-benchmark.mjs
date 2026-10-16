@@ -8,12 +8,18 @@ assert.equal(testCase.schema,'ancient-ocr-case-v1','Unrecognized case schema');a
 assert(bytes.byteLength<=20*1024*1024,'Image exceeds the browser upload limit');
 testCase.settings=validateSettings(testCase.settings);
 const here=path.dirname(fileURLToPath(import.meta.url)),base='http://127.0.0.1:4183/ancient-text-transcriber/experiments/paddle/',destination=path.resolve(option('--out')&&args.includes('--out')?option('--out'):path.join(here,'results/desktop-case.json'));
-const server=spawn(process.execPath,['serve.mjs'],{cwd:here,env:{...process.env,EXPERIMENT_PORT:'4183'},stdio:'ignore'});let browser,record={schema:'ancient-ocr-comparison-v2',id:randomUUID(),case:testCase,startedAt:new Date().toISOString(),methods:[]};
+let methods=args.includes('--boundary-ablation')?['seams','seam-padding'].map(columnProfile=>({id:`tesseract-${columnProfile}`,kind:'tesseract',mode:'columns',columnProfile,label:`Tesseract ${columnProfile}`})):args.includes('--column-ablation')?[
+  ...['padding','seam-line'].map(columnProfile=>({id:`paddle-${columnProfile}`,kind:'paddle',mode:'columns',columnProfile,label:`Paddle ${columnProfile}`})),
+  ...['padding','single-line','raw-line','seam-line'].map(columnProfile=>({id:`tesseract-${columnProfile}`,kind:'tesseract',mode:'columns',columnProfile,label:`Tesseract ${columnProfile}`})),
+]:METHODS;
+for(const [flag,key,allowed]of [['--engine','kind',['tesseract','paddle']],['--mode','mode',['whole','columns']]])if(args.includes(flag)){assert(allowed.includes(option(flag)),`Invalid ${flag}`);methods=methods.filter(m=>m[key]===option(flag));}assert(methods.length,'No matching methods');
+const server=spawn(process.execPath,['serve.mjs'],{cwd:here,env:{...process.env,EXPERIMENT_PORT:'4183'},stdio:['ignore','pipe','pipe']});let hostReady=false,hostError='';server.stdout.on('data',data=>{if(String(data).includes('Experiment static host ready'))hostReady=true;});server.stderr.on('data',data=>{hostError=(hostError+String(data)).slice(-4000);});
+let browser,record={schema:'ancient-ocr-comparison-v2',id:randomUUID(),case:testCase,startedAt:new Date().toISOString(),columnAblation:args.includes('--column-ablation'),boundaryAblation:args.includes('--boundary-ablation'),methods:[]};
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 async function desktopDeadline(promise){let timer;try{return await Promise.race([promise,new Promise((_,reject)=>{timer=setTimeout(()=>reject(new Error('桌面方法运行超过180秒，结果不完整，不计CER。')),180000);})]);}finally{clearTimeout(timer);}}
 try{
-  let ready=false;for(let i=0;i<30;i++){try{if((await fetch(base)).ok){ready=true;break;}}catch{}await sleep(200);}assert(ready,'Experiment static host did not start');
-  for(const method of METHODS){
+  let ready=false;for(let i=0;i<30;i++){if(server.exitCode!==null)throw new Error(`Experiment static host failed: ${hostError}`);try{if(hostReady&&(await fetch(base)).ok){ready=true;break;}}catch{}await sleep(200);}assert(ready,'Experiment static host did not start');
+  for(const method of methods){
     browser=await chromium.launch({executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH||'/usr/bin/chromium',args:['--enable-precise-memory-info']});
     const page=await browser.newPage({viewport:{width:1440,height:1100}}),session=await browser.newBrowserCDPSession(),network=[];page.on('request',r=>{if(/^https?:/.test(r.url()))network.push({url:r.url(),method:r.method()});});
     await page.goto(base);await page.waitForFunction(()=>window.ocrExperiment);const baseline=await processMemory(session);let peak=baseline,sampling=true;

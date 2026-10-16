@@ -3,11 +3,12 @@ import {inspectFile} from '../../src/images.js';
 import {makeCase,validateSettings,recordsCSV,sha256} from './cases.js';
 import {columnBoxes} from './evaluation.js';
 import {runSuite,runMethod,newRecord} from './suite.js';
+import {prepareColumn,columnProfile} from './columns.js';
 import './style.css';
 const $=id=>document.getElementById(id),state={selected:null,preview:null,thumbnail:null,records:[],busy:false,stop:false,imported:null,last:null};
 const el=(tag,text)=>{const item=document.createElement(tag);if(text!==undefined)item.textContent=text;return item;};
 function download(value,name,type='application/json'){const link=el('a'),url=URL.createObjectURL(new Blob([typeof value==='string'?value:JSON.stringify(value,null,2)],{type}));link.href=url;link.download=name;link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
-function settings(){return validateSettings({orientation:$('orientation').value,columnCount:Number($('columnCount').value),columnCuts:$('columnCuts').value,imageScale:Number($('imageScale').value),whitespace:$('whitespace').value});}
+function settings(){return validateSettings({orientation:$('orientation').value,columnCount:Number($('columnCount').value),columnCuts:$('columnCuts').value,imageScale:Number($('imageScale').value),whitespace:$('whitespace').value,columnProfile:$('columnProfile').value});}
 function dirtyInput(){if(state.busy)return;state.last=null;$('download').disabled=true;$('inputNote').textContent='输入已变更；已有记录的图片、标准、参数和原始输出保持原样。新运行会创建新记录。';$('output').value='';$('details').textContent='';renderCuts();}
 function renderCuts(){const target=$('cutsPreview');target.replaceChildren();if(!state.selected)return;try{for(const[ i,box]of settings().columnBoxes.entries()){const span=el('span',String(i+1));span.style.left=`${box[0]*100}%`;span.style.width=`${box[2]*100}%`;target.append(span);}}catch(error){$('inputNote').textContent=error.message;}}
 function busy(value){state.busy=value;document.querySelectorAll('input,select,textarea,button').forEach(item=>{if(!item.readOnly)item.disabled=value;});$('stopSuite').disabled=!value;$('download').disabled=value||!state.last;for(const id of ['exportRecords','exportCSV'])$(id).disabled=value||!state.records.length;}
@@ -33,6 +34,10 @@ function renderRecords(){
     for(const method of record.methods){if(!method.recognition&&!method.error)continue;const detail=el('details');detail.append(el('summary',`${method.label}：原始候选与逐字差异`));
       if(method.error)detail.append(el('p',method.error));const rec=method.recognition;
       if(rec){detail.append(rawArea('引擎原始输出（未重排、未标□）',rec.originalText),rawArea('按几何阅读序组合的候选（CER使用此文本；不补字）',rec.text));
+        if(rec.mode==='columns'){
+          const overlapCount=rec.passes.reduce((n,p)=>n+(p.overlappingLinePairs?.length||0),0),noBoxes=rec.passes.filter(p=>p.raw?.metrics?.detectedBoxes===0).length,empty=rec.passes.filter(p=>p.raw?.metrics?.detectedBoxes>0&&p.raw?.metrics?.recognizedCount===0).length;
+          detail.append(el('p',`分栏方式 ${rec.columnProfile}；裁剪${rec.cropAudit?.fullCoverage?'覆盖完整、无像素重叠':'审计未提供'}。${rec.engine==='paddle'?`无检测框 ${noBoxes} 栏，检出框但无非空结果 ${empty} 栏。`:`引擎内部相交文字框 ${overlapCount} 对；原始候选均保留，不自动删字。`}`));
+        }
         const e=method.evaluation;if(e?.scorable){const changes=e.alignment.filter(x=>x.type!=='match');detail.append(el('p',`正确匹配 ${e.correctAlignedCharacters}/${e.referenceCharacters}；字符序号按比较后的Unicode码位、从1开始。下方最多展示150处差异，完整对齐保存在JSON。`));detail.append(el('pre',JSON.stringify(changes.slice(0,150),null,2)));}else detail.append(el('p',e?.reason||'未计分'));
       }else if(method.partialPasses?.length)detail.append(el('pre',JSON.stringify(method.partialPasses,null,2)));
       section.append(detail);
@@ -54,11 +59,11 @@ async function run(all){
 $('image').onchange=()=>{const file=$('image').files[0];if(file)loadInput(async()=>{await setImage(file);$('sampleType').value='unverified';},'图片');};
 $('sample').onclick=()=>loadInput(async()=>{const response=await fetch(new URL('images/example.png',document.baseURI));if(!response.ok)throw new Error('演示图未找到');await setImage(new File([await response.blob()],'example.png',{type:'image/png'}));$('sampleType').value='synthetic';$('sourceNotes').value='仓库现代生成的竖排繁体演示；非清代原刻本。';},'演示图');
 $('truthFile').onchange=()=>{const file=$('truthFile').files[0];if(file)loadInput(async()=>{if(file.size>200000)throw new Error('标准TXT过大，请按单页或区域拆分。');const bytes=await file.arrayBuffer(),text=new TextDecoder('utf-8',{fatal:true}).decode(bytes);state.imported={fileName:file.name,sha256:await sha256(bytes),originalText:text};$('truth').value=text;$('reviewed').checked=false;},'UTF-8标准TXT');};
-for(const id of ['orientation','columnCount','columnCuts','imageScale','whitespace','sampleType','sourceNotes','truth','reviewer','reviewed'])$(id).addEventListener('input',()=>{if(id==='truth')$('reviewed').checked=false;dirtyInput();});
+for(const id of ['orientation','columnCount','columnCuts','columnProfile','imageScale','whitespace','sampleType','sourceNotes','truth','reviewer','reviewed'])$(id).addEventListener('input',()=>{if(id==='truth')$('reviewed').checked=false;dirtyInput();});
 $('run').onclick=()=>run(false);$('runSuite').onclick=()=>run(true);$('stopSuite').onclick=()=>{state.stop=true;$('stopSuite').disabled=true;$('status').textContent='等待当前方法完成，随后停止；不会丢弃已有结果。';};
 $('exportCase').onclick=async()=>{try{download(await snapshot(),'ocr-test-case.json');}catch(error){$('status').textContent=error.message;}};
 $('exportRecords').onclick=()=>download({schema:'ancient-ocr-records-v2',records:state.records.map(w=>w.record)},'ocr-test-records.json');
 $('exportCSV').onclick=()=>download(recordsCSV(state.records.map(w=>w.record)),'ocr-test-summary.csv','text/csv;charset=utf-8');
 $('download').onclick=()=>{if(state.last)download(state.last,'ocr-experiment.json');};
 window.addEventListener('beforeunload',e=>{if(state.records.length){e.preventDefault();e.returnValue='';}});
-window.ocrExperiment={initialize,recognize,release,score,runMethod,newRecord};busy(false);
+window.ocrExperiment={initialize,recognize,release,score,runMethod,newRecord,prepareColumn,columnProfile};busy(false);
