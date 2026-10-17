@@ -1,0 +1,456 @@
+{
+  "date": "2026-10-17 Asia/Shanghai",
+  "scope": "Integration assessment only; no app changes, accuracy tuning, new CER, deployment, or physical phone tests.",
+  "applicationBaseline": "8817b2589b4fccfcfe2e2c6233e6ef0fb6e67bc9",
+  "branch": "experiment/paddleocr-v5-browser",
+  "browser": "Chromium 154.0.8037.57 Linux x86_64",
+  "memoryScope": "Entire browser process-tree PSS sampled ~100ms, not phone memory or model-only memory.",
+  "input": "Existing second historical sample body, same 2607x1917 working size; SDK worker smoke also used existing modern demo, not an accuracy test.",
+  "checks": [
+    {
+      "type": "desktop",
+      "browser": "154.0.8037.57",
+      "beforeChoiceModelRequests": [],
+      "capabilities": {
+        "crossOriginIsolated": false,
+        "deviceMemory": 32,
+        "Worker": "function",
+        "OffscreenCanvas": "function",
+        "createImageBitmap": "function",
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36"
+      },
+      "heartbeat": {
+        "periodMs": 50,
+        "maxGapMs": 2565.100000023842,
+        "samples": 25,
+        "over250ms": 3
+      },
+      "peakPSS": {
+        "pssMiB": 911.5361328125,
+        "rssMiB": 1114.3984375,
+        "privateMiB": 826.2421875,
+        "processes": 7
+      },
+      "onlySameOriginGETHEAD": true,
+      "unselectedTesseractRuntimeRequests": [],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "status": "运行完成。原始候选和标准快照已记录，请导出保存。",
+      "requestedStaticFiles": [
+        {
+          "path": "assets/dist-BosGNGYn.js",
+          "bytes": 10476242
+        },
+        {
+          "path": "assets/index-3xrX3lr_.js",
+          "bytes": 61667
+        },
+        {
+          "path": "assets/index-BKCyutVo.css",
+          "bytes": 1448
+        },
+        {
+          "path": "assets/ort.bundle.min-B3UHK9Hc.js",
+          "bytes": 390762
+        },
+        {
+          "path": "index.html",
+          "bytes": 4752
+        },
+        {
+          "path": "model-status.json",
+          "bytes": 888
+        },
+        {
+          "path": "models/PP-OCRv5_mobile_det.tar",
+          "bytes": 4899840
+        },
+        {
+          "path": "models/PP-OCRv5_mobile_rec.tar",
+          "bytes": 16672768
+        },
+        {
+          "path": "ort/ort-wasm-simd-threaded.jsep.mjs",
+          "bytes": 44677
+        },
+        {
+          "path": "ort/ort-wasm-simd-threaded.jsep.wasm",
+          "bytes": 21872216
+        },
+        {
+          "path": "tesseract-models.json",
+          "bytes": 377
+        }
+      ],
+      "uniqueLocalStaticBodyBytes": 54425637,
+      "initializationMs": 1993.199999988079,
+      "inferenceMs": 2564.0999999940395
+    },
+    {
+      "type": "touch-emulation",
+      "browser": "154.0.8037.57",
+      "beforeChoiceModelRequests": [],
+      "capabilities": {
+        "crossOriginIsolated": false,
+        "deviceMemory": 32,
+        "Worker": "function",
+        "OffscreenCanvas": "function",
+        "createImageBitmap": "function",
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36"
+      },
+      "heartbeat": {
+        "periodMs": 50,
+        "maxGapMs": 2725.7000000178814,
+        "samples": 19,
+        "over250ms": 3
+      },
+      "peakPSS": {
+        "pssMiB": 920.8623046875,
+        "rssMiB": 1118.60546875,
+        "privateMiB": 840.6796875,
+        "processes": 7
+      },
+      "onlySameOriginGETHEAD": true,
+      "unselectedTesseractRuntimeRequests": [],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "status": "运行完成。原始候选和标准快照已记录，请导出保存。",
+      "requestedStaticFiles": [
+        {
+          "path": "assets/dist-BosGNGYn.js",
+          "bytes": 10476242
+        },
+        {
+          "path": "assets/index-3xrX3lr_.js",
+          "bytes": 61667
+        },
+        {
+          "path": "assets/index-BKCyutVo.css",
+          "bytes": 1448
+        },
+        {
+          "path": "assets/ort.bundle.min-B3UHK9Hc.js",
+          "bytes": 390762
+        },
+        {
+          "path": "index.html",
+          "bytes": 4752
+        },
+        {
+          "path": "model-status.json",
+          "bytes": 888
+        },
+        {
+          "path": "models/PP-OCRv5_mobile_det.tar",
+          "bytes": 4899840
+        },
+        {
+          "path": "models/PP-OCRv5_mobile_rec.tar",
+          "bytes": 16672768
+        },
+        {
+          "path": "ort/ort-wasm-simd-threaded.jsep.mjs",
+          "bytes": 44677
+        },
+        {
+          "path": "ort/ort-wasm-simd-threaded.jsep.wasm",
+          "bytes": 21872216
+        },
+        {
+          "path": "tesseract-models.json",
+          "bytes": 377
+        }
+      ],
+      "uniqueLocalStaticBodyBytes": 54425637,
+      "initializationMs": 1618.699999988079,
+      "inferenceMs": 2699.9000000059605
+    },
+    {
+      "type": "sdk-worker",
+      "browser": "154.0.8037.57",
+      "beforeChoiceModelRequests": [],
+      "capabilities": {
+        "crossOriginIsolated": false,
+        "deviceMemory": 32,
+        "Worker": "function",
+        "OffscreenCanvas": "function",
+        "createImageBitmap": "function",
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36"
+      },
+      "heartbeat": {
+        "periodMs": 50,
+        "maxGapMs": 647.9000000059605,
+        "samples": 77,
+        "over250ms": 1
+      },
+      "peakPSS": {
+        "pssMiB": 782.8662109375,
+        "rssMiB": 982.8515625,
+        "privateMiB": 700.390625,
+        "processes": 7
+      },
+      "onlySameOriginGETHEAD": true,
+      "unselectedTesseractRuntimeRequests": [],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "status": null,
+      "result": {
+        "success": true,
+        "ms": 4392.100000023842,
+        "rawTextSHA256": "a5b000937945d55d57db29c432b097d122f9ecaa6a3c81e5310d2ff3d2a6daec"
+      },
+      "requestedStaticFiles": [
+        {
+          "path": "assets/dist-BosGNGYn.js",
+          "bytes": 10476242
+        },
+        {
+          "path": "assets/index-3xrX3lr_.js",
+          "bytes": 61667
+        },
+        {
+          "path": "assets/index-BKCyutVo.css",
+          "bytes": 1448
+        },
+        {
+          "path": "assets/worker-entry-C9UNuyOJ-EhIzhVdm.js",
+          "bytes": 11341486
+        },
+        {
+          "path": "images/example.png",
+          "bytes": 35968
+        },
+        {
+          "path": "index.html",
+          "bytes": 4752
+        },
+        {
+          "path": "models/PP-OCRv5_mobile_det.tar",
+          "bytes": 4899840
+        },
+        {
+          "path": "models/PP-OCRv5_mobile_rec.tar",
+          "bytes": 16672768
+        },
+        {
+          "path": "ort/ort-wasm-simd-threaded.jsep.mjs",
+          "bytes": 44677
+        },
+        {
+          "path": "ort/ort-wasm-simd-threaded.jsep.wasm",
+          "bytes": 21872216
+        }
+      ],
+      "uniqueLocalStaticBodyBytes": 65411064
+    },
+    {
+      "type": "root-csp",
+      "browser": "154.0.8037.57",
+      "beforeChoiceModelRequests": [],
+      "capabilities": {
+        "crossOriginIsolated": false,
+        "deviceMemory": 32,
+        "Worker": "function",
+        "OffscreenCanvas": "function",
+        "createImageBitmap": "function",
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36"
+      },
+      "heartbeat": {
+        "periodMs": 50,
+        "maxGapMs": 494.90000000596046,
+        "samples": 11,
+        "over250ms": 1
+      },
+      "peakPSS": {
+        "pssMiB": 342.451171875,
+        "rssMiB": 547.546875,
+        "privateMiB": 254.52734375,
+        "processes": 7
+      },
+      "onlySameOriginGETHEAD": true,
+      "unselectedTesseractRuntimeRequests": [],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "status": "未完成识别：paddle 整页 Evaluating a string as JavaScript violates the following Content Security Policy directive because 'unsafe-eval' is not an allowed source of script: script-src 'self' 'wasm-unsafe-eval'\".\n。已完成的方法保留。",
+      "requestedStaticFiles": [
+        {
+          "path": "assets/dist-BosGNGYn.js",
+          "bytes": 10476242
+        },
+        {
+          "path": "assets/index-3xrX3lr_.js",
+          "bytes": 61667
+        },
+        {
+          "path": "assets/index-BKCyutVo.css",
+          "bytes": 1448
+        },
+        {
+          "path": "images/example.png",
+          "bytes": 35968
+        },
+        {
+          "path": "index.html",
+          "bytes": 4752
+        },
+        {
+          "path": "model-status.json",
+          "bytes": 888
+        },
+        {
+          "path": "tesseract-models.json",
+          "bytes": 377
+        }
+      ],
+      "uniqueLocalStaticBodyBytes": 10581342
+    },
+    {
+      "type": "sdk-worker-book",
+      "browser": "154.0.8037.57",
+      "beforeChoiceModelRequests": [],
+      "capabilities": {
+        "crossOriginIsolated": false,
+        "deviceMemory": 32,
+        "Worker": "function",
+        "OffscreenCanvas": "function",
+        "createImageBitmap": "function",
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36"
+      },
+      "heartbeat": {
+        "periodMs": 50,
+        "maxGapMs": 514.4000000059605,
+        "samples": 87,
+        "over250ms": 1
+      },
+      "peakPSS": {
+        "pssMiB": 886.150390625,
+        "rssMiB": 1087.30859375,
+        "privateMiB": 802.58203125,
+        "processes": 7
+      },
+      "onlySameOriginGETHEAD": true,
+      "unselectedTesseractRuntimeRequests": [],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "status": null,
+      "result": {
+        "success": true,
+        "ms": 4677.9000000059605,
+        "rawTextSHA256": "b6a8a69edc23a80bfd45be57f69ba72ae445907897fc81ff18f91c7a89187847"
+      },
+      "requestedStaticFiles": [
+        {
+          "path": "assets/dist-BosGNGYn.js",
+          "bytes": 10476242
+        },
+        {
+          "path": "assets/index-3xrX3lr_.js",
+          "bytes": 61667
+        },
+        {
+          "path": "assets/index-BKCyutVo.css",
+          "bytes": 1448
+        },
+        {
+          "path": "assets/worker-entry-C9UNuyOJ-EhIzhVdm.js",
+          "bytes": 11341486
+        },
+        {
+          "path": "index.html",
+          "bytes": 4752
+        },
+        {
+          "path": "models/PP-OCRv5_mobile_det.tar",
+          "bytes": 4899840
+        },
+        {
+          "path": "models/PP-OCRv5_mobile_rec.tar",
+          "bytes": 16672768
+        },
+        {
+          "path": "ort/ort-wasm-simd-threaded.jsep.mjs",
+          "bytes": 44677
+        },
+        {
+          "path": "ort/ort-wasm-simd-threaded.jsep.wasm",
+          "bytes": 21872216
+        }
+      ],
+      "uniqueLocalStaticBodyBytes": 65375096
+    },
+    {
+      "type": "sdk-worker-root-csp",
+      "browser": "154.0.8037.57",
+      "beforeChoiceModelRequests": [],
+      "capabilities": {
+        "crossOriginIsolated": false,
+        "deviceMemory": 32,
+        "Worker": "function",
+        "OffscreenCanvas": "function",
+        "createImageBitmap": "function",
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36"
+      },
+      "heartbeat": {
+        "periodMs": 50,
+        "maxGapMs": 515.0999999940395,
+        "samples": 6,
+        "over250ms": 1
+      },
+      "peakPSS": {
+        "pssMiB": 364.62109375,
+        "rssMiB": 564.2421875,
+        "privateMiB": 282.0234375,
+        "processes": 7
+      },
+      "onlySameOriginGETHEAD": true,
+      "unselectedTesseractRuntimeRequests": [],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "status": null,
+      "result": {
+        "success": false,
+        "error": "Evaluating a string as JavaScript violates the following Content Security Policy directive because 'unsafe-eval' is not an allowed source of script: script-src 'self' 'wasm-unsafe-eval'\".\n",
+        "ms": 601.5
+      },
+      "requestedStaticFiles": [
+        {
+          "path": "assets/dist-BosGNGYn.js",
+          "bytes": 10476242
+        },
+        {
+          "path": "assets/index-3xrX3lr_.js",
+          "bytes": 61667
+        },
+        {
+          "path": "assets/index-BKCyutVo.css",
+          "bytes": 1448
+        },
+        {
+          "path": "index.html",
+          "bytes": 4752
+        }
+      ],
+      "uniqueLocalStaticBodyBytes": 10544109
+    }
+  ],
+  "sourceAudit": {
+    "applicationUsesPaddleWorker": false,
+    "paddleSDK": "0.4.2",
+    "mainThreadORT": "1.22.0",
+    "sdkEmbeddedWorkerORT": "1.24.3",
+    "embeddedWorkerUsedExistingWASM": "1.22.0; smoke succeeded but release compatibility unproven",
+    "csp": "Root forbids unsafe-eval; both direct and SDK worker paths failed in compatibility probes.",
+    "modelsBytes": 21572608,
+    "githubActionsBuildIncludesExperiment": false,
+    "noActualMobileDevice": true,
+    "noDeployedPaddleIntegration": true
+  }
+}
