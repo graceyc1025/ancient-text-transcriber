@@ -65,6 +65,7 @@ test('Pages 子路径下真实本地 OCR、JPG/PNG 批量、校勘、复制、�
   expect(requests.every(request=>new URL(request.url).origin==='http://127.0.0.1:4173')).toBe(true);
   expect(requests.every(request=>['GET','HEAD'].includes(request.method))).toBe(true);
   expect(requests.some(request=>request.url.includes('/api/'))).toBe(false);
+  expect(requests.some(request=>request.url.includes('/paddle/'))).toBe(false);
   expect(errors).toEqual([]);
 });
 

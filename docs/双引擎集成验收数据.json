@@ -1,0 +1,158 @@
+{
+  "scope": "Desktop integration regression; frozen model/whole-page parameters, ORT now 1.24.3. No tuning.",
+  "books": [
+    {
+      "sample": "minguo",
+      "browser": "154.0.8037.57",
+      "imageSHA256": "80128397a2b097f2dbacea13f7e69c94d0ea75b83d932c2dd5f58590a70ab0dd",
+      "runs": [
+        {
+          "wallIncludingUITestMs": 7193,
+          "inferenceMs": 5236,
+          "workingSize": [
+            2522,
+            1982
+          ],
+          "textSHA256": "e4f850ea2081452b669b408fbfbc637b2f8634ea7ba8c15a72275b9963a673ad",
+          "sameSortedAsFrozen": true,
+          "sameNativeAsFrozen": true,
+          "versions": {
+            "sdk": "0.4.2",
+            "ort": "1.24.3",
+            "wasm": "1.24.3"
+          },
+          "heartbeat": {
+            "maxGapMs": 131.59999999403954,
+            "over250ms": 0
+          },
+          "afterMemory": {
+            "pssMiB": 865.87109375,
+            "rssMiB": 1073.81640625,
+            "privateMiB": 775.8359375,
+            "processes": 7
+          }
+        },
+        {
+          "wallIncludingUITestMs": 4622,
+          "inferenceMs": 4398,
+          "workingSize": [
+            2522,
+            1982
+          ],
+          "textSHA256": "e4f850ea2081452b669b408fbfbc637b2f8634ea7ba8c15a72275b9963a673ad",
+          "sameSortedAsFrozen": true,
+          "sameNativeAsFrozen": true,
+          "versions": {
+            "sdk": "0.4.2",
+            "ort": "1.24.3",
+            "wasm": "1.24.3"
+          },
+          "heartbeat": {
+            "maxGapMs": 26.69999998807907,
+            "over250ms": 0
+          },
+          "afterMemory": {
+            "pssMiB": 854.9599609375,
+            "rssMiB": 1069.4453125,
+            "privateMiB": 758.44140625,
+            "processes": 7
+          }
+        }
+      ],
+      "success": true,
+      "peakPSS": {
+        "pssMiB": 963.9814453125,
+        "rssMiB": 1169.46875,
+        "privateMiB": 876.25390625,
+        "processes": 7
+      },
+      "pageErrors": [],
+      "networkSameOriginOnly": true,
+      "unselectedTesseractRequests": [],
+      "requestsCount": 15
+    },
+    {
+      "sample": "daoguang",
+      "browser": "154.0.8037.57",
+      "imageSHA256": "1edd5669ae7e9d2cc90eb9fe6fef35fb85b5c0b49e2858f537c2a84444ab03d0",
+      "runs": [
+        {
+          "wallIncludingUITestMs": 4532,
+          "inferenceMs": 2447,
+          "workingSize": [
+            2607,
+            1917
+          ],
+          "textSHA256": "113cbee5900e6940e1bbefe6d1e44b871546da4f00e146a44ee68c2275ceb8ce",
+          "sameSortedAsFrozen": true,
+          "sameNativeAsFrozen": true,
+          "versions": {
+            "sdk": "0.4.2",
+            "ort": "1.24.3",
+            "wasm": "1.24.3"
+          },
+          "heartbeat": {
+            "maxGapMs": 117.80000001192093,
+            "over250ms": 0
+          },
+          "afterMemory": {
+            "pssMiB": 776.8046875,
+            "rssMiB": 987.36328125,
+            "privateMiB": 684.0625,
+            "processes": 7
+          }
+        },
+        {
+          "wallIncludingUITestMs": 2091,
+          "inferenceMs": 1913,
+          "workingSize": [
+            2607,
+            1917
+          ],
+          "textSHA256": "113cbee5900e6940e1bbefe6d1e44b871546da4f00e146a44ee68c2275ceb8ce",
+          "sameSortedAsFrozen": true,
+          "sameNativeAsFrozen": true,
+          "versions": {
+            "sdk": "0.4.2",
+            "ort": "1.24.3",
+            "wasm": "1.24.3"
+          },
+          "heartbeat": {
+            "maxGapMs": 37.400000005960464,
+            "over250ms": 0
+          },
+          "afterMemory": {
+            "pssMiB": 767.986328125,
+            "rssMiB": 979.859375,
+            "privateMiB": 673.94140625,
+            "processes": 7
+          }
+        }
+      ],
+      "success": true,
+      "peakPSS": {
+        "pssMiB": 925.419921875,
+        "rssMiB": 1130.84765625,
+        "privateMiB": 837.67578125,
+        "processes": 7
+      },
+      "pageErrors": [],
+      "networkSameOriginOnly": true,
+      "unselectedTesseractRequests": [],
+      "requestsCount": 15
+    }
+  ],
+  "date": "2026-10-17 Asia/Shanghai",
+  "unitTestsPassed": 20,
+  "browserTestsPassed": 13,
+  "browserTestBatches": [
+    13
+  ],
+  "applicationCSPUnchanged": true,
+  "selectedEngineOnly": true,
+  "realPhoneTested": false,
+  "mainMerged": false,
+  "websitePublished": false,
+  "browserTestDurationSeconds": 46.9,
+  "staticPreviewRealPaddlePassed": true
+}

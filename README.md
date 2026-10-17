@@ -2,7 +2,9 @@
 
 纯前端个人学术研究工具。使用者打开网站即可选择 JPG / PNG，在浏览器本地识别繁体竖排文字、对照原图校勘、复制或导出 TXT / Word。**使用者不需要安装 Python、Tesseract、Node.js 或其他软件，不需要 API Key，不调用付费服务。**
 
-网站由 GitHub Pages 托管静态文件，识别由 Tesseract.js Web Worker / WebAssembly 在使用者的浏览器运行；编辑及 DOCX 生成也在浏览器完成。引擎、WASM 和模型均来自本站，无第三方 CDN、OCR 服务器、数据库或 Python 后端。
+本实验分支保留默认 Tesseract，新增 PaddleOCR 整页/整区试用选项；[双引擎测试说明](docs/双引擎实验版本测试说明.md)记录当前支持范围，尚未发布到正式站。
+
+网站由 GitHub Pages 托管静态文件，识别由所选引擎的 Web Worker / WebAssembly 在使用者的浏览器运行；编辑及 DOCX 生成也在浏览器完成。引擎、WASM 和模型均来自本站，无第三方 CDN、OCR 服务器、数据库或 Python 后端。
 
 **当前引擎是通用繁体 OCR，未专门针对清代古籍训练。能运行繁体竖排识别，不代表能可靠识别异体字、复杂版式和残损文字。它只能生成需要逐字核对的校勘底稿。** 低置信度替换为□无法覆盖漏检或高置信度误识。最新同图对照、检测问题及手机验证边界见[OCR排查与优化](docs/OCR排查与优化.md)，初版测量见[原测试报告](docs/测试报告.md)。
 

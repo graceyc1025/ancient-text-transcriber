@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 const dist = path.resolve(fileURLToPath(new URL('../dist/', import.meta.url)));
 const prefix = '/ancient-text-transcriber/';
-const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.png': 'image/png', '.jpg': 'image/jpeg', '.wasm': 'application/wasm', '.gz': 'application/octet-stream', '.txt': 'text/plain' };
+const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.png': 'image/png', '.jpg': 'image/jpeg', '.wasm': 'application/wasm', '.gz': 'application/octet-stream', '.txt': 'text/plain' };
 createServer(async (req, res) => {
   try {
     if (req.method !== 'GET' && req.method !== 'HEAD') { res.writeHead(405).end(); return; }

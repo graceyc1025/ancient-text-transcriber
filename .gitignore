@@ -11,3 +11,4 @@ dist/
 node_modules/
 playwright-report/
 public/ocr/runtime/
+public/paddle/

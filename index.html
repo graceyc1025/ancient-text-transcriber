@@ -23,11 +23,12 @@
     <header class="topbar"><span>文献整理 <span class="slash">/</span> 图像转录</span><button id="helpButton" class="text-button">使用说明 ↗</button></header>
     <section class="intro"><div><div class="eyebrow">从原图出发，保留每一个字</div><h1>古籍文献图片转录</h1><p>繁体保留 · 竖排列序 · 原图对照 · 人工校勘</p></div><span id="engineStatus" class="status-badge">正在检查识别环境</span></section>
     <section class="settings" aria-label="识别设置">
-      <label>识别引擎<span class="engine-name">Tesseract.js · 免费本地 OCR</span></label>
+      <label>识别引擎<select id="ocrEngine"><option value="tesseract">Tesseract · 现有引擎</option><option value="paddle">PaddleOCR · 试用（整页 / 整区）</option></select></label>
       <label>文字排版<select id="orientation"><option value="vertical">竖排 · 右至左</option><option value="horizontal">横排 · 左至右</option></select></label>
       <label id="confidenceLabel" title="低于此模型置信度的字词替换为□。置信度不是正确率。">疑字阈值 <output id="thresholdValue">65</output><input id="threshold" type="range" min="0" max="100" value="65"></label>
       <label class="check-label"><input id="autoRun" type="checkbox" checked>上传后自动识别</label>
     </section>
+    <p id="engineNote" class="engine-note" role="status">Tesseract 模型在开始识别时载入。可切换 Paddle 试用；一次仅运行所选引擎。</p>
     <details class="processing-panel" id="processingPanel"><summary>识别方式与图像处理 · 分栏、模型、PSM、灰度和二值化</summary>
       <div class="processing-controls">
         <label>版面处理<select id="recognitionMode"><option value="whole">整区识别（原方式）</option><option value="columns">竖排先分栏再识别</option></select></label>
@@ -76,6 +77,6 @@
   </main>
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
   <dialog id="recordsDialog"><div class="dialog-heading"><h2>原始 OCR 与方法对比</h2><button id="closeRecords" class="icon-button" aria-label="关闭识别记录">×</button></div><p>这里保留引擎原始输出；其中仍可能含猜错的字，不作为确认原文。人工编辑不会修改这些记录，刷新前请下载保存。</p><label>识别批次<select id="recordRun"></select></label><label>区域 / 列<select id="recordPass"></select></label><p id="recordProfile"></p><label>引擎原始输出（未经重排或标疑）<textarea id="rawOutput" readonly rows="8"></textarea></label><label>按阅读顺序整理并标疑的底稿<textarea id="markedOutput" readonly rows="8"></textarea></label><div class="records-actions"><button id="copyRaw" class="secondary-button">复制选中原始输出</button><button id="exportRecords" class="primary-button">下载本页全部识别记录 JSON</button></div></dialog>
-  <dialog id="helpDialog"><div class="dialog-heading"><h2>使用说明</h2><button id="closeHelp" class="icon-button" aria-label="关闭说明">×</button></div><ol><li>选择文字排版，在此网页选择 JPG / PNG。无需安装软件，图片不会发送到服务器。按加入目录的实际顺序处理，可用箭头调整。</li><li>默认选择图片后自动识别。第一次会从本站载入免费引擎与模型，可能需要等待；识别在浏览器运行，不调用远程 OCR。</li><li>需要框选时先取消“上传后自动识别”。选择区域类型，点击“框选区域”并拖出矩形。框选后<strong>只识别框内内容</strong>，请包含全部所需文字并避免重叠。</li><li>区域旁“识别该区”只更新对应底稿，其他栏目文字保留。展开“识别方式与图像处理”，先分析分栏并检查切线；同一框可比较PSM、灰度及二值化，生成处理预览与原图对照，增强不一定更好。</li><li>在右侧逐字编辑。可添加标题、页码、版心栏目，也可调整栏目顺序。竖排列序尽量按右至左、上至下；复杂版面仍需人工校序。</li><li>低于疑字阈值的检测字词逐字替换为□。置信度不是正确率，漏检和高置信度误识仍可能存在。保留检测出的标点，不另行断句或添加现代标点。</li><li>“原始OCR输出与识别记录”保留每批次/列的引擎文本、TSV、参数与检测数量，人工修改不影响记录。刷新前下载本页JSON。手机默认使用较小工作图预算；可停止识别，初始化期间可能等待。</li><li>复制文字或导出 TXT / Word。Word 可附对应的显示用原图副本。结果仅保留在当前页面，刷新或关闭前务必导出，并另外备份源图片。</li></ol><p class="help-note">本网站使用通用繁体 OCR，未专门针对清代古籍训练，不能保证异体字、小字双行、印章和残损识别准确。演示图为现代生成的竖排繁体排版，不代表古籍准确率。模型可能缓存到浏览器，图片和转录不做自动持久保存。详情见仓库使用说明及测试报告。</p></dialog>
+  <dialog id="helpDialog"><div class="dialog-heading"><h2>使用说明</h2><button id="closeHelp" class="icon-button" aria-label="关闭说明">×</button></div><ol><li>选择文字排版，在此网页选择 JPG / PNG。无需安装软件，图片不会发送到服务器。按加入目录的实际顺序处理，可用箭头调整。</li><li>默认选择图片后自动识别。第一次会从本站载入免费引擎与模型，可能需要等待；识别在浏览器运行，不调用远程 OCR。</li><li>需要框选时先取消“上传后自动识别”。选择区域类型，点击“框选区域”并拖出矩形。框选后<strong>只识别框内内容</strong>，请包含全部所需文字并避免重叠。</li><li>区域旁“识别该区”只更新对应底稿，其他栏目文字保留。展开“识别方式与图像处理”，先分析分栏并检查切线；同一框可比较PSM、灰度及二值化，生成处理预览与原图对照，增强不一定更好。</li><li>在右侧逐字编辑。可添加标题、页码、版心栏目，也可调整栏目顺序。竖排列序尽量按右至左、上至下；复杂版面仍需人工校序。</li><li>低于疑字阈值的检测字词逐字替换为□。置信度不是正确率，漏检和高置信度误识仍可能存在。保留检测出的标点，不另行断句或添加现代标点。</li><li>“原始OCR输出与识别记录”保留每批次/列的引擎文本、TSV、参数与检测数量，人工修改不影响记录。刷新前下载本页JSON。手机默认使用较小工作图预算；可停止识别，初始化期间可能等待。</li><li>复制文字或导出 TXT / Word。Word 可附对应的显示用原图副本。结果仅保留在当前页面，刷新或关闭前务必导出，并另外备份源图片。</li></ol><p class="help-note">双引擎实验：Tesseract 保留语言模型、PSM、分栏与疑字阈值。Paddle 试用采用整页/框选整区，保留全部原始候选，不按阈值标□；首次下载约60 MB，手机尚待真机验证。点击停止可终止 Paddle Worker，失败后可切回 Tesseract。图片和底稿仍仅在当前页面，关闭前请导出。</p><p class="help-note">本网站使用通用繁体 OCR，未专门针对清代古籍训练，不能保证异体字、小字双行、印章和残损识别准确。演示图为现代生成的竖排繁体排版，不代表古籍准确率。模型可能缓存到浏览器，图片和转录不做自动持久保存。详情见仓库使用说明及测试报告。</p></dialog>
 </body>
 </html>
